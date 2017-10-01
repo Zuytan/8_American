@@ -1,0 +1,22 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="Use_Case_Dg" version="4">
+  <OBJECT>
+    <ID name="Use_Case_Dg" mc="Standard.Package" uid="0f988455-6202-4877-a40d-196140d82b7f"/>
+    <PID name="8_américain" mc="Standard.Project" uid="2adaa1df-52f1-4c74-b14a-c1487329e4ae"/>
+    <ATTRIBUTES>
+      <ATT name="IsInstantiable">false</ATT>
+      <ATT name="IsAbstract">false</ATT>
+      <ATT name="IsLeaf">false</ATT>
+      <ATT name="IsRoot">false</ATT>
+      <ATT name="Visibility">Public</ATT>
+      <ATT name="Name"><![CDATA[Use_Case_Dg]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES>
+      <COMP relation="OwnedElement">
+        <COMPID name="Use_Case_Menu" mc="Standard.Package" uid="5e033817-9092-497d-8941-88723bc5a296"/>
+        <COMPID name="Use_Case_Game" mc="Standard.Package" uid="d63a4cc8-82a9-4175-87ad-d9f07886689a"/>
+      </COMP>
+    </DEPENDENCIES>
+  </OBJECT>
+</EXT>

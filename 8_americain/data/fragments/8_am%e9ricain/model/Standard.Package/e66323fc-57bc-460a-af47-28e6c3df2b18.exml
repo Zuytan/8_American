@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="Create_New_Game_v1" version="4">
+  <OBJECT>
+    <ID name="Create_New_Game_v1" mc="Standard.Package" uid="e66323fc-57bc-460a-af47-28e6c3df2b18"/>
+    <PID name="Sequence_Dg" mc="Standard.Package" uid="634b4c4b-521a-4f94-b381-68df7a85050a"/>
+    <ATTRIBUTES>
+      <ATT name="IsInstantiable">false</ATT>
+      <ATT name="IsAbstract">false</ATT>
+      <ATT name="IsLeaf">false</ATT>
+      <ATT name="IsRoot">false</ATT>
+      <ATT name="Visibility">Public</ATT>
+      <ATT name="Name"><![CDATA[Create_New_Game_v1]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES></DEPENDENCIES>
+  </OBJECT>
+</EXT>

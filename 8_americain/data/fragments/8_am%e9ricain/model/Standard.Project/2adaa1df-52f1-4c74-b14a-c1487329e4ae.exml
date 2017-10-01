@@ -1,0 +1,23 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="8_américain" version="4">
+  <OBJECT>
+    <ID name="8_américain" mc="Standard.Project" uid="2adaa1df-52f1-4c74-b14a-c1487329e4ae"/>
+    <ATTRIBUTES>
+      <ATT name="ProjectContext"></ATT>
+      <ATT name="ProjectDescr"></ATT>
+      <ATT name="Name"><![CDATA[8_américain]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES>
+      <COMP relation="Model">
+        <COMPID name="8_américain" mc="Standard.Package" uid="36611aca-1af5-4f1f-a67a-72e1f5442e1c"/>
+        <COMPID name="Use_Case_Dg" mc="Standard.Package" uid="0f988455-6202-4877-a40d-196140d82b7f"/>
+        <COMPID name="Sequence_Dg" mc="Standard.Package" uid="634b4c4b-521a-4f94-b381-68df7a85050a"/>
+        <COMPID name="Class_Dg" mc="Standard.Package" uid="81087862-718a-4aa4-9698-293db0ccf134"/>
+      </COMP>
+      <COMP relation="DiagramRoot">
+        <COMPID name="8_américain" mc="Infrastructure.DiagramSet" uid="97db455c-8af8-44bc-873a-332c0a8bcf12"/>
+      </COMP>
+    </DEPENDENCIES>
+  </OBJECT>
+</EXT>

@@ -1,0 +1,33 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="Class_v1" version="4">
+  <OBJECT>
+    <ID name="Class_v1" mc="Standard.Package" uid="d01af16d-8cf9-4ef1-ab62-db3fbeb69b30"/>
+    <PID name="Class_Dg" mc="Standard.Package" uid="81087862-718a-4aa4-9698-293db0ccf134"/>
+    <ATTRIBUTES>
+      <ATT name="IsInstantiable">false</ATT>
+      <ATT name="IsAbstract">false</ATT>
+      <ATT name="IsLeaf">false</ATT>
+      <ATT name="IsRoot">false</ATT>
+      <ATT name="Visibility">Public</ATT>
+      <ATT name="Name"><![CDATA[Class_v1]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES>
+      <COMP relation="OwnedElement">
+        <COMPID name="Observer" mc="Standard.Class" uid="9f49ca1e-351e-47e6-8e73-d85907ab506f"/>
+        <COMPID name="Model" mc="Standard.Class" uid="996fe240-9558-40ee-9171-94b812f83cc9"/>
+        <COMPID name="View" mc="Standard.Class" uid="e367c09c-da7d-4f96-b9c6-bfa56d2d19fd"/>
+        <COMPID name="Controller" mc="Standard.Class" uid="2c740867-660f-4c2c-ae11-1c2a8cefce4f"/>
+        <COMPID name="Subject" mc="Standard.Interface" uid="ad2ef7cf-c23b-4d6d-aa31-5dfb95f11282"/>
+        <COMPID name="Card" mc="Standard.Class" uid="d088cb28-7294-4ba1-a87a-855b6fc0a4b9"/>
+        <COMPID name="Variant" mc="Standard.Class" uid="caad3e82-67f3-4557-9ba7-c2d8263ebcbb"/>
+        <COMPID name="Deck" mc="Standard.Class" uid="e1511d50-6953-4f9f-a39e-13a8e2fd9915"/>
+        <COMPID name="Hand" mc="Standard.Class" uid="a9e5417e-9fa5-4ebb-813c-70065a53fa2f"/>
+        <COMPID name="Stack" mc="Standard.Class" uid="745a8df2-0442-4cba-8b9f-d8a4993d2695"/>
+      </COMP>
+      <COMP relation="Product">
+        <COMPID name="Class_v1 Class diagram" mc="Standard.ClassDiagram" uid="a7a999ea-5f39-40e6-8626-37ee90cbef55"/>
+      </COMP>
+    </DEPENDENCIES>
+  </OBJECT>
+</EXT>

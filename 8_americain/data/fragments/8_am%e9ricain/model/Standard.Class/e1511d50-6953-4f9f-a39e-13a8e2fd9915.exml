@@ -1,0 +1,25 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="Deck" version="4">
+  <OBJECT>
+    <ID name="Deck" mc="Standard.Class" uid="e1511d50-6953-4f9f-a39e-13a8e2fd9915"/>
+    <PID name="Class_v1" mc="Standard.Package" uid="d01af16d-8cf9-4ef1-ab62-db3fbeb69b30"/>
+    <ATTRIBUTES>
+      <ATT name="IsActive">false</ATT>
+      <ATT name="IsMain">false</ATT>
+      <ATT name="IsElementary">false</ATT>
+      <ATT name="IsAbstract">false</ATT>
+      <ATT name="IsLeaf">false</ATT>
+      <ATT name="IsRoot">false</ATT>
+      <ATT name="Visibility">Public</ATT>
+      <ATT name="Name"><![CDATA[Deck]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES>
+      <COMP relation="OwnedEnd">
+        <REFOBJ>
+          <ID name="card" mc="Standard.AssociationEnd" uid="65f9f019-ce6e-4d72-ba58-0cf270f456d9"/>
+        </REFOBJ>
+      </COMP>
+    </DEPENDENCIES>
+  </OBJECT>
+</EXT>

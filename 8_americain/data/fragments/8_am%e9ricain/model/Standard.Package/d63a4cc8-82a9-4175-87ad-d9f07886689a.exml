@@ -1,0 +1,33 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="Use_Case_Game" version="4">
+  <OBJECT>
+    <ID name="Use_Case_Game" mc="Standard.Package" uid="d63a4cc8-82a9-4175-87ad-d9f07886689a"/>
+    <PID name="Use_Case_Dg" mc="Standard.Package" uid="0f988455-6202-4877-a40d-196140d82b7f"/>
+    <ATTRIBUTES>
+      <ATT name="IsInstantiable">false</ATT>
+      <ATT name="IsAbstract">false</ATT>
+      <ATT name="IsLeaf">false</ATT>
+      <ATT name="IsRoot">false</ATT>
+      <ATT name="Visibility">Public</ATT>
+      <ATT name="Name"><![CDATA[Use_Case_Game]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES>
+      <COMP relation="OwnedElement">
+        <COMPID name="Joueur" mc="Standard.Actor" uid="0f141422-0e67-486f-b51c-e22b8d4464bf"/>
+        <COMPID name="Jouer une carte" mc="Standard.UseCase" uid="579f8e04-4c20-46c1-a905-e604733f9b67"/>
+        <COMPID name="Piocher" mc="Standard.UseCase" uid="5658d39c-62f0-409f-a7ab-cdb1a8a1ddff"/>
+        <COMPID name="Faire piocher " mc="Standard.UseCase" uid="4be4f534-b7f5-4f7a-8805-811b1975c9bd"/>
+        <COMPID name="Changer de couleur" mc="Standard.UseCase" uid="18e02af3-cd96-4be8-b949-881b1ddc5e1b"/>
+        <COMPID name="Faire sauter un tour" mc="Standard.UseCase" uid="84fb25f9-a970-4e15-80a1-3ab21889ef5a"/>
+        <COMPID name="Changer de sens" mc="Standard.UseCase" uid="f62a8cbe-85d4-4a31-a44d-944fdf59a049"/>
+        <COMPID name="Ne rien faire" mc="Standard.UseCase" uid="51df776b-9aa1-4788-879f-daf9c30e20e3"/>
+        <COMPID name="Piocher 1 carte" mc="Standard.UseCase" uid="d4c3d6b0-92fe-43bb-bd4e-65fe537eae51"/>
+        <COMPID name="Piocher n cartes" mc="Standard.UseCase" uid="bfaeba50-beac-4997-a868-4c1bafc76ccd"/>
+      </COMP>
+      <COMP relation="Product">
+        <COMPID name="Use_Case_Game" mc="Standard.UseCaseDiagram" uid="c1a76940-fd20-44b4-9c6a-60418b4006d2"/>
+      </COMP>
+    </DEPENDENCIES>
+  </OBJECT>
+</EXT>

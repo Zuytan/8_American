@@ -1,0 +1,21 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="Class_Dg" version="4">
+  <OBJECT>
+    <ID name="Class_Dg" mc="Standard.Package" uid="81087862-718a-4aa4-9698-293db0ccf134"/>
+    <PID name="8_américain" mc="Standard.Project" uid="2adaa1df-52f1-4c74-b14a-c1487329e4ae"/>
+    <ATTRIBUTES>
+      <ATT name="IsInstantiable">false</ATT>
+      <ATT name="IsAbstract">false</ATT>
+      <ATT name="IsLeaf">false</ATT>
+      <ATT name="IsRoot">false</ATT>
+      <ATT name="Visibility">Public</ATT>
+      <ATT name="Name"><![CDATA[Class_Dg]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES>
+      <COMP relation="OwnedElement">
+        <COMPID name="Class_v1" mc="Standard.Package" uid="d01af16d-8cf9-4ef1-ab62-db3fbeb69b30"/>
+      </COMP>
+    </DEPENDENCIES>
+  </OBJECT>
+</EXT>
