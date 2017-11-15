@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 public class Discard extends Deck{
 
-	@Override
 	public void init() {
 		
 		
@@ -24,5 +23,13 @@ public class Discard extends Deck{
 	 */
 	public ArrayList<Card> getAllcard(){
 		return super.getListCards();
+	}
+	
+	/**
+	 * Method that put a card on the top of the discard
+	 * @param c the card to put on the top.
+	 */
+	public void addCard(Card c) {
+		this.getListCards().add(c);
 	}
 }

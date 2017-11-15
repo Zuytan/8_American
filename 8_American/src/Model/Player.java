@@ -1,9 +1,10 @@
 package Model;
 
+import java.util.ArrayList;
+
 public class Player {
 	private Hand hand;
-	
-	
+
 	public Player() {
 		this.hand = new Hand();
 	}
@@ -19,11 +20,19 @@ public class Player {
 	
 	/**
 	 * Method the add some cards in the player's hand 
-	 * @param cards A card's array
+	 * @param cardPicked A card's array
 	 */
-	public void addCards(Card[] cards) {
-		for (int i = 0; i < cards.length; i++) {
-			this.hand.addCard(cards[i]);
+	public void addCards(ArrayList<Card> cardPicked) {
+		for (Card c : cardPicked) {
+			this.hand.addCard(c);
 		}
+	}
+	
+	public Hand getHand() {
+		return hand;
+	}
+
+	public void setHand(Hand hand) {
+		this.hand = hand;
 	}
 }

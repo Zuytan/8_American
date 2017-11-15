@@ -6,5 +6,5 @@ package Model;
  *
  */
 public enum CardColor {
-Hearts, Clubs, Spades, Diamonds
+Hearts, Clubs, Spades, Diamonds, Joker
 }

@@ -9,11 +9,6 @@ public abstract class Deck {
 	private ArrayList<Card> cards = new ArrayList<>();
 	
 	/**
-	 * Method that initialize the deck of cards
-	 */
-	public abstract void init();
-	
-	/**
 	 * Method that get the number of Cards in the deck
 	 * @return the number of cards
 	 */

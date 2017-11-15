@@ -1,0 +1,57 @@
+package Model;
+
+import java.util.ArrayList;
+
+public class DeckCreator {
+
+	/**
+	 * Method that create a deck of <i>nbCard</i> cards 
+	 * At the moment, only 32 or 54 cards
+	 * @param nbCard Number of cards
+	 * @return the deck of cards
+	 */
+	public static ArrayList<Card> create(int nbCard){
+		ArrayList<Card> c;
+		switch(nbCard) {
+			case 32:
+				c = DeckCreator.create32CardsDeck();
+				break;
+			case 54:
+				c = DeckCreator.create54CardsDeck();
+				break;
+			default:
+				c = new ArrayList<>();
+		}
+		return c;	
+	}
+	
+	/**
+	 * Method that create a deck of 32 cards
+	 * @return a deck of 32 cards
+	 */
+	private static ArrayList<Card> create32CardsDeck(){
+		ArrayList<Card> c = new ArrayList<>();
+		for(int i = 6; i < 13;i++) {//From the seven to the king
+			for (int j = 0; j < 4; j++) {//for each colors
+				c.add(new Card(CardColor.values()[j],CardValue.values()[i]));
+			}
+		}
+		return c;
+	}
+	
+	/**
+	 * Method that create a deck of 54 cards
+	 * @return a deck of 54 cards
+	 */
+	private static ArrayList<Card> create54CardsDeck(){
+		ArrayList<Card> c = DeckCreator.create32CardsDeck();
+		for(int i = 0; i < 6;i++) {
+			for (int j = 0; j < 4; j++) {
+				c.add(new Card(CardColor.values()[j],CardValue.values()[i]));
+			}
+		}
+		c.add(new Card(CardColor.Joker, CardValue.Joker));
+		c.add(new Card(CardColor.Joker, CardValue.Joker));
+		return c;
+	}
+}

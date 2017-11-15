@@ -30,4 +30,14 @@ public class Card {
 		return value;
 	}
 
+	@Override
+	public String toString() {
+		StringBuffer sb = new StringBuffer();
+		sb.append(this.value);
+		if(this.color != CardColor.Joker) {
+			sb.append(" of ");
+			sb.append(this.color);
+		}
+		return sb.toString();
+	}
 }

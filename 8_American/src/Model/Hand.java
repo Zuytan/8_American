@@ -1,15 +1,17 @@
 package Model;
 
+import java.util.ArrayList;
+
 public class Hand extends Deck{
 
 	public Hand() {
 		
 	}
 	
-	@Override
-	public void init() {
+	
+	public void init(ArrayList<Card> list) {
 		// TODO Auto-generated method stub
-		
+		this.getListCards().addAll(list);
 	}
 	
 	/**
@@ -17,7 +19,7 @@ public class Hand extends Deck{
 	 * @param card Card to add
 	 */
 	public void addCard(Card card) {
-		
+		this.getListCards().add(card);
 	}
 	
 	/**

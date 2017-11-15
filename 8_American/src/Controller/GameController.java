@@ -1,8 +1,14 @@
 package Controller;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
+import Model.Card;
+import Model.DeckCreator;
+import Model.Discard;
+import Model.Hand;
 import Model.Player;
+import Model.Stock;
 
 public class GameController {
 	/**
@@ -28,6 +34,15 @@ public class GameController {
 	private ArrayList<Player> players = new ArrayList<>();
 
 	/**
+	 * Attribute that represents the stock of cards
+	 */
+	private Stock stock;
+	
+	/**
+	 * Attribute that represent the discard of the game
+	 */
+	private Discard discard;
+	/**
 	 * Basic constructor of the class
 	 * @param direction Indicate the direction of the game <br> 1 = clockwise <br>-1 = anti-clockwise 
 	 * @param nbPlayer Indicate the number of player in the game
@@ -37,9 +52,17 @@ public class GameController {
 		this.direction = direction;
 		this.realPlayerIndex = realPlayerIndex;
 		this.actualPlayer = 0;
+		this.stock = new Stock();
+		this.stock.fillStock(DeckCreator.create(54));
+		this.discard = new Discard();
+		
 		for (int i = 0; i < nbPlayer; i++) {
 			players.add(new Player());
 		}
+		for (Player p : this.players) {
+			p.getHand().init(this.stock.pick(7));
+		}
+		this.discard.addCard(this.stock.pick(1).get(0));//Retourne une arraylist donc on fait un get pour reprendre la carte
 	}
 	
 	/**
@@ -47,7 +70,7 @@ public class GameController {
 	 * @return the number of player in the game
 	 */
 	public int getNbPlayer() {
-		return 0;
+		return this.players.size();
 		 
 	}
 
@@ -60,10 +83,10 @@ public class GameController {
 
 	/**
 	 * Method that swap the hands of each player.
-	 * @param direction Indicate the direction of the swap
+	 * @param direction Indicate the direction of the swap 1 or -1
 	 */
 	public void swapHands(int direction) {
-		
+
 	}
 
 	/**
@@ -71,7 +94,8 @@ public class GameController {
 	 * @param indexCard The index of the card the player want to play
 	 */
 	public void playCard(int indexCard) {
-		
+		Card playedCard = this.players.get(actualPlayer).playCard(indexCard);
+		this.discard.addCard(playedCard);
 	}
 
 	/**
@@ -79,14 +103,15 @@ public class GameController {
 	 * @param nbCard the number of card which is needed
 	 */
 	public void draw(int nbCard) {
-		
+		ArrayList<Card> cardPicked = this.stock.pick(nbCard);
+		this.players.get(this.actualPlayer).addCards(cardPicked);
 	}
 
 	/**
 	 * This method change the current player in the direction of the game
 	 */
 	public void changePlayer() {
-		
+		this.actualPlayer = (this.actualPlayer+1)%this.getNbPlayer();
 	}
 
 	/**
@@ -94,7 +119,11 @@ public class GameController {
 	 * @return true in case of victory, false either
 	 */
 	public boolean verifyVictory() {
-		return false;
+		boolean victory = false;
+		if(this.players.get(actualPlayer).getHand().getNbCard() == 0) {
+			victory = true;
+		}
+		return victory;
 	}
 
 	/**
