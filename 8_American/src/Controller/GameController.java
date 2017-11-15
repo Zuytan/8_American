@@ -21,7 +21,7 @@ public class GameController {
 	/**
 	 * Attribute that indicate the index of the current player
 	 */
-	private int actualPlayer;
+	private int currentPlayer;
 
 	/**
 	 * Attribute that indicate the real-player index.
@@ -51,7 +51,7 @@ public class GameController {
 	public GameController(int direction,int nbPlayer, int realPlayerIndex) {
 		this.direction = direction;
 		this.realPlayerIndex = realPlayerIndex;
-		this.actualPlayer = 0;
+		this.currentPlayer = 0;
 		this.stock = new Stock();
 		this.stock.fillStock(DeckCreator.create(54));
 		this.discard = new Discard();
@@ -94,7 +94,7 @@ public class GameController {
 	 * @param indexCard The index of the card the player want to play
 	 */
 	public void playCard(int indexCard) {
-		Card playedCard = this.players.get(actualPlayer).playCard(indexCard);
+		Card playedCard = this.players.get(currentPlayer).playCard(indexCard);
 		this.discard.addCard(playedCard);
 	}
 
@@ -104,14 +104,14 @@ public class GameController {
 	 */
 	public void draw(int nbCard) {
 		ArrayList<Card> cardPicked = this.stock.pick(nbCard);
-		this.players.get(this.actualPlayer).addCards(cardPicked);
+		this.players.get(this.currentPlayer).addCards(cardPicked);
 	}
 
 	/**
 	 * This method change the current player in the direction of the game
 	 */
 	public void changePlayer() {
-		this.actualPlayer = (this.actualPlayer+1)%this.getNbPlayer();
+		this.currentPlayer = (this.currentPlayer+1)%this.getNbPlayer();
 	}
 
 	/**
@@ -120,7 +120,7 @@ public class GameController {
 	 */
 	public boolean verifyVictory() {
 		boolean victory = false;
-		if(this.players.get(actualPlayer).getHand().getNbCard() == 0) {
+		if(this.players.get(currentPlayer).getHand().getNbCard() == 0) {
 			victory = true;
 		}
 		return victory;
@@ -132,4 +132,25 @@ public class GameController {
 	public void nextPlayer() {
 		
 	}
+	
+	/**
+	 * Method that return the index of the current player
+	 * @return the index of the current Player
+	 */
+	public int getCurrentPlayer() {
+		return this.currentPlayer;
+	}
+
+	public ArrayList<Player> getPlayers() {
+		return players;
+	}
+
+	public Stock getStock() {
+		return stock;
+	}
+
+	public Discard getDiscard() {
+		return discard;
+	}
+	
 }

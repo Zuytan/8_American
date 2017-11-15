@@ -19,6 +19,6 @@ public class Stock extends Deck{
 		for (int i = 0; i < nbCard; i++) {
 			list.add(this.getListCards().remove(0));
 		}
-		return null;
+		return list;
 	}
 }

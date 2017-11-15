@@ -20,7 +20,7 @@ public abstract class Deck {
 	 * Method that return the list of cards in the deck
 	 * @return the list of cards
 	 */
-	protected ArrayList<Card> getListCards(){
+	public ArrayList<Card> getListCards(){
 		return this.cards;
 	}
 }

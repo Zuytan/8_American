@@ -2,17 +2,17 @@ package Main;
 
 import java.util.ArrayList;
 
+import Controller.GameController;
 import Model.Card;
 import Model.DeckCreator;
+import View.VueConsole;
 
 public class Main {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		ArrayList<Card> list = DeckCreator.create(54);
-		for(Card c : list) {
-			System.out.println(c);
-		}
+		GameController gc = new GameController(1, 4, 0);
+		VueConsole v = new VueConsole(gc, gc.getStock(), gc.getDiscard(), gc.getPlayers());
+		v.afficher();
 	}
 
 }
