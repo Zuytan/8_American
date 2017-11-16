@@ -11,146 +11,63 @@ import Model.Player;
 import Model.Stock;
 
 public class GameController {
-	/**
-	 * Attribute that indicates the direction of game.
-	 * 1 = clockwise
-	 * -1 = anti-clockwise
-	 */
-	private int direction;
-
-	/**
-	 * Attribute that indicate the index of the current player
-	 */
-	private int currentPlayer;
-
-	/**
-	 * Attribute that indicate the real-player index.
-	 */
-	private int realPlayerIndex;
 	
-	/**
-	 * Attribute that contains each player of the game
-	 */
-	private ArrayList<Player> players = new ArrayList<>();
-
-	/**
-	 * Attribute that represents the stock of cards
-	 */
-	private Stock stock;
-	
-	/**
-	 * Attribute that represent the discard of the game
-	 */
-	private Discard discard;
+	private Action act;
 	/**
 	 * Basic constructor of the class
 	 * @param direction Indicate the direction of the game <br> 1 = clockwise <br>-1 = anti-clockwise 
 	 * @param nbPlayer Indicate the number of player in the game
 	 * @param realPlayerIndex Indicate the real player index
+	 * @param d 
+	 * @param s 
 	 */
-	public GameController(int direction,int nbPlayer, int realPlayerIndex) {
-		this.direction = direction;
-		this.realPlayerIndex = realPlayerIndex;
-		this.currentPlayer = 0;
-		this.stock = new Stock();
-		this.stock.fillStock(DeckCreator.create(54));
-		this.discard = new Discard();
-		
-		for (int i = 0; i < nbPlayer; i++) {
-			players.add(new Player());
-		}
-		for (Player p : this.players) {
-			p.getHand().init(this.stock.pick(7));
-		}
-		this.discard.addCard(this.stock.pick(1).get(0));//Retourne une arraylist donc on fait un get pour reprendre la carte
+	public GameController(int direction,int nbPlayer, int realPlayerIndex, Stock s, Discard d) {
+		act = new Action();
+		act.initGame(direction, nbPlayer, realPlayerIndex, s, d);
 	}
 	
 	/**
-	 * Method that return the number of player in the game
-	 * @return the number of player in the game
+	 * Method called by the view to indicate the card the player want to play
+	 * @param index index of the card
 	 */
-	public int getNbPlayer() {
-		return this.players.size();
-		 
+	public void playCard(int index) {
+		
 	}
-
+	
 	/**
-	 * Method that ask for change the direction of game
+	 * Method called by the view to indicate that the player want to draw a card 
 	 */
-	public void changeDirection(){
-		this.direction *= -1;
+	public void drawCard() {
+		
 	}
-
+	
 	/**
-	 * Method that swap the hands of each player.
-	 * @param direction Indicate the direction of the swap 1 or -1
-	 */
-	public void swapHands(int direction) {
-
-	}
-
-	/**
-	 * The controller is asking the model for the card indicate in parameter and play it on the game 
-	 * @param indexCard The index of the card the player want to play
-	 */
-	public void playCard(int indexCard) {
-		Card playedCard = this.players.get(currentPlayer).playCard(indexCard);
-		this.discard.addCard(playedCard);
-	}
-
-	/**
-	 * Put a number of card in the current player
-	 * @param nbCard the number of card which is needed
-	 */
-	public void draw(int nbCard) {
-		ArrayList<Card> cardPicked = this.stock.pick(nbCard);
-		this.players.get(this.currentPlayer).addCards(cardPicked);
-	}
-
-	/**
-	 * This method change the current player in the direction of the game
-	 */
-	public void changePlayer() {
-		this.currentPlayer = (this.currentPlayer+1)%this.getNbPlayer();
-	}
-
-	/**
-	 * This method verify if the current player is winning in this turn
-	 * @return true in case of victory, false either
-	 */
-	public boolean verifyVictory() {
-		boolean victory = false;
-		if(this.players.get(currentPlayer).getHand().getNbCard() == 0) {
-			victory = true;
-		}
-		return victory;
-	}
-
-	/**
-	 * Set the end of the actual player's turn, verify victory and go to the next player.
+	 * Method called by the view to go to the next player
 	 */
 	public void nextPlayer() {
 		
 	}
 	
 	/**
-	 * Method that return the index of the current player
-	 * @return the index of the current Player
+	 * Method called at the beginning of the turn, apply the penalties 
 	 */
-	public int getCurrentPlayer() {
-		return this.currentPlayer;
+	private void turnBeginning() {
+		
+	}
+	
+	/**
+	 * Method called at the end of the turn, catch the penalties of the game 
+	 */
+	private void turnEnding() {
+		
 	}
 
 	public ArrayList<Player> getPlayers() {
-		return players;
-	}
-
-	public Stock getStock() {
-		return stock;
-	}
-
-	public Discard getDiscard() {
-		return discard;
+		// TODO Auto-generated method stub
+		return this.act.getPlayers();
 	}
 	
+	public int getCurrentPlayer() {
+		return this.act.getCurrentPlayer();
+	}
 }

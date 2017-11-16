@@ -1,6 +1,7 @@
 package Model;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class Player {
 	private Hand hand;
@@ -23,7 +24,9 @@ public class Player {
 	 * @param cardPicked A card's array
 	 */
 	public void addCards(ArrayList<Card> cardPicked) {
-		for (Card c : cardPicked) {
+		Iterator<Card> itrCard = cardPicked.iterator();
+		while (itrCard.hasNext()) {
+			Card c = itrCard.next();
 			this.hand.addCard(c);
 		}
 	}
