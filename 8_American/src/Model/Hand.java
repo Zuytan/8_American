@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Hand extends Deck{
 
 	public Hand() {
-		
+            super(new ArrayList<>());
 	}
 	
 	

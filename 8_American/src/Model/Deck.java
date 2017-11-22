@@ -1,12 +1,17 @@
 package Model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public abstract class Deck {
 	/**
 	 * List of cards of the deck 
 	 */
-	private ArrayList<Card> cards = new ArrayList<>();
+	private List<Card> cards;
+        
+        protected Deck(List<Card> list){
+            this.cards = list;
+        }
 	
 	/**
 	 * Method that get the number of Cards in the deck
@@ -20,7 +25,7 @@ public abstract class Deck {
 	 * Method that return the list of cards in the deck
 	 * @return the list of cards
 	 */
-	public ArrayList<Card> getListCards(){
+	public List<Card> getListCards(){
 		return this.cards;
 	}
 }

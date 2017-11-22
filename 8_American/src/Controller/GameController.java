@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 import Model.Card;
-import Model.DeckCreator;
+import Model.StockCreator;
 import Model.Discard;
 import Model.Hand;
 import Model.Player;

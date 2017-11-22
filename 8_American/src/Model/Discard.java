@@ -1,8 +1,14 @@
 package Model;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
 public class Discard extends Deck{
+
+    public Discard() {
+        super(new LinkedList<Card>());
+    }
 
 	public void init() {
 		
@@ -13,7 +19,7 @@ public class Discard extends Deck{
 	 * @return The last card
 	 */
 	public Card getLastCard() {
-		ArrayList<Card> list = super.getListCards();
+		LinkedList<Card> list = (LinkedList<Card>) super.getListCards();
 		return list.get(list.size()-1);
 	}
 	
@@ -21,8 +27,9 @@ public class Discard extends Deck{
 	 * Method that return all the cards 
 	 * @return the list of cards 
 	 */
-	public ArrayList<Card> getAllcard(){
-		return super.getListCards();
+        @Override
+	public LinkedList<Card> getListCards(){
+		return (LinkedList<Card>) super.getListCards();
 	}
 	
 	/**
@@ -30,6 +37,6 @@ public class Discard extends Deck{
 	 * @param c the card to put on the top.
 	 */
 	public void addCard(Card c) {
-		this.getListCards().add(c);
+		this.getListCards().addFirst(c);
 	}
 }
