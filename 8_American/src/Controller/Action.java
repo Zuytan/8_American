@@ -96,9 +96,10 @@ public class Action {
      *
      * @param indexCard The index of the card the player want to play
      */
-    public static void playCard(int indexCard) {
+    public static Card playCard(int indexCard) {
         Card playedCard = players.get(currentPlayer).playCard(indexCard);
         discard.addCard(playedCard);
+		return playedCard;
     }
 
     /**
@@ -144,4 +145,7 @@ public class Action {
         // TODO Auto-generated method stub
         return players;
     }
+    public static Discard getDiscard() {
+		return discard;
+	}
 }

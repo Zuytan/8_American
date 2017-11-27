@@ -5,7 +5,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class Discard extends Deck{
-
+	private CardColor lastCardColor;
     public Discard() {
         super(new LinkedList<Card>());
     }
@@ -20,7 +20,7 @@ public class Discard extends Deck{
 	 */
 	public Card getLastCard() {
 		LinkedList<Card> list = (LinkedList<Card>) super.getListCards();
-		return list.get(list.size()-1);
+		return list.getFirst();
 	}
 	
 	/**
@@ -38,5 +38,15 @@ public class Discard extends Deck{
 	 */
 	public void addCard(Card c) {
 		this.getListCards().addFirst(c);
+		lastCardColor = c.getColor();
 	}
+
+	public void changeLastColor(CardColor cardColor) {
+		this.lastCardColor = cardColor;
+	}
+
+	public CardColor getLastCardColor() {
+		return lastCardColor;
+	}
+	
 }

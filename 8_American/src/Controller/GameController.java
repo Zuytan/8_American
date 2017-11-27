@@ -4,15 +4,22 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 import Model.Card;
+import Model.CardColor;
 import Model.StockCreator;
 import Model.Discard;
+import Model.EnumAction;
 import Model.Hand;
 import Model.Player;
 import Model.Stock;
-
-public class GameController {
+import Model.EnumAction;
+public class GameController extends Observable{
 	
-	private Action act;
+	private EnumAction actToDo;
+	public EnumAction getActToDo() {
+		return actToDo;
+	}
+
+	private Rule currentRule;
 	/**
 	 * Basic constructor of the class
 	 * @param direction Indicate the direction of the game <br> 1 = clockwise <br>-1 = anti-clockwise 
@@ -22,8 +29,9 @@ public class GameController {
 	 * @param s 
 	 */
 	public GameController(int direction,int nbPlayer, int realPlayerIndex, Stock s, Discard d) {
-		act = new Action();
-		act.initGame(direction, nbPlayer, realPlayerIndex, s, d);
+		this.currentRule = new MinimalRule();
+		actToDo = EnumAction.none;
+		Action.initGame(direction, nbPlayer, realPlayerIndex, s, d);
 	}
 	
 	/**
@@ -31,7 +39,12 @@ public class GameController {
 	 * @param index index of the card
 	 */
 	public void playCard(int index) {
-		
+		Card c = Action.playCard(index);
+		EnumAction ea = currentRule.apply(c);
+		if(ea == EnumAction.changeColor) {
+			this.actToDo = EnumAction.changeColor;
+		}
+		notifyAllObs();
 	}
 	
 	/**
@@ -64,10 +77,18 @@ public class GameController {
 
 	public ArrayList<Player> getPlayers() {
 		// TODO Auto-generated method stub
-		return this.act.getPlayers();
+		return Action.getPlayers();
 	}
 	
 	public int getCurrentPlayer() {
-		return this.act.getCurrentPlayer();
+		return Action.getCurrentPlayer();
+	}
+	
+	public void changeColor(int choice) {
+		if(choice > 0 && choice < 5) {
+			Action.getDiscard().changeLastColor(CardColor.values()[choice-1]);
+		}
+		this.actToDo = EnumAction.none;
+		super.notifyAllObs();
 	}
 }

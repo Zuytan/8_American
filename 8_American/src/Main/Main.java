@@ -16,6 +16,7 @@ public class Main {
 		Discard d = new Discard();
 		GameController gc = new GameController(1, 4, 0, s, d);
 		VueConsole v = new VueConsole(gc, s, d, gc.getPlayers());
+		gc.addObserver(v);
 		v.afficher();
 	}
 
