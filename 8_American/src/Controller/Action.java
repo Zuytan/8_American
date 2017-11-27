@@ -16,57 +16,57 @@ public class Action {
      * Attribute that indicates the direction of game. 1 = clockwise -1 =
      * anti-clockwise
      */
-    private int direction;
+    private static int direction;
 
     /**
      * Attribute that indicate the index of the current player
      */
-    private int currentPlayer;
+    private static int currentPlayer;
 
     /**
      * Attribute that indicate the real-player index.
      */
-    private int realPlayerIndex;
+    private static int realPlayerIndex;
     /**
      * Attribute that contains each player of the game
      */
-    private ArrayList<Player> players = new ArrayList<>();
+    private static ArrayList<Player> players = new ArrayList<>();
 
     /**
      * Attribute that represents the stock of cards
      */
-    private Stock stock;
+    private static Stock stock;
 
     /**
      * Attribute that represent the discard of the game
      */
-    private Discard discard;
+    private static Discard discard;
 
-    public void initGame(int direction2, int nbPlayer, int realPlayerIndex2, Stock s, Discard d) {
+    public static void initGame(int direction2, int nbPlayer, int realPlayerIndex2, Stock s, Discard d) {
         // TODO Auto-generated method stub
-        this.direction = direction;
-        this.realPlayerIndex = realPlayerIndex;
-        this.currentPlayer = 0;
-        this.stock = s;
-        this.stock.fillStock(StockCreator.create(54));
-        this.discard = d;
+        direction = direction;
+        realPlayerIndex = realPlayerIndex;
+        currentPlayer = 0;
+        stock = s;
+        stock.fillStock(StockCreator.create(54));
+        discard = d;
 
         for (int i = 0; i < nbPlayer; i++) {
             players.add(new Player());
         }
-        Iterator<Player> itrPlayer = this.players.iterator();
+        Iterator<Player> itrPlayer = players.iterator();
         while (itrPlayer.hasNext()) {
             Player p = itrPlayer.next();
-            p.getHand().init(this.stock.pick(7));
+            p.getHand().init(stock.pick(7));
         }
-        this.discard.addCard(this.stock.pick(1).get(0));//Retourne une arraylist donc on fait un get pour reprendre la carte
+        discard.addCard(stock.pick(1).get(0));//Retourne une arraylist donc on fait un get pour reprendre la carte
     }
 
     /**
      * Method that ask for change the direction of game
      */
-    public void changeDirection() {
-        this.direction *= -1;
+    public static void changeDirection() {
+        direction *= -1;
     }
 
     /**
@@ -74,12 +74,12 @@ public class Action {
      *
      * @param direction Indicate the direction of the swap 1 or -1
      */
-    public void swapHands(int direction) {
+    public static void swapHands(int direction) {
         ArrayList<Hand> listHand = new ArrayList();
         for (int i = 0; i < players.size(); i++) {
             listHand.add(players.get(i).getHand());
         }
-        if (this.direction == -1) {
+        if (direction == -1) {
             listHand.add(listHand.remove(0));
         } else {
             listHand.set(0, listHand.remove(listHand.size() - 1));
@@ -96,9 +96,9 @@ public class Action {
      *
      * @param indexCard The index of the card the player want to play
      */
-    public void playCard(int indexCard) {
-        Card playedCard = this.players.get(currentPlayer).playCard(indexCard);
-        this.discard.addCard(playedCard);
+    public static void playCard(int indexCard) {
+        Card playedCard = players.get(currentPlayer).playCard(indexCard);
+        discard.addCard(playedCard);
     }
 
     /**
@@ -106,16 +106,16 @@ public class Action {
      *
      * @param nbCard the number of card which is needed
      */
-    public void draw(int nbCard) {
-        ArrayList<Card> cardPicked = this.stock.pick(nbCard);
-        this.players.get(this.currentPlayer).addCards(cardPicked);
+    public static void draw(int nbCard) {
+        ArrayList<Card> cardPicked = stock.pick(nbCard);
+        players.get(currentPlayer).addCards(cardPicked);
     }
 
     /**
      * This method change the current player in the direction of the game
      */
-    public void changePlayer() {
-        this.currentPlayer = (this.currentPlayer + this.direction) % this.players.size();
+    public static void changePlayer() {
+        currentPlayer = (currentPlayer + direction) % players.size();
     }
 
     /**
@@ -123,9 +123,9 @@ public class Action {
      *
      * @return true in case of victory, false either
      */
-    public boolean verifyVictory() {
+    public static boolean verifyVictory() {
         boolean victory = false;
-        if (this.players.get(currentPlayer).getHand().getNbCard() == 0) {
+        if (players.get(currentPlayer).getHand().getNbCard() == 0) {
             victory = true;
         }
         return victory;
@@ -136,12 +136,12 @@ public class Action {
      *
      * @return the index of the current Player
      */
-    public int getCurrentPlayer() {
-        return this.currentPlayer;
+    public static int getCurrentPlayer() {
+        return currentPlayer;
     }
 
-    public ArrayList<Player> getPlayers() {
+    public static ArrayList<Player> getPlayers() {
         // TODO Auto-generated method stub
-        return this.players;
+        return players;
     }
 }
