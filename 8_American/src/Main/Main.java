@@ -2,6 +2,7 @@ package Main;
 
 import java.util.ArrayList;
 
+import Controller.AI;
 import Controller.GameController;
 import Model.Card;
 import Model.StockCreator;
@@ -14,10 +15,12 @@ public class Main {
 	public static void main(String[] args) {
 		Stock s = new Stock();
 		Discard d = new Discard();
-		GameController gc = new GameController(1, 4, 0, s, d);
-		VueConsole v = new VueConsole(gc, s, d, gc.getPlayers());
+		GameController gc = new GameController(1, 2, s, d);
+		VueConsole v = new VueConsole(gc, s, d, gc.getPlayers(),0);
+		AI ai1 = new AI(gc, d, gc.getPlayers(), 1);
 		gc.addObserver(v);
-		v.afficher();
+		gc.addObserver(ai1);
+		gc.start();
 	}
 
 }

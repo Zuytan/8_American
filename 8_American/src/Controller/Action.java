@@ -24,10 +24,6 @@ public class Action {
     private static int currentPlayer;
 
     /**
-     * Attribute that indicate the real-player index.
-     */
-    private static int realPlayerIndex;
-    /**
      * Attribute that contains each player of the game
      */
     private static ArrayList<Player> players = new ArrayList<>();
@@ -42,10 +38,9 @@ public class Action {
      */
     private static Discard discard;
 
-    public static void initGame(int direction2, int nbPlayer, int realPlayerIndex2, Stock s, Discard d) {
+    public static void initGame(int direction2, int nbPlayer, Stock s, Discard d) {
         // TODO Auto-generated method stub
-        direction = direction;
-        realPlayerIndex = realPlayerIndex;
+        direction = direction2;
         currentPlayer = 0;
         stock = s;
         stock.fillStock(StockCreator.create(54));
@@ -98,10 +93,12 @@ public class Action {
      */
     public static Card playCard(int indexCard) {
         Card playedCard = players.get(currentPlayer).playCard(indexCard);
-        discard.addCard(playedCard);
 		return playedCard;
     }
-
+    
+    public static void putOnDiscard(Card c) {
+    	discard.addCard(c);
+    }
     /**
      * Put a number of card in the current player
      *

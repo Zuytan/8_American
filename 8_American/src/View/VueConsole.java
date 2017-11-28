@@ -11,23 +11,27 @@ import Model.Card;
 
 public class VueConsole extends Vue{
 
-	public VueConsole(GameController gc, Stock s, Discard d, ArrayList<Player> players) {
-		super(gc, s, d, players);
+	
+	public VueConsole(GameController gc, Stock s, Discard d, ArrayList<Player> players, int realIndexPlayer) {
+		super(gc, s, d, players, realIndexPlayer);
 	}
 
 	@Override
 	public void update() {
-		// TODO Auto-generated method stub
-		switch(super.getGc().getActToDo()) {
-		case none :
-			this.afficher();
-		case changeColor :
-			this.askColorChange();
-		default:
-			break;
-				
+		this.show();
+		if(this.getGc().getCurrentPlayer() == this.getRealIndexPlayer()) {
+			switch(super.getGc().getActToDo()) {
+			case none :
+				this.askCardToPlay();
+			case changeColor :
+				this.askColorChange();
+			default:
+				break;	
+			}
+		}else {
+			System.out.println("It's the turn of an AI !");
 		}
-		
+		System.out.println();
 	}
 
 	private void askColorChange() {
@@ -43,12 +47,9 @@ public class VueConsole extends Vue{
 
 	}
 
-	@Override
-	public void afficher() {
+	public void askCardToPlay() {
 		// TODO Auto-generated method stub
 		Scanner sc = new Scanner(System.in);
-		System.out.println("The stock contains "+this.getStock().getNbCard()+" cards");
-		System.out.println("The first card of the discard is the |"+this.getDiscard().getLastCard()+"|");
 		System.out.println("You have :");
 		int currentPlayer = this.getGc().getCurrentPlayer();
 		int nbCardCurrentPlayer = this.getPlayers().get(currentPlayer).getHand().getNbCard();
@@ -58,6 +59,14 @@ public class VueConsole extends Vue{
 		System.out.println("What do you want to play, bitch ?");
 		int choice = sc.nextInt();
 		super.getGc().playCard(choice);
+	}
+
+	@Override
+	public void show() {
+		// TODO Auto-generated method stub
+		System.out.println("The stock contains "+this.getStock().getNbCard()+" cards");
+		System.out.println("The first card of the discard is the |"+this.getDiscard().getLastCard()+"|");
+		System.out.println("The color is "+this.getDiscard().getLastCardColor());;
 	}
 
 }

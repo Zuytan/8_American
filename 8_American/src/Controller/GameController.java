@@ -28,10 +28,10 @@ public class GameController extends Observable{
 	 * @param d 
 	 * @param s 
 	 */
-	public GameController(int direction,int nbPlayer, int realPlayerIndex, Stock s, Discard d) {
+	public GameController(int direction,int nbPlayer, Stock s, Discard d) {
 		this.currentRule = new MinimalRule();
 		actToDo = EnumAction.none;
-		Action.initGame(direction, nbPlayer, realPlayerIndex, s, d);
+		Action.initGame(direction, nbPlayer, s, d);
 	}
 	
 	/**
@@ -41,9 +41,10 @@ public class GameController extends Observable{
 	public void playCard(int index) {
 		Card c = Action.playCard(index);
 		EnumAction ea = currentRule.apply(c);
-		if(ea == EnumAction.changeColor) {
-			this.actToDo = EnumAction.changeColor;
-		}
+		Action.putOnDiscard(c);
+		this.actToDo = ea;
+		if(this.actToDo == EnumAction.none)
+			this.nextPlayer();
 		notifyAllObs();
 	}
 	
@@ -51,14 +52,16 @@ public class GameController extends Observable{
 	 * Method called by the view to indicate that the player want to draw a card 
 	 */
 	public void drawCard() {
-		
+		Action.draw(1);
+		Action.changePlayer();
+		notifyAllObs();
 	}
 	
 	/**
 	 * Method called by the view to go to the next player
 	 */
-	public void nextPlayer() {
-		
+	private void nextPlayer() {
+		Action.changePlayer();
 	}
 	
 	/**
@@ -90,5 +93,8 @@ public class GameController extends Observable{
 		}
 		this.actToDo = EnumAction.none;
 		super.notifyAllObs();
+	}
+	public void start() {
+		this.notifyAllObs();
 	}
 }

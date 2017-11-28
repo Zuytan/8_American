@@ -10,10 +10,6 @@ public class Discard extends Deck{
         super(new LinkedList<Card>());
     }
 
-	public void init() {
-		
-		
-	}
 	/**
 	 * Method that return the last Card of the deck
 	 * @return The last card
