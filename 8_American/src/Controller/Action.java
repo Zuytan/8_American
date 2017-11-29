@@ -1,67 +1,23 @@
 package Controller;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 import Model.Card;
-import Model.StockCreator;
-import Model.Discard;
 import Model.Hand;
-import Model.Player;
-import Model.Stock;
 
 public class Action {
 
-    /**
-     * Attribute that indicates the direction of game. 1 = clockwise -1 =
-     * anti-clockwise
-     */
-    private static int direction;
+    private static GameController gc;
 
-    /**
-     * Attribute that indicate the index of the current player
-     */
-    private static int currentPlayer;
-
-    /**
-     * Attribute that contains each player of the game
-     */
-    private static ArrayList<Player> players = new ArrayList<>();
-
-    /**
-     * Attribute that represents the stock of cards
-     */
-    private static Stock stock;
-
-    /**
-     * Attribute that represent the discard of the game
-     */
-    private static Discard discard;
-
-    public static void initGame(int direction2, int nbPlayer, Stock s, Discard d) {
-        // TODO Auto-generated method stub
-        direction = direction2;
-        currentPlayer = 0;
-        stock = s;
-        stock.fillStock(StockCreator.create(54));
-        discard = d;
-
-        for (int i = 0; i < nbPlayer; i++) {
-            players.add(new Player());
-        }
-        Iterator<Player> itrPlayer = players.iterator();
-        while (itrPlayer.hasNext()) {
-            Player p = itrPlayer.next();
-            p.getHand().init(stock.pick(7));
-        }
-        discard.addCard(stock.pick(1).get(0));//Retourne une arraylist donc on fait un get pour reprendre la carte
+    public static void initGame(GameController gc0) {
+        gc = gc0;
     }
 
     /**
      * Method that ask for change the direction of game
      */
     public static void changeDirection() {
-        direction *= -1;
+        gc.setDirection(gc.getDirection() * -1);
     }
 
     /**
@@ -71,17 +27,17 @@ public class Action {
      */
     public static void swapHands(int direction) {
         ArrayList<Hand> listHand = new ArrayList();
-        for (int i = 0; i < players.size(); i++) {
-            listHand.add(players.get(i).getHand());
+        for (int i = 0; i < gc.getPlayers().size(); i++) {
+            listHand.add(gc.getPlayers().get(i).getHand());
         }
         if (direction == -1) {
             listHand.add(listHand.remove(0));
         } else {
             listHand.set(0, listHand.remove(listHand.size() - 1));
         }
-        
-        for (int i=0;i<players.size();i++){
-            players.get(i).setHand(listHand.get(i));
+
+        for (int i = 0; i < gc.getPlayers().size(); i++) {
+            gc.getPlayers().get(i).setHand(listHand.get(i));
         }
     }
 
@@ -92,28 +48,29 @@ public class Action {
      * @param indexCard The index of the card the player want to play
      */
     public static Card playCard(int indexCard) {
-        Card playedCard = players.get(currentPlayer).playCard(indexCard);
-		return playedCard;
+        Card playedCard = gc.getPlayers().get(gc.getCurrentPlayer()).playCard(indexCard);
+        return playedCard;
     }
-    
+
     public static void putOnDiscard(Card c) {
-    	discard.addCard(c);
+        gc.getDiscard().addCard(c);
     }
+
     /**
      * Put a number of card in the current player
      *
      * @param nbCard the number of card which is needed
      */
     public static void draw(int nbCard) {
-        ArrayList<Card> cardPicked = stock.pick(nbCard);
-        players.get(currentPlayer).addCards(cardPicked);
+        ArrayList<Card> cardPicked = gc.getStock().pick(nbCard);
+        gc.getPlayers().get(gc.getCurrentPlayer()).addCards(cardPicked);
     }
 
     /**
      * This method change the current player in the direction of the game
      */
     public static void changePlayer() {
-        currentPlayer = (currentPlayer + direction) % players.size();
+        gc.setCurrentPlayer((gc.getCurrentPlayer() + gc.getDirection()) % gc.getPlayers().size());
     }
 
     /**
@@ -123,26 +80,9 @@ public class Action {
      */
     public static boolean verifyVictory() {
         boolean victory = false;
-        if (players.get(currentPlayer).getHand().getNbCard() == 0) {
+        if (gc.getPlayers().get(gc.getCurrentPlayer()).getHand().getNbCard() == 0) {
             victory = true;
         }
         return victory;
     }
-
-    /**
-     * Method that return the index of the current player
-     *
-     * @return the index of the current Player
-     */
-    public static int getCurrentPlayer() {
-        return currentPlayer;
-    }
-
-    public static ArrayList<Player> getPlayers() {
-        // TODO Auto-generated method stub
-        return players;
-    }
-    public static Discard getDiscard() {
-		return discard;
-	}
 }
