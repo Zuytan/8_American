@@ -79,7 +79,9 @@ public class Action {
      * This method change the current player in the direction of the game
      */
     public static void changePlayer() {
-        gc.setCurrentPlayer((gc.getCurrentPlayer() + gc.getDirection()) % gc.getPlayers().size());
+        int maxValue = gc.getPlayers().size();
+        int baseValue = (gc.getCurrentPlayer() + gc.getDirection()) % maxValue; // suppression des cas avec Modulo négatif
+        gc.setCurrentPlayer((baseValue+maxValue)%maxValue);
     }
 
     /**
@@ -96,7 +98,7 @@ public class Action {
     }
     
     private static void reinitStock() {
-    	LinkedList<Card> deck = gc.getDiscard().getListCards();
+        LinkedList<Card> deck = new LinkedList(gc.getDiscard().getListCards());
     	Card firstCard = deck.removeFirst();
     	gc.getDiscard().reinit();
     	gc.getDiscard().addCard(firstCard);
