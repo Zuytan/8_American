@@ -7,7 +7,7 @@ public abstract class Deck {
 	/**
 	 * List of cards of the deck 
 	 */
-	private List<Card> cards;
+	protected List<Card> cards;
         
         protected Deck(List<Card> list){
             this.cards = list;

@@ -41,6 +41,10 @@ public class Discard extends Deck {
         this.getListCards().addFirst(c);
         lastCardColor = c.getColor();
     }
+    
+    public void reinit() {
+    	this.cards.clear();
+    }
 
     public void changeLastColor(CardColor cardColor) {
         this.lastCardColor = cardColor;

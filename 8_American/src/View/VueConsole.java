@@ -25,8 +25,10 @@ public class VueConsole extends Vue {
                 switch (super.getGc().getActToDo()) {
                     case none:
                         this.askCardToPlay();
+                        break;
                     case changeColor:
                         this.askColorChange();
+                        break;
                     default:
                         break;
                 }

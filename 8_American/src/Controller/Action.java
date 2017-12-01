@@ -1,6 +1,8 @@
 package Controller;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.LinkedList;
 
 import Model.Card;
 import Model.Hand;
@@ -61,9 +63,16 @@ public class Action {
      *
      * @param nbCard the number of card which is needed
      */
-    public static void draw(int nbCard) {
-        ArrayList<Card> cardPicked = gc.getStock().pick(nbCard);
-        gc.getPlayers().get(gc.getCurrentPlayer()).addCards(cardPicked);
+    public static ArrayList<Card> draw(int nbCard) {
+    	ArrayList<Card> cardPicked = new ArrayList<>();
+    	for (int i = 0; i < nbCard; i++) {
+    		if(gc.getStock().getNbCard() == 0) {
+        		reinitStock();
+        	}
+    		cardPicked.add(gc.getStock().pick());
+		}
+        return cardPicked;
+        
     }
 
     /**
@@ -84,5 +93,14 @@ public class Action {
             victory = true;
         }
         return victory;
+    }
+    
+    private static void reinitStock() {
+    	LinkedList<Card> deck = gc.getDiscard().getListCards();
+    	Card firstCard = deck.removeFirst();
+    	gc.getDiscard().reinit();
+    	gc.getDiscard().addCard(firstCard);
+    	Collections.shuffle(deck);
+    	gc.getStock().fillStock(deck);
     }
 }

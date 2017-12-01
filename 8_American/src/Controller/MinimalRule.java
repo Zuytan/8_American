@@ -27,7 +27,7 @@ public class MinimalRule extends Rule {
                     break;
             }
         } else {
-            Action.draw(2);
+            this.gc.getPlayers().get(this.gc.getCurrentPlayer()).addCards(Action.draw(2));
         }
         return action;
     }

@@ -31,11 +31,8 @@ public class Stock extends Deck {
      * @param nbCard The number of card to pick
      * @return the <i>nbCard</i> Cards at the top of the deck
      */
-    public ArrayList<Card> pick(int nbCard) {
-        ArrayList<Card> list = new ArrayList<>();
-        for (int i = 0; i < nbCard; i++) {
-            list.add(this.getListCards().pollFirst());
-        }
-        return list;
+    public Card pick() {
+    	Card c = this.getListCards().pollFirst();
+        return c;
     }
 }

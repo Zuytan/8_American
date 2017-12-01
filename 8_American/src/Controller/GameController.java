@@ -118,9 +118,9 @@ public class GameController extends Observable {
         Iterator<Player> itrPlayer = players.iterator();
         while (itrPlayer.hasNext()) {
             Player p = itrPlayer.next();
-            p.getHand().init(stock.pick(7));
+            p.getHand().init(Action.draw(7));
         }
-        this.discard.addCard(stock.pick(1).get(0));//Retourne une arraylist donc on fait un get pour reprendre la carte
+        this.discard.addCard(Action.draw(1).get(0));//Retourne une arraylist donc on fait un get pour reprendre la carte
 
     }
 
@@ -144,7 +144,7 @@ public class GameController extends Observable {
      * Method called by the view to indicate that the player want to draw a card
      */
     public void drawCard() {
-        Action.draw(1);
+        this.players.get(currentPlayer).addCards(Action.draw(1));
         this.nextPlayer();
         notifyAllObs();
     }

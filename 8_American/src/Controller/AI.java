@@ -52,7 +52,7 @@ public class AI implements Observer {
 
     @Override
     public void update() {
-        if (this.gc.getCurrentPlayer() == this.myNumber) {
+        if (this.gc.getCurrentPlayer() == this.myNumber && this.gc.getVictorious() == null) {
             this.applyStrategy();
         }
     }
