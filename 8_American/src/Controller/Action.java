@@ -55,7 +55,9 @@ public class Action {
     }
 
     public static void putOnDiscard(Card c) {
-        gc.getDiscard().addCard(c);
+        if(c != null){
+            gc.getDiscard().addCard(c);
+        }
     }
 
     /**

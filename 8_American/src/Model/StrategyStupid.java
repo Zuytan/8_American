@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 import Controller.GameController;
+import Exceptions.InvalidActionException;
 
 
 public class StrategyStupid implements IStrategy{
@@ -19,7 +20,12 @@ public class StrategyStupid implements IStrategy{
 			}
 		}
 		if(cardToPlay == -1) {
+                    try{
 			gc.drawCard();
+                    }
+                    catch(InvalidActionException e){
+                        gc.playCard(1);
+                    }
 		}else {
 			gc.playCard(cardToPlay);
 		}

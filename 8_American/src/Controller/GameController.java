@@ -1,5 +1,6 @@
 package Controller;
 
+import Exceptions.InvalidActionException;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -12,6 +13,7 @@ import Model.Hand;
 import Model.Player;
 import Model.Stock;
 import Model.EnumAction;
+import java.util.LinkedList;
 
 public class GameController extends Observable {
 
@@ -42,7 +44,26 @@ public class GameController extends Observable {
      * Attribute that represent the discard of the game
      */
     private Discard discard;
+    private LinkedList<EnumAction> listActionToDo = new LinkedList();
+    private String messageAlert ="";
 
+    public LinkedList<EnumAction> getListActionToDo() {
+        return listActionToDo;
+    }
+
+    public void setListActionToDo(LinkedList listActionToDo) {
+        this.listActionToDo = listActionToDo;
+    }
+
+    public String getMessageAlert() {
+        return messageAlert;
+    }
+
+    public void setMessageAlert(String messageAlert) {
+        this.messageAlert = messageAlert;
+    }
+    
+    
     public int getDirection() {
         return direction;
     }
@@ -103,7 +124,7 @@ public class GameController extends Observable {
      */
     public GameController(Player player, int direction, int nbAI, Stock s, Discard d) {
         Action.initGame(this);
-        this.currentRule = new MinimalRule(this);
+        this.currentRule = new MonclarRule(this);
         actToDo = EnumAction.none;
         // TODO Auto-generated method stub
         this.direction = direction;
@@ -132,7 +153,6 @@ public class GameController extends Observable {
     public void playCard(int index) {
         Card c = Action.playCard(index);
         EnumAction ea = currentRule.apply(c);
-        Action.putOnDiscard(c);
         this.actToDo = ea;
         if (this.actToDo == EnumAction.none) {
             this.nextPlayer();
@@ -143,8 +163,12 @@ public class GameController extends Observable {
     /**
      * Method called by the view to indicate that the player want to draw a card
      */
-    public void drawCard() {
+    public void drawCard()throws InvalidActionException {
+        if (!this.listActionToDo.isEmpty()){
+            throw new InvalidActionException();
+        }
         this.players.get(currentPlayer).addCards(Action.draw(1));
+        this.messageAlert= this.players.get(this.currentPlayer)+" draw a card";
         this.nextPlayer();
         notifyAllObs();
     }
@@ -165,7 +189,6 @@ public class GameController extends Observable {
      * Method called at the beginning of the turn, apply the penalties
      */
     private void turnBeginning() {
-
     }
 
     /**
