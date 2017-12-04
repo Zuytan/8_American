@@ -6,6 +6,7 @@ import Model.Card;
 import Model.Discard;
 import Model.IStrategy;
 import Model.Player;
+import Model.StrategyRandom;
 import Model.StrategyStupid;
 import View.Observer;
 
@@ -32,19 +33,22 @@ public class AI implements Observer {
         this.d = d;
         this.players = players;
         this.myNumber = idOfAI;
+        strategies.add(new StrategyRandom());
         strategies.add(new StrategyStupid());
+        
     }
 
     /**
      * Method that apply a strategy of the AI
      */
     public void applyStrategy() {
+        int myStrategy = (int)(Math.random() * (this.strategies.size()));
         switch (this.gc.getActToDo()) {
             case none:
-                strategies.get(0).execute(d, (ArrayList<Card>) this.players.get(myNumber).getHand().getListCards(), gc);
+                strategies.get(myStrategy).execute(d, (ArrayList<Card>) this.players.get(myNumber).getHand().getListCards(), gc);
                 break;
             case changeColor:
-                strategies.get(0).changeColor(d, (ArrayList<Card>) this.players.get(myNumber).getHand().getListCards(), gc);
+                strategies.get(myStrategy).changeColor(d, (ArrayList<Card>) this.players.get(myNumber).getHand().getListCards(), gc);
             default:
                 break;
         }

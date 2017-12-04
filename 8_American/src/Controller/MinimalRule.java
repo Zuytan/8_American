@@ -1,6 +1,7 @@
 package Controller;
 
 import Model.Card;
+import Model.CardColor;
 import Model.CardValue;
 import Model.EnumAction;
 
@@ -15,7 +16,9 @@ public class MinimalRule extends Rule {
         EnumAction action = EnumAction.none;
         if (card.getColor() == gc.getDiscard().getLastCardColor()
                 || card.getValue() == gc.getDiscard().getLastCard().getValue()
-                || card.getValue() == CardValue.Eight) {
+                || card.getValue() == CardValue.Eight
+                || card.getValue() == CardValue.Joker
+                || gc.getDiscard().getLastCardColor() == CardColor.Joker) {
             switch (card.getValue()) {
                 case Ten:
                     Action.changeDirection();
@@ -24,7 +27,7 @@ public class MinimalRule extends Rule {
                     break;
                 case Eight:
                     action = EnumAction.changeColor;
-                    break;
+                    break;               
             }
         } else {
             this.gc.getPlayers().get(this.gc.getCurrentPlayer()).addCards(Action.draw(2));

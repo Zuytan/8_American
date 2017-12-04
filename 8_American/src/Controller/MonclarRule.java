@@ -6,6 +6,7 @@
 package Controller;
 
 import Model.Card;
+import Model.CardColor;
 import Model.CardValue;
 import Model.EnumAction;
 import java.util.LinkedList;
@@ -25,7 +26,7 @@ public class MonclarRule extends Rule {
         if (!this.gc.getListActionToDo().isEmpty()) {
             if (card.getValue() == CardValue.Eight) {
                 this.gc.getListActionToDo().clear();
-            } else if (card.getValue() != CardValue.Ace && this.gc.getListActionToDo().get(0) != EnumAction.avoidTurn) {
+            } else if (this.gc.getListActionToDo().get(0) == EnumAction.drawCard && card.getValue() != CardValue.Ace) {
                 while (!this.gc.getListActionToDo().isEmpty()) {
                     switch (this.gc.getListActionToDo().removeLast()) {
                         case drawCard:
@@ -35,22 +36,25 @@ public class MonclarRule extends Rule {
                 }
                 this.gc.getPlayers().get(this.gc.getCurrentPlayer()).getHand().addCard(card);
                 card = null;
+            } else if (this.gc.getListActionToDo().get(0) == EnumAction.avoidTurn) {
+                this.gc.getListActionToDo().clear();
+                this.gc.getPlayers().get(this.gc.getCurrentPlayer()).getHand().addCard(card);
+                card = null;
             }
         }
 
         EnumAction action = EnumAction.none;
         if (card != null && (card.getColor() == gc.getDiscard().getLastCardColor()
                 || card.getValue() == gc.getDiscard().getLastCard().getValue()
-                || card.getValue() == CardValue.Eight || card.getValue() == CardValue.Joker)) {
+                || card.getValue() == CardValue.Eight 
+                || card.getValue() == CardValue.Joker
+                || gc.getDiscard().getLastCardColor() == CardColor.Joker)) {
             switch (card.getValue()) {
-                case Joker:
-                    //TODO Demain
-                    break;
                 case Ten:
                     this.gc.setMessageAlert("The " + gc.getPlayers().get(gc.getCurrentPlayer()) + "'s turn is going to be replayed");
                     Action.changeDirection();
                     Action.changePlayer();
-                    Action.changeDirection(); 
+                    Action.changeDirection();
                     break;
                 case Eight:
                     action = EnumAction.changeColor;

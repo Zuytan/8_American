@@ -15,7 +15,10 @@ public class StrategyStupid implements IStrategy{
 		Iterator<Card> it = HandOfAI.iterator();
 		while(cardToPlay == -1 && it.hasNext()) {
 			Card current = it.next();
-			if(current.getColor() == d.getLastCardColor() || current.getValue() == d.getLastCard().getValue()) {
+			if(current.getColor() == d.getLastCardColor() 
+                                || current.getValue() == d.getLastCard().getValue()
+                                || current.getValue() == CardValue.Joker
+                                || d.getLastCard().getValue() == CardValue.Joker) {
 				cardToPlay = HandOfAI.indexOf(current);
 			}
 		}
