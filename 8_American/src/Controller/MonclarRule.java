@@ -17,10 +17,6 @@ import java.util.LinkedList;
  */
 public class MonclarRule extends Rule {
 
-    public MonclarRule(GameController gc) {
-        super(gc);
-    }
-
     @Override
     public EnumAction apply(Card card) {
         if (!this.gc.getListActionToDo().isEmpty()) {
@@ -46,7 +42,7 @@ public class MonclarRule extends Rule {
         EnumAction action = EnumAction.none;
         if (card != null && (card.getColor() == gc.getDiscard().getLastCardColor()
                 || card.getValue() == gc.getDiscard().getLastCard().getValue()
-                || card.getValue() == CardValue.Eight 
+                || card.getValue() == CardValue.Eight
                 || card.getValue() == CardValue.Joker
                 || gc.getDiscard().getLastCardColor() == CardColor.Joker)) {
             switch (card.getValue()) {
@@ -95,6 +91,11 @@ public class MonclarRule extends Rule {
         Action.putOnDiscard(card);
         return action;
 
+    }
+
+    @Override
+    public String toString() {
+        return "Monclar Rule";
     }
 
 }

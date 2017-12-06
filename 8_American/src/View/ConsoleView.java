@@ -9,8 +9,10 @@ import Exceptions.InvalidInputException;
 import Model.Discard;
 import Model.Player;
 import Model.Stock;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-public class VueConsole extends Vue {
+public class ConsoleView extends GameView {
 
     public static final String ANSI_RESET = "\u001B[0m";
     public static final String ANSI_BLACK = "\u001B[30m";
@@ -22,7 +24,7 @@ public class VueConsole extends Vue {
     public static final String ANSI_CYAN = "\u001B[36m";
     public static final String ANSI_WHITE = "\u001B[37m";
 
-    public VueConsole(GameController gc, Stock s, Discard d, ArrayList<Player> players, int realIndexPlayer) {
+    public ConsoleView(GameController gc, Stock s, Discard d, ArrayList<Player> players, int realIndexPlayer) {
         super(gc, s, d, players, realIndexPlayer);
     }
 
@@ -86,6 +88,8 @@ public class VueConsole extends Vue {
         for (int i = 1; i <= nbCardCurrentPlayer; i++) {
             System.out.println(i + ") " + this.getPlayers().get(currentPlayer).getHand().getListCards().get(i - 1));
         }
+        System.out.println("-----------------");
+        System.out.println(ANSI_PURPLE+(nbCardCurrentPlayer+1)+") Change the current rule"+ANSI_RESET);
         System.out.println("What do you want to play, " + this.getGc().getPlayers().get(this.getGc().getCurrentPlayer()) + "?");
         try {
             choice = sc.nextInt();
@@ -106,6 +110,9 @@ public class VueConsole extends Vue {
                 super.getGc().playCard(choice - 1);
             } catch (InvalidInputException e) {
                 System.out.println(ANSI_RED + e.getMessage() + ANSI_RESET);
+                this.askCardToPlay();
+            } catch (InvalidActionException ex) {
+                System.out.println(ANSI_RED + ex.getMessage() + ANSI_RESET);
                 this.askCardToPlay();
             }
         }

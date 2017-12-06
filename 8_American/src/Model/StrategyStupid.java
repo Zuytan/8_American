@@ -32,12 +32,16 @@ public class StrategyStupid implements IStrategy {
                     gc.playCard(1);
                 } catch (InvalidInputException ex) {
                     Logger.getLogger(StrategyStupid.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (InvalidActionException ex) {
+                    Logger.getLogger(StrategyStupid.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         } else {
             try {
                 gc.playCard(cardToPlay);
             } catch (InvalidInputException ex) {
+                Logger.getLogger(StrategyStupid.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (InvalidActionException ex) {
                 Logger.getLogger(StrategyStupid.class.getName()).log(Level.SEVERE, null, ex);
             }
         }

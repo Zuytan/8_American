@@ -7,9 +7,6 @@ import Model.EnumAction;
 
 public class MinimalRule extends Rule {
 
-    public MinimalRule(GameController gc) {
-        super(gc);
-    }
 
     @Override
     public EnumAction apply(Card card) {
@@ -32,6 +29,14 @@ public class MinimalRule extends Rule {
         } else {
             this.gc.getPlayers().get(this.gc.getCurrentPlayer()).addCards(Action.draw(2));
         }
+        Action.putOnDiscard(card);
         return action;
     }
+
+    @Override
+    public String toString() {
+        return "Minimal Rule";
+    }
+    
+    
 }

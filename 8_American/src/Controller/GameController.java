@@ -18,7 +18,6 @@ import java.util.LinkedList;
 
 public class GameController extends Observable {
 
-    
     private String victorious = null;
     /**
      * Attribute that indicates the direction of game. 1 = clockwise -1 =
@@ -46,7 +45,7 @@ public class GameController extends Observable {
      */
     private Discard discard;
     private LinkedList<EnumAction> listActionToDo = new LinkedList();
-    private String messageAlert ="";
+    private String messageAlert = "";
 
     public LinkedList<EnumAction> getListActionToDo() {
         return listActionToDo;
@@ -63,8 +62,7 @@ public class GameController extends Observable {
     public void setMessageAlert(String messageAlert) {
         this.messageAlert = messageAlert;
     }
-    
-    
+
     public int getDirection() {
         return direction;
     }
@@ -91,6 +89,8 @@ public class GameController extends Observable {
 
     public void setCurrentRule(Rule currentRule) {
         this.currentRule = currentRule;
+        this.currentRule.setGc(this);
+        this.listActionToDo.clear();
     }
 
     public void setCurrentPlayer(int currentPlayer) {
@@ -123,19 +123,20 @@ public class GameController extends Observable {
      * @param d
      * @param s
      */
-    public GameController(Player player, int direction, int nbAI, Stock s, Discard d) {
+    public GameController(Player player, int nbAI, Stock s, Discard d, Rule rule) {
         Action.initGame(this);
-        this.currentRule = new MonclarRule(this);
+        this.currentRule = rule;
+        this.currentRule.setGc(this);
         actToDo = EnumAction.none;
         // TODO Auto-generated method stub
-        this.direction = direction;
+        this.direction = 1;
         this.currentPlayer = 0;
         this.stock = s;
         this.stock.fillStock(StockCreator.create(54));
         this.discard = d;
         this.players.add(player);
-        for (int i = 1; i < nbAI; i++) {
-            this.players.add(new Player("AI "+i));
+        for (int i = 1; i <= nbAI; i++) {
+            this.players.add(new Player("AI " + i));
         }
         Iterator<Player> itrPlayer = players.iterator();
         while (itrPlayer.hasNext()) {
@@ -151,28 +152,41 @@ public class GameController extends Observable {
      *
      * @param index index of the card
      */
-    public void playCard(int index) throws InvalidInputException {
-        if(index >= this.players.get(this.currentPlayer).getHand().getNbCard() || index < 0){
-            throw new InvalidInputException();
-        }
-        Card c = Action.playCard(index);
-        EnumAction ea = currentRule.apply(c);
-        this.actToDo = ea;
-        if (this.actToDo == EnumAction.none) {
-            this.nextPlayer();
+    public void playCard(int index) throws InvalidInputException, InvalidActionException {
+
+        if (index == this.players.get(this.currentPlayer).getHand().getNbCard()) {
+            if (!this.listActionToDo.isEmpty()) {
+                throw new InvalidActionException();
+            }
+            if (this.currentRule instanceof MonclarRule) {
+                this.setCurrentRule(new MinimalRule());
+            } else {
+                this.setCurrentRule(new MonclarRule());
+            }
+        } else {
+            if (index >= this.players.get(this.currentPlayer).getHand().getNbCard() || index < 0) {
+                throw new InvalidInputException();
+            }
+            Card c = Action.playCard(index);
+            EnumAction ea = currentRule.apply(c);
+            this.actToDo = ea;
+            if (this.actToDo == EnumAction.none) {
+                this.nextPlayer();
+            }
         }
         notifyAllObs();
+
     }
 
     /**
      * Method called by the view to indicate that the player want to draw a card
      */
-    public void drawCard()throws InvalidActionException {
-        if (!this.listActionToDo.isEmpty()){
+    public void drawCard() throws InvalidActionException {
+        if (!this.listActionToDo.isEmpty()) {
             throw new InvalidActionException();
         }
         this.players.get(currentPlayer).addCards(Action.draw(1));
-        this.messageAlert= this.players.get(this.currentPlayer)+" draw a card";
+        this.messageAlert = this.players.get(this.currentPlayer) + " draw a card";
         this.nextPlayer();
         notifyAllObs();
     }
@@ -181,10 +195,9 @@ public class GameController extends Observable {
      * Method called by the view to go to the next player
      */
     private void nextPlayer() {
-        if(Action.verifyVictory()){
+        if (Action.verifyVictory()) {
             this.victorious = this.players.get(this.currentPlayer).toString();
-        }
-        else{
+        } else {
             Action.changePlayer();
         }
     }

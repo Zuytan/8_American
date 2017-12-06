@@ -7,7 +7,7 @@ import Model.Discard;
 import Model.Player;
 import Model.Stock;
 
-public abstract class Vue implements Observer{
+public abstract class GameView implements View{
 	
 	/**
 	 * Attribute that represents the human position in the game
@@ -33,7 +33,7 @@ public abstract class Vue implements Observer{
 	 */
 	private GameController gc;
 	
-	public Vue(GameController gc, Stock s, Discard d, ArrayList<Player> players, int realIndexPlayer) {
+	public GameView(GameController gc, Stock s, Discard d, ArrayList<Player> players, int realIndexPlayer) {
 		this.discard = d;
 		this.stock = s;
 		this.players = players;
@@ -60,6 +60,4 @@ public abstract class Vue implements Observer{
 	protected int getRealIndexPlayer() {
 		return this.myNumber;
 	}
-
-	public abstract void show();
 }

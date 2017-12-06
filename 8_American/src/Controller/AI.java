@@ -15,7 +15,7 @@ public class AI implements Observer {
     /**
      * The list of strategies that a AI can apply
      */
-    private ArrayList<IStrategy> strategies = new ArrayList<>();
+    private IStrategy strategy;
 
     /**
      * Number that represent the position of the AI
@@ -28,13 +28,12 @@ public class AI implements Observer {
 
     private ArrayList<Player> players;
 
-    public AI(GameController gc, Discard d, ArrayList<Player> players, int idOfAI) {
+    public AI(GameController gc, Discard d, ArrayList<Player> players, int idOfAI, IStrategy strategy) {
         this.gc = gc;
         this.d = d;
         this.players = players;
         this.myNumber = idOfAI;
-        strategies.add(new StrategyRandom());
-        strategies.add(new StrategyStupid());
+        this.strategy = strategy;
         
     }
 
@@ -42,13 +41,12 @@ public class AI implements Observer {
      * Method that apply a strategy of the AI
      */
     public void applyStrategy() {
-        int myStrategy = (int)(Math.random() * (this.strategies.size()));
         switch (this.gc.getActToDo()) {
             case none:
-                strategies.get(myStrategy).execute(d, (ArrayList<Card>) this.players.get(myNumber).getHand().getListCards(), gc);
+                this.strategy.execute(d, (ArrayList<Card>) this.players.get(myNumber).getHand().getListCards(), gc);
                 break;
             case changeColor:
-                strategies.get(myStrategy).changeColor(d, (ArrayList<Card>) this.players.get(myNumber).getHand().getListCards(), gc);
+                this.strategy.changeColor(d, (ArrayList<Card>) this.players.get(myNumber).getHand().getListCards(), gc);
             default:
                 break;
         }

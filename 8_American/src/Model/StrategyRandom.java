@@ -3,6 +3,7 @@ package Model;
 import java.util.ArrayList;
 
 import Controller.GameController;
+import Exceptions.InvalidActionException;
 import Exceptions.InvalidInputException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -14,6 +15,8 @@ public class StrategyRandom implements IStrategy {
         try {
             gc.playCard((int) (Math.random() * HandOfAI.size()));
         } catch (InvalidInputException ex) {
+            Logger.getLogger(StrategyRandom.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InvalidActionException ex) {
             Logger.getLogger(StrategyRandom.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

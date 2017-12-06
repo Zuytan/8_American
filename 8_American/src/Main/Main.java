@@ -1,27 +1,33 @@
 package Main;
 
-
-import Controller.AI;
-import Controller.GameController;
-import Model.Discard;
-import Model.Player;
-import Model.Stock;
-import View.VueConsole;
+import Controller.Menu;
+import Controller.MinimalRule;
+import Controller.MonclarRule;
+import Controller.Rule;
+import Model.IStrategy;
+import Model.StrategyRandom;
+import Model.StrategyStupid;
+import View.MenuView;
+import java.util.ArrayList;
 
 public class Main {
 
-	public static void main(String[] args) {
-		Stock s = new Stock();
-		Discard d = new Discard();
-                Player moi = new Player("toto");
-		GameController gc = new GameController(moi,1, 3, s, d);
-		VueConsole v = new VueConsole(gc, s, d, gc.getPlayers(),0);
-		AI ai1 = new AI(gc, d, gc.getPlayers(), 1);
-                AI ai2 = new AI(gc, d, gc.getPlayers(), 2);
-		gc.addObserver(v);
-		gc.addObserver(ai1);
-                gc.addObserver(ai2);
-		gc.start();
-	}
+    public static void main(String[] args) {
+        ArrayList<IStrategy> listStrategy = new ArrayList();
+        ArrayList<Rule> listRule = new ArrayList();
+        
+        listStrategy.add(new StrategyRandom());
+        listStrategy.add(new StrategyStupid());
+
+        listRule.add(new MinimalRule());
+        listRule.add(new MonclarRule());
+        
+        Menu m = new Menu(listStrategy, listRule);
+        MenuView mv = new MenuView(m);
+        
+        m.addObserver(mv);
+        m.start();
+           
+    }
 
 }
