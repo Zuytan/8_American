@@ -5,11 +5,12 @@
         <group>
             <file>file:/C:/Users/joe/Documents/cours/UTT/ISI1_UTT/LO02/LO02_8American/8_American/8_American/src/Controller/MonclarRule.java</file>
             <file>file:/C:/Users/joe/Documents/cours/UTT/ISI1_UTT/LO02/LO02_8American/8_American/8_American/src/Controller/GameController.java</file>
-            <file>file:/C:/Users/joe/Documents/cours/UTT/ISI1_UTT/LO02/LO02_8American/8_American/8_American/src/Model/StrategyRandom.java</file>
-            <file>file:/C:/Users/joe/Documents/cours/UTT/ISI1_UTT/LO02/LO02_8American/8_American/8_American/src/Main/Main.java</file>
+            <file>file:/C:/Users/joe/Documents/cours/UTT/ISI1_UTT/LO02/LO02_8American/8_American/8_American/src/View/VueConsole.java</file>
             <file>file:/C:/Users/joe/Documents/cours/UTT/ISI1_UTT/LO02/LO02_8American/8_American/8_American/src/Model/StrategyStupid.java</file>
+            <file>file:/C:/Users/joe/Documents/cours/UTT/ISI1_UTT/LO02/LO02_8American/8_American/8_American/src/Exceptions/InvalidActionException.java</file>
+            <file>file:/C:/Users/joe/Documents/cours/UTT/ISI1_UTT/LO02/LO02_8American/8_American/8_American/src/Model/StrategyRandom.java</file>
+            <file>file:/C:/Users/joe/Documents/cours/UTT/ISI1_UTT/LO02/LO02_8American/8_American/8_American/src/Controller/Action.java</file>
             <file>file:/C:/Users/joe/Documents/cours/UTT/ISI1_UTT/LO02/LO02_8American/8_American/8_American/src/Controller/AI.java</file>
-            <file>file:/C:/Users/joe/Documents/cours/UTT/ISI1_UTT/LO02/LO02_8American/8_American/8_American/src/Model/Player.java</file>
             <file>file:/C:/Users/joe/Documents/cours/UTT/ISI1_UTT/LO02/LO02_8American/8_American/8_American/src/Controller/MinimalRule.java</file>
         </group>
     </open-files>

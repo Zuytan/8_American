@@ -1,6 +1,7 @@
 package Controller;
 
 import Exceptions.InvalidActionException;
+import Exceptions.InvalidInputException;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -150,7 +151,10 @@ public class GameController extends Observable {
      *
      * @param index index of the card
      */
-    public void playCard(int index) {
+    public void playCard(int index) throws InvalidInputException {
+        if(index >= this.players.get(this.currentPlayer).getHand().getNbCard() || index < 0){
+            throw new InvalidInputException();
+        }
         Card c = Action.playCard(index);
         EnumAction ea = currentRule.apply(c);
         this.actToDo = ea;
@@ -198,10 +202,11 @@ public class GameController extends Observable {
 
     }
 
-    public void changeColor(int choice) {
-        if (choice > 0 && choice < 5) { // avoid nonsense choice
-            this.discard.changeLastColor(CardColor.values()[choice - 1]);
+    public void changeColor(int choice) throws InvalidInputException {
+        if (choice < 1 || choice >= 5) { // avoid nonsense choice
+            throw new InvalidInputException();
         }
+        this.discard.changeLastColor(CardColor.values()[choice - 1]);
         this.actToDo = EnumAction.none;
         this.nextPlayer();
         notifyAllObs();
