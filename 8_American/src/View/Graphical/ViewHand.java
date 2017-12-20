@@ -19,4 +19,10 @@ public class ViewHand extends JPanel{
 			this.add(vc);
 		});
 	}
+
+    @Override
+    public Dimension getMinimumSize() {
+        return super.getSize(); //To change body of generated methods, choose Tools | Templates.
+    }
+        
 }

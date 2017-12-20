@@ -10,8 +10,6 @@ import Exceptions.InvalidInputException;
 import Model.Discard;
 import Model.Player;
 import Model.Stock;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class ConsoleView extends GameView {
 

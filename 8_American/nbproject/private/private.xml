@@ -3,22 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/joe/Documents/cours/UTT/ISI1_UTT/LO02/LO02_8American/8_American/8_American/src/Controller/MonclarRule.java</file>
-            <file>file:/C:/Users/joe/Documents/cours/UTT/ISI1_UTT/LO02/LO02_8American/8_American/8_American/src/Exceptions/InvalidInputException.java</file>
-            <file>file:/C:/Users/joe/Documents/cours/UTT/ISI1_UTT/LO02/LO02_8American/8_American/8_American/src/Controller/Menu.java</file>
-            <file>file:/C:/Users/joe/Documents/cours/UTT/ISI1_UTT/LO02/LO02_8American/8_American/8_American/src/Controller/Action.java</file>
-            <file>file:/C:/Users/joe/Documents/cours/UTT/ISI1_UTT/LO02/LO02_8American/8_American/8_American/src/Controller/AI.java</file>
             <file>file:/C:/Users/joe/Documents/cours/UTT/ISI1_UTT/LO02/LO02_8American/8_American/8_American/src/Controller/GameController.java</file>
             <file>file:/C:/Users/joe/Documents/cours/UTT/ISI1_UTT/LO02/LO02_8American/8_American/8_American/src/View/GameView.java</file>
-            <file>file:/C:/Users/joe/Documents/cours/UTT/ISI1_UTT/LO02/LO02_8American/8_American/8_American/src/Model/Card.java</file>
             <file>file:/C:/Users/joe/Documents/cours/UTT/ISI1_UTT/LO02/LO02_8American/8_American/8_American/src/View/Graphical/ViewWindow.java</file>
-            <file>file:/C:/Users/joe/Documents/cours/UTT/ISI1_UTT/LO02/LO02_8American/8_American/8_American/src/Main/Main.java</file>
-            <file>file:/C:/Users/joe/Documents/cours/UTT/ISI1_UTT/LO02/LO02_8American/8_American/8_American/src/Model/StrategyStupid.java</file>
-            <file>file:/C:/Users/joe/Documents/cours/UTT/ISI1_UTT/LO02/LO02_8American/8_American/8_American/src/Exceptions/InvalidActionException.java</file>
+            <file>file:/C:/Users/joe/Documents/cours/UTT/ISI1_UTT/LO02/LO02_8American/8_American/8_American/src/View/Graphical/ViewStock.java</file>
             <file>file:/C:/Users/joe/Documents/cours/UTT/ISI1_UTT/LO02/LO02_8American/8_American/8_American/src/View/Console/ConsoleView.java</file>
-            <file>file:/C:/Users/joe/Documents/cours/UTT/ISI1_UTT/LO02/LO02_8American/8_American/8_American/src/View/Console/MenuView.java</file>
-            <file>file:/C:/Users/joe/Documents/cours/UTT/ISI1_UTT/LO02/LO02_8American/8_American/8_American/src/Controller/MinimalRule.java</file>
+            <file>file:/C:/Users/joe/Documents/cours/UTT/ISI1_UTT/LO02/LO02_8American/8_American/8_American/src/View/Graphical/ViewHand.java</file>
             <file>file:/C:/Users/joe/Documents/cours/UTT/ISI1_UTT/LO02/LO02_8American/8_American/8_American/src/View/Graphical/ViewCard.java</file>
+            <file>file:/C:/Users/joe/Documents/cours/UTT/ISI1_UTT/LO02/LO02_8American/8_American/8_American/src/View/Graphical/ViewDiscard.java</file>
         </group>
     </open-files>
 </project-private>

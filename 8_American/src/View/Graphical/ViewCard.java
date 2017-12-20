@@ -13,7 +13,6 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -75,6 +74,14 @@ public class ViewCard extends JPanel implements View{
     protected void paintComponent(Graphics g){
         super.paintComponent(g);
         g.drawImage(image, 0, 0, this);
+    }
+    
+    public void setImage(String url){
+         try{
+            this.image = ImageIO.read(new File(("images\\playing_cards\\"+url.replace(" ", "_")+".png").toLowerCase()));
+        } catch (IOException ex) {
+            Logger.getLogger(ViewCard.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     @Override
