@@ -6,15 +6,22 @@
 package View.Graphical;
 
 import Controller.GameController;
-import Model.Card;
-import Model.CardColor;
-import Model.CardValue;
 import Model.Discard;
 import Model.Player;
 import Model.Stock;
 import View.GameView;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
+
+import javax.imageio.ImageIO;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 /**
  *
@@ -28,12 +35,27 @@ public class ViewWindow extends GameView {
         super(gc, s, d, players, realIndexPlayer);
         this.win = new JFrame();
         this.win.setTitle("8 American");    
-        this.win.setSize(1000,800);
+        this.win.setSize(1000,700);
         this.win.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        Card c = new Card(CardColor.Clubs,CardValue.Jack);
-        ViewCard vc = new ViewCard(c);
-        vc.setSize(100, 300);
-        this.win.setContentPane(vc);
+        this.win.setContentPane(new JPanel() {
+        	@Override
+        	protected void paintComponent(Graphics g) {
+        		// TODO Auto-generated method stub
+        		super.paintComponent(g);
+        		BufferedImage img=null;
+				try {
+					img = ImageIO.read(new File(("images\\tapis.jpg").toLowerCase()));
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+        		g.drawImage(img,0,0,this);
+        	}
+        });
+        ViewHand vh = new ViewHand(players.get(realIndexPlayer).getHand());
+        vh.setSize(110, win.WIDTH);
+        vh.setOpaque(false);
+        this.win.add(vh, BorderLayout.PAGE_END);
         this.win.setVisible(true);
     }
 
