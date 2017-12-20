@@ -1,5 +1,6 @@
-package View;
+package View.Console;
 
+import View.GameView;
 import java.util.ArrayList;
 import java.util.Scanner;
 

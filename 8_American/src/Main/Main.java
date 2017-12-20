@@ -4,15 +4,21 @@ import Controller.Menu;
 import Controller.MinimalRule;
 import Controller.MonclarRule;
 import Controller.Rule;
+import Model.Card;
+import Model.CardColor;
+import Model.CardValue;
 import Model.IStrategy;
 import Model.StrategyRandom;
 import Model.StrategyStupid;
-import View.MenuView;
+import View.Console.MenuView;
 import java.util.ArrayList;
 
 public class Main {
 
     public static void main(String[] args) {
+
+        
+        
         ArrayList<IStrategy> listStrategy = new ArrayList();
         ArrayList<Rule> listRule = new ArrayList();
         

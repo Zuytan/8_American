@@ -6,6 +6,7 @@ import Controller.GameController;
 import Model.Discard;
 import Model.Player;
 import Model.Stock;
+import View.View;
 
 public abstract class GameView implements View{
 	

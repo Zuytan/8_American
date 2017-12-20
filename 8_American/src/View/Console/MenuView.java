@@ -3,9 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package View;
+package View.Console;
 
 import Controller.Menu;
+import View.View;
 import java.util.Iterator;
 import java.util.Scanner;
 
