@@ -27,16 +27,11 @@ public class CardPlayerMouseController implements MouseListener{
 	public void mouseClicked(MouseEvent  arg0) {
 		// TODO Auto-generated method stub
 		int index = this.gc.getPlayers().get(this.gc.getCurrentPlayer()).getHand().getListCards().indexOf(this.p.getCard());
-		Robot r;
 		try {
-			r = new Robot();
-			r.keyPress(KeyEvent.VK_NUMPAD0+index);
-			r.keyRelease(KeyEvent.VK_NUMPAD0+index);
-			r.keyPress(KeyEvent.VK_ENTER);
-			r.keyRelease(KeyEvent.VK_ENTER);
-		} catch (AWTException e1) {
+			this.gc.playCard(index);
+		} catch (InvalidInputException | InvalidActionException e) {
 			// TODO Auto-generated catch block
-			e1.printStackTrace();
+			e.printStackTrace();
 		}
 		
 	}
