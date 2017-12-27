@@ -14,14 +14,30 @@ import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
+import Controller.GameController;
 import Model.Player;
+import View.View;
 
-public class ViewAI extends JPanel {
-	private ArrayList<Player> myPlayer;
+public class ViewAI extends JPanel implements View {
+	private GameController gc;
 
-	public ViewAI(ArrayList<Player> p) {
-		this.myPlayer = p;
-		Iterator<Player> itr = this.myPlayer.iterator();
+	public ViewAI(GameController gc) {
+		this.gc = gc;
+		this.update();
+	}
+
+	@Override
+	public Dimension getMinimumSize() {
+		// TODO Auto-generated method stub
+		return super.getSize();
+	}
+
+	@Override
+	public void update() {
+		// TODO Auto-generated method stub
+		this.removeAll();
+		ArrayList<Player> myPlayer = gc.getPlayers();
+		Iterator<Player> itr = myPlayer.iterator();
 		itr.next();
 		while(itr.hasNext()) {
 			Player p1 = itr.next();
@@ -35,14 +51,9 @@ public class ViewAI extends JPanel {
 			vc.add(nbCard);
 			this.add(vc);
 		}
+		this.revalidate();
+		this.repaint();
 		
-
-	}
-
-	@Override
-	public Dimension getMinimumSize() {
-		// TODO Auto-generated method stub
-		return super.getSize();
 	}
 
 }

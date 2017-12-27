@@ -13,6 +13,7 @@ import Model.Stock;
 
 public class ConsoleView extends GameView {
 
+	private Scanner sc = null;
     public static final String ANSI_RESET = "\u001B[0m";
     public static final String ANSI_BLACK = "\u001B[30m";
     public static final String ANSI_RED = "\u001B[31m";
@@ -29,6 +30,8 @@ public class ConsoleView extends GameView {
 
     @Override
     public void update() {
+    	System.out.println("update fait");
+    	this.sc = null;
         if (this.getGc().getVictorious() != null) {
             System.out.println(ANSI_GREEN + "The winner is : " + this.getGc().getVictorious() + ANSI_RESET);
         } else {
@@ -59,7 +62,7 @@ public class ConsoleView extends GameView {
                 + "Spades : 3\n"
                 + "Diamonds : 4");
         int choice = 0;
-        Scanner sc = new Scanner(System.in);
+        this.sc = new Scanner(System.in);
         try {
             choice = sc.nextInt();
         } catch (Exception e) {
@@ -77,7 +80,7 @@ public class ConsoleView extends GameView {
 
     public void askCardToPlay() {
         // TODO Auto-generated method stub
-        Scanner sc = new Scanner(System.in);
+        this.sc = new Scanner(System.in);
         System.out.println("You have :");
         System.out.println("0) Draw a card");
         System.out.println("-----------------");

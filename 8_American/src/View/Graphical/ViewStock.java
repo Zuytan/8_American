@@ -6,19 +6,23 @@
 package View.Graphical;
 
 import Model.Stock;
+import View.View;
+
 import java.awt.Dimension;
 import javax.swing.JPanel;
+
+import Controller.GameController;
 
 /**
  *
  * @author joe
  */
-public class ViewStock extends JPanel {
+public class ViewStock extends JPanel implements View{
 
-    private Stock myStock;
+    private GameController gc;
 
-    public ViewStock(Stock s) {
-        this.myStock = s;
+    public ViewStock(GameController gc) {
+        this.gc = gc;
         ViewCard vc = new ViewCard();
         vc.setSize(100, 150);
         this.add(vc);
@@ -28,4 +32,9 @@ public class ViewStock extends JPanel {
     public Dimension getMinimumSize() {
         return super.getSize(); //To change body of generated methods, choose Tools | Templates.
     }
+
+	@Override
+	public void update() {
+		
+	}
 }

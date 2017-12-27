@@ -7,26 +7,41 @@ package View.Graphical;
 
 import Model.Discard;
 import Model.Stock;
+import View.View;
+
+import java.awt.BorderLayout;
 import java.awt.Dimension;
 import javax.swing.JPanel;
+
+import Controller.GameController;
 
 /**
  *
  * @author joe
  */
-public class ViewDiscard extends JPanel{
-    private Discard myDiscard;
+public class ViewDiscard extends JPanel implements View{
+    private GameController gc;
     
-    public ViewDiscard(Discard d) {
-        this.myDiscard = d;
-        ViewCard vc = new ViewCard(this.myDiscard.getListCards().getLast());
-        vc.setSize(100, 150);
-        this.add(vc);
+    public ViewDiscard(GameController gc) {
+        this.gc = gc;
+        this.update();
     }
 
     @Override
     public Dimension getMinimumSize() {
         return super.getSize(); //To change body of generated methods, choose Tools | Templates.
     }
+
+	@Override
+	public void update() {
+		this.removeAll();
+		Discard myDiscard = this.gc.getDiscard();
+		ViewCard vc = new ViewCard(myDiscard.getListCards().getFirst());
+        vc.setSize(100, 150);
+        this.add(vc);
+        this.revalidate();
+		this.repaint();
+		
+	}
     
 }

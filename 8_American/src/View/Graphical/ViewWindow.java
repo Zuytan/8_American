@@ -31,7 +31,7 @@ import javax.swing.SwingConstants;
  *
  * @author joe
  */
-public class ViewWindow extends GameView {
+public class ViewWindow extends GameView{
 
 	private JFrame win;
 	private final int WIDTH = 1000;
@@ -62,49 +62,56 @@ public class ViewWindow extends GameView {
 		};
 		this.win.setContentPane(background);
 		this.win.setLayout(new BorderLayout());
-		// AI
-
 		
-
+		// AI
+		
 		
 		// PANEL REGROUPING STOCK AND DISCARD
 		JPanel StockNDiscard = new JPanel();
 		StockNDiscard.setOpaque(false);
 		StockNDiscard.setLayout(new GridLayout(2,1));
 		this.win.add(StockNDiscard, BorderLayout.CENTER);
+		
 		// STOCK
-		ViewStock vs = new ViewStock(gc.getStock());
+		ViewStock vs = new ViewStock(gc);
 		vs.setSize(100, 150);
 		vs.setOpaque(false);
 		StockNDiscard.add(vs);
+		gc.addObserver(vs);
+		
 		// DISCARD
-		ViewDiscard vd = new ViewDiscard(gc.getDiscard());
+		ViewDiscard vd = new ViewDiscard(gc);
 		vd.setSize(100, 150);
 		vd.setOpaque(false);
 		StockNDiscard.add(vd);
-
-		
+		gc.addObserver(vd);
 		
 		// HAND OF PLAYER
-		ViewHand vh = new ViewHand(players.get(realIndexPlayer).getHand(),gc);
+		ViewHand vh = new ViewHand(gc);
 		vh.setSize(110, win.WIDTH);
 		vh.setOpaque(false);
 		this.win.add(vh, BorderLayout.SOUTH);
-		
-		ViewAI va = new ViewAI(gc.getPlayers());
+		gc.addObserver(vh);
+
+		ViewAI va = new ViewAI(gc);
 		va.setSize(110, win.WIDTH);
 		va.setOpaque(false);
 		this.win.add(va, BorderLayout.NORTH);
-
+		gc.addObserver(va);
+		
 		this.win.setVisible(true);
 	}
 
 	@Override
 	public void show() {
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
 	public void update() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
