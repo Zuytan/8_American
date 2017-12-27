@@ -19,8 +19,7 @@ public class ViewStock extends JPanel {
 
     public ViewStock(Stock s) {
         this.myStock = s;
-        ViewCard vc = new ViewCard(this.myStock.getListCards().getLast());
-        vc.setImage("backcard");
+        ViewCard vc = new ViewCard();
         vc.setSize(100, 150);
         this.add(vc);
     }
