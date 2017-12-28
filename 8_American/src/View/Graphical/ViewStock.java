@@ -12,6 +12,7 @@ import java.awt.Dimension;
 import javax.swing.JPanel;
 
 import Controller.GameController;
+import Controller.Graphical.StockClickController;
 
 /**
  *
@@ -24,6 +25,7 @@ public class ViewStock extends JPanel implements View{
     public ViewStock(GameController gc) {
         this.gc = gc;
         ViewCard vc = new ViewCard();
+        vc.addMouseListener(new StockClickController(this.gc,vc));
         vc.setSize(100, 150);
         this.add(vc);
     }

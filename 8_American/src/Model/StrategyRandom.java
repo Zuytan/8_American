@@ -23,7 +23,8 @@ public class StrategyRandom implements IStrategy {
 
     @Override
     public void changeColor(Discard d, ArrayList<Card> HandOfAI, GameController gc) {
-        int colorSelected = HandOfAI.get(0).getColor().ordinal()+1; // cause the choice of the colors start at 1
+
+        int colorSelected = (int)(Math.random() * 4);
         try {
             gc.changeColor(colorSelected);
         } catch (InvalidInputException ex) {
