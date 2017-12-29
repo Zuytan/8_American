@@ -11,9 +11,6 @@ import View.View;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -51,7 +48,7 @@ public class ViewCard extends JPanel implements View {
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		
-		g.drawImage(image, 0, 0, this);
+		g.drawImage(image, (int)(this.getWidth()/2-50), (int)(this.getHeight()/2-75), this);
 	}
 
 	@Override

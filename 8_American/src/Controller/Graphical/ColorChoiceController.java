@@ -16,44 +16,24 @@ import java.util.logging.Logger;
  */
 public class ColorChoiceController {
 
-    public static void convertChoiceToInt(String choice, GameController gc) {
-        switch (choice) {
-            case "clubs":
-        {
-            try {
-                gc.changeColor(1);
-            } catch (InvalidInputException ex) {
-                Logger.getLogger(ColorChoiceController.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-                break;
-            case "spades":
-        {
-            try {
-                gc.changeColor(2);
-            } catch (InvalidInputException ex) {
-                Logger.getLogger(ColorChoiceController.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-                break;
-            case "hearts":
-        {
-            try {
-                gc.changeColor(0);
-            } catch (InvalidInputException ex) {
-                Logger.getLogger(ColorChoiceController.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-                break;
-            case "diamonds":
-        {
-            try {
-                gc.changeColor(3);
-            } catch (InvalidInputException ex) {
-                Logger.getLogger(ColorChoiceController.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-                break;
-        }
-    }
+	public static void convertChoiceToInt(String choice, GameController gc) {
+		try {
+			switch (choice) {
+			case "clubs":
+				gc.changeColor(2);
+				break;
+			case "spades":
+				gc.changeColor(3);
+				break;
+			case "hearts":
+				gc.changeColor(1);
+				break;
+			case "diamonds":
+				gc.changeColor(4);
+				break;
+			}
+		} catch (InvalidInputException ex) {
+			Logger.getLogger(ColorChoiceController.class.getName()).log(Level.SEVERE, null, ex);
+		}
+	}
 }

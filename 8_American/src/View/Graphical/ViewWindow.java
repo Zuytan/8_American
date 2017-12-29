@@ -6,6 +6,7 @@
 package View.Graphical;
 
 import Controller.GameController;
+import Controller.Graphical.ColorChoiceController;
 import Controller.Graphical.StockClickController;
 import Model.Discard;
 import Model.Player;
@@ -99,6 +100,20 @@ public class ViewWindow extends GameView {
         vh.setOpaque(false);
         this.win.add(vh, BorderLayout.SOUTH);
         gc.addObserver(vh);
+        
+        // LAST CARD COLOR
+        ViewColorLastCard vclc = new ViewColorLastCard(gc);
+        vclc.setSize(110, this.win.HEIGHT);
+        vclc.setOpaque(false);
+        this.win.add(vclc, BorderLayout.EAST);
+        gc.addObserver(vclc);
+        
+     // LAST CARD COLOR
+        ViewColorLastCard vclc2 = new ViewColorLastCard(gc);
+        vclc2.setSize(110, this.win.HEIGHT);
+        vclc2.setOpaque(false);
+        this.win.add(vclc2, BorderLayout.WEST);
+        gc.addObserver(vclc2);
 
         this.win.setVisible(true);
     }
@@ -128,6 +143,7 @@ public class ViewWindow extends GameView {
                             UIManager.getIcon("FileView.fileIcon"),
                             possibilities,
                             "spades");
+                    ColorChoiceController.convertChoiceToInt(s, this.getGc());
                 }
                 break;
             default:

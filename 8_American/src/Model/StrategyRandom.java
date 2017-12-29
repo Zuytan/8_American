@@ -24,7 +24,7 @@ public class StrategyRandom implements IStrategy {
     @Override
     public void changeColor(Discard d, ArrayList<Card> HandOfAI, GameController gc) {
 
-        int colorSelected = (int)(Math.random() * 3);
+        int colorSelected = (int)((Math.random() * 4)+1);
         try {
             gc.changeColor(colorSelected);
         } catch (InvalidInputException ex) {
