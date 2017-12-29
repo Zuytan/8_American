@@ -67,6 +67,12 @@ public class ViewWindow extends GameView {
         this.win.setLayout(new BorderLayout());
 
         // AI
+        ViewAI va = new ViewAI(gc);
+        va.setSize(110, win.WIDTH);
+        va.setOpaque(false);
+        this.win.add(va, BorderLayout.NORTH);
+        gc.addObserver(va);
+        
         // PANEL REGROUPING STOCK AND DISCARD
         JPanel StockNDiscard = new JPanel();
         StockNDiscard.setOpaque(false);
@@ -93,12 +99,6 @@ public class ViewWindow extends GameView {
         vh.setOpaque(false);
         this.win.add(vh, BorderLayout.SOUTH);
         gc.addObserver(vh);
-
-        ViewAI va = new ViewAI(gc);
-        va.setSize(110, win.WIDTH);
-        va.setOpaque(false);
-        this.win.add(va, BorderLayout.NORTH);
-        gc.addObserver(va);
 
         this.win.setVisible(true);
     }
