@@ -24,12 +24,18 @@ public class StrategyRandom implements IStrategy {
     @Override
     public void changeColor(Discard d, ArrayList<Card> HandOfAI, GameController gc) {
 
-        int colorSelected = (int)(Math.random() * 4);
+        int colorSelected = (int)(Math.random() * 3);
         try {
             gc.changeColor(colorSelected);
         } catch (InvalidInputException ex) {
             Logger.getLogger(StrategyRandom.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    @Override
+    public String toString() {
+    	// TODO Auto-generated method stub
+    	return "Random Strategy";
     }
 
 }

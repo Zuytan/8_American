@@ -57,4 +57,9 @@ public class StrategyStupid implements IStrategy {
         }
     }
 
+@Override
+    public String toString() {
+    	// TODO Auto-generated method stub
+    	return "Stupid Strategy";
+    }
 }
