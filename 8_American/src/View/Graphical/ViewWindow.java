@@ -26,6 +26,9 @@ import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import javax.swing.BoxLayout;
 import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
@@ -115,6 +118,39 @@ public class ViewWindow extends GameView {
         this.win.add(vclc2, BorderLayout.WEST);
         gc.addObserver(vclc2);
 
+        //MENU
+        JMenuBar menuBar = new JMenuBar();
+        JMenu menu = new JMenu("Menu");
+        menuBar.add(menu);
+        
+        JMenuItem newGame = new JMenuItem("New Game...");
+        //newGame.addMouseListener({The specific controller});
+        menu.add(newGame);
+        
+        JMenuItem loadGame = new JMenuItem("Load Game...");
+        //loadGame.addMouseListener({The specific controller});
+        menu.add(loadGame);
+        
+        JMenuItem saveGame = new JMenuItem("Save the Game...");
+        //saveGame.addMouseListener({The specific controller});
+        menu.add(saveGame);
+        
+        JMenu changeRule = new JMenu("Change the rule");
+        menuBar.add(changeRule);
+        
+        //Bon ici c'est un peu particulier, j'ai modifié quelques truc dans le GC, 
+        //Avant pour changer de regle, on passait par le playCard(), maintenant
+        //j'ai trouvé ça plus propre de le faire passer par une fonction spécifique
+        //qui s'appelle changeRule(int index) qui va changer la regle en fonction
+        //de l'index passé en paramètre. Il va donc falloir creer un controller qui 
+        //appelle cette méthode
+        this.getGc().getListRules().forEach((r)->{
+        	JMenuItem rule = new JMenuItem(r.toString());
+        	//rule.addMouseListener({the specific controller});
+        	changeRule.add(rule);
+        });
+        
+        this.win.setJMenuBar(menuBar);
         this.win.setVisible(true);
     }
 

@@ -2,9 +2,11 @@ package View.Console;
 
 import View.GameView;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Scanner;
 
 import Controller.GameController;
+import Controller.Rule;
 import Exceptions.InvalidActionException;
 import Exceptions.InvalidInputException;
 import Model.Discard;
@@ -107,13 +109,17 @@ public class ConsoleView extends GameView {
                 this.askCardToPlay();
             }
 
+        }else if(choice == nbCardCurrentPlayer+1) {
+        	try {
+				this.getGc().changeRule(this.changeRule());
+			} catch (InvalidActionException e) {
+				System.out.println(ANSI_RED + e.getMessage() + ANSI_RESET);
+                this.askCardToPlay();
+			}
         } else {
             try {
                 super.getGc().playCard(choice - 1);
-            } catch (InvalidInputException e) {
-                System.out.println(ANSI_RED + e.getMessage() + ANSI_RESET);
-                this.askCardToPlay();
-            } catch (InvalidActionException ex) {
+            } catch (InvalidInputException | InvalidActionException ex) {
                 System.out.println(ANSI_RED + ex.getMessage() + ANSI_RESET);
                 this.askCardToPlay();
             }
@@ -138,4 +144,17 @@ public class ConsoleView extends GameView {
 
     }
 
+    private int changeRule() {
+    	int out, i=1;
+    	System.out.println("The current rule is "+this.getGc().getCurrentRule());
+    	System.out.println("What rule do you want ?");
+    	Iterator<Rule> itr = this.getGc().getListRules().iterator();
+    	while(itr.hasNext()) {
+    		System.out.println(i+". "+itr.next());
+    		i++;
+    	}
+    	Scanner sc = new Scanner(System.in);
+    	out = sc.nextInt()-1;
+    	return out;
+    }
 }
