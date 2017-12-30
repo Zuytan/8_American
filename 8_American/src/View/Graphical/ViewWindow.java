@@ -119,6 +119,10 @@ public class ViewWindow extends GameView {
         gc.addObserver(vclc2);
 
         //MENU
+        /*
+         * J'ai rajouté quelques truc qui pouvaient être cool, apres on est pas obliger de tout faire évidemment
+         * Juste la tu vois que c'est juste graphique, il y a aucun listener de creer, donc il faut en faire des spécifique pour chaque
+         */
         JMenuBar menuBar = new JMenuBar();
         JMenu menu = new JMenu("Menu");
         menuBar.add(menu);

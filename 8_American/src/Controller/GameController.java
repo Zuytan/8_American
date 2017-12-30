@@ -175,8 +175,15 @@ public class GameController extends Observable {
 		notifyAllObs();
 
 	}
-
+/**
+ * Method that change the current rule of the game, depending of the index 
+ * @param index the index of the new rule
+ * @throws InvalidActionException if the index is invalid or if there is an action in the listActionToDo.
+ */
 	public void changeRule(int index) throws InvalidActionException {
+		/**
+		 * Il s'agit exactement du même code que précedemment dans le playCard() avec juste le this.setCurrentRule() différent !
+		 */
 		if (!this.listActionToDo.isEmpty() || index >= this.listRules.size() || index < 0) {
 			throw new InvalidActionException();
 		}
