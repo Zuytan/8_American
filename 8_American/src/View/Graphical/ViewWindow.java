@@ -33,7 +33,7 @@ import javax.swing.UIManager;
  *
  * @author joe
  */
-public class ViewWindow extends GameView{
+public class ViewWindow extends GameView {
 
     private JFrame win;
     private final int WIDTH = 1000;
@@ -71,7 +71,7 @@ public class ViewWindow extends GameView{
         va.setOpaque(false);
         this.win.add(va, BorderLayout.NORTH);
         gc.addObserver(va);
-        
+
         // PANEL REGROUPING STOCK AND DISCARD
         JPanel StockNDiscard = new JPanel();
         StockNDiscard.setOpaque(false);
@@ -98,21 +98,20 @@ public class ViewWindow extends GameView{
         vh.setOpaque(false);
         this.win.add(vh, BorderLayout.SOUTH);
         gc.addObserver(vh);
-        
+
         // LAST CARD COLOR
         ViewColorLastCard vclc = new ViewColorLastCard(gc);
         vclc.setSize(110, this.win.HEIGHT);
-        vclc.setOpaque(true);
+        vclc.setOpaque(false);
         this.win.add(vclc, BorderLayout.EAST);
         gc.addObserver(vclc);
-        
+
         // LAST MESSAGE INFO
         ViewMessageInfo vmi = new ViewMessageInfo(gc);
         vmi.setSize(110, this.win.HEIGHT);
-        vmi.setOpaque(true);
+        vmi.setOpaque(false);
         this.win.add(vmi, BorderLayout.WEST);
         gc.addObserver(vmi);
-
 
         //MENU
         /*
@@ -122,42 +121,53 @@ public class ViewWindow extends GameView{
         JMenuBar menuBar = new JMenuBar();
         JMenu menu = new JMenu("Menu");
         menuBar.add(menu);
-        
+
         JMenuItem newGame = new JMenuItem("New Game...");
         //newGame.addMouseListener({The specific controller});
         menu.add(newGame);
-        
+
         JMenuItem loadGame = new JMenuItem("Load Game...");
         //loadGame.addMouseListener({The specific controller});
         menu.add(loadGame);
-        
+
         JMenuItem saveGame = new JMenuItem("Save the Game...");
         //saveGame.addMouseListener({The specific controller});
         menu.add(saveGame);
-        
+
         JMenu changeRule = new JMenu("Change the rule");
         menuBar.add(changeRule);
-        
+
         //Bon ici c'est un peu particulier, j'ai modifi� quelques truc dans le GC, 
         //Avant pour changer de regle, on passait par le playCard(), maintenant
         //j'ai trouv� �a plus propre de le faire passer par une fonction sp�cifique
         //qui s'appelle changeRule(int index) qui va changer la regle en fonction
         //de l'index pass� en param�tre. Il va donc falloir creer un controller qui 
         //appelle cette m�thode
-        this.getGc().getListRules().forEach((r)->{
-        	JMenuItem rule = new JMenuItem(r.toString());
-        	//rule.addMouseListener({the specific controller});
-        	changeRule.add(rule);
+        this.getGc().getListRules().forEach((r) -> {
+            JMenuItem rule = new JMenuItem(r.toString());
+            //rule.addMouseListener({the specific controller});
+            changeRule.add(rule);
         });
-        
+
         this.win.setJMenuBar(menuBar);
         this.win.setVisible(true);
     }
 
     @Override
     public void show() {
-        // TODO Auto-generated method stub
-
+        Object[] options = {"Quit"};
+        int n = JOptionPane.showOptionDialog(this.win,
+                this.getGc().getVictorious()+ " has won the game",
+                "End of Game",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE,
+                null, //do not use a custom Icon
+                options, //the titles of buttons
+                options[0]); //default button title
+        if (n == 0) {
+            System.exit(0);
+        }
+        System.exit(0);
     }
 
     @Override
@@ -187,6 +197,5 @@ public class ViewWindow extends GameView{
         }
 
     }
-
 
 }

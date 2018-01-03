@@ -13,6 +13,8 @@ import Model.Player;
 import Model.Stock;
 import Model.EnumAction;
 import java.util.LinkedList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class GameController extends Observable {
 
@@ -243,14 +245,11 @@ public class GameController extends Observable {
     }
 
     public void start() {
-        System.out.println("toto"+Thread.currentThread().getName());
         this.notifyAllObs();
     }
 
     @Override
     public void notifyAllObs() {
-        System.out.println("on notifie tout les potos");
         super.notifyAllObs();
-        System.out.println("On a notifie les potos");
     }
 }

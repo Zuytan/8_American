@@ -9,9 +9,6 @@ import Model.Discard;
 import Model.IStrategy;
 import Model.Player;
 import Model.Stock;
-import Model.StrategyRandom;
-import Model.StrategyStupid;
-import View.Console.ConsoleView;
 import View.GameView;
 import View.Graphical.ViewWindow;
 import java.util.ArrayList;
@@ -86,7 +83,6 @@ public class Menu extends Observable {
         for (int i = 0; i < nbIA; i++) {
             gc.addObserver(new AI(gc, d, gc.getPlayers(), i + 1, this.listStrategy.get(this.levelOfAI)));
         }
-        System.out.println("5 "+Thread.currentThread().getName());
         gc.start();
     }
     
