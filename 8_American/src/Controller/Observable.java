@@ -20,5 +20,6 @@ public abstract class Observable {
 		for(Observer obs : listObservers) {
 			obs.update();
 		}
+                System.out.println("rirififiloulou"+Thread.currentThread().getName());
 	}
 }

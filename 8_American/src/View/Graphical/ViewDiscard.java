@@ -14,14 +14,17 @@ import java.awt.Dimension;
 import javax.swing.JPanel;
 
 import Controller.GameController;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author joe
  */
-public class ViewDiscard extends JPanel implements View{
+public class ViewDiscard extends JPanel implements View {
+
     private GameController gc;
-    
+
     public ViewDiscard(GameController gc) {
         this.gc = gc;
         this.update();
@@ -32,16 +35,17 @@ public class ViewDiscard extends JPanel implements View{
         return super.getSize(); //To change body of generated methods, choose Tools | Templates.
     }
 
-	@Override
-	public void update() {
-		this.removeAll();
-		Discard myDiscard = this.gc.getDiscard();
-		ViewCard vc = new ViewCard(myDiscard.getListCards().getFirst());
+    @Override
+    public void update() {
+
+        this.removeAll();
+        Discard myDiscard = this.gc.getDiscard();
+        ViewCard vc = new ViewCard(myDiscard.getListCards().getFirst());
         vc.setSize(100, 150);
         this.add(vc);
         this.revalidate();
-		this.repaint();
-		
-	}
-    
+        this.repaint();
+
+    }
+
 }

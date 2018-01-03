@@ -7,15 +7,12 @@ package View.Graphical;
 
 import Controller.GameController;
 import Controller.Graphical.ColorChoiceController;
-import Controller.Graphical.StockClickController;
 import Model.Discard;
 import Model.Player;
 import Model.Stock;
 import View.GameView;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.image.BufferedImage;
@@ -24,21 +21,19 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
-import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 
 /**
  *
  * @author joe
  */
-public class ViewWindow extends GameView {
+public class ViewWindow extends GameView{
 
     private JFrame win;
     private final int WIDTH = 1000;
@@ -107,21 +102,22 @@ public class ViewWindow extends GameView {
         // LAST CARD COLOR
         ViewColorLastCard vclc = new ViewColorLastCard(gc);
         vclc.setSize(110, this.win.HEIGHT);
-        vclc.setOpaque(false);
+        vclc.setOpaque(true);
         this.win.add(vclc, BorderLayout.EAST);
         gc.addObserver(vclc);
         
-     // LAST CARD COLOR
-        ViewColorLastCard vclc2 = new ViewColorLastCard(gc);
-        vclc2.setSize(110, this.win.HEIGHT);
-        vclc2.setOpaque(false);
-        this.win.add(vclc2, BorderLayout.WEST);
-        gc.addObserver(vclc2);
+        // LAST MESSAGE INFO
+        ViewMessageInfo vmi = new ViewMessageInfo(gc);
+        vmi.setSize(110, this.win.HEIGHT);
+        vmi.setOpaque(true);
+        this.win.add(vmi, BorderLayout.WEST);
+        gc.addObserver(vmi);
+
 
         //MENU
         /*
-         * J'ai rajouté quelques truc qui pouvaient être cool, apres on est pas obliger de tout faire évidemment
-         * Juste la tu vois que c'est juste graphique, il y a aucun listener de creer, donc il faut en faire des spécifique pour chaque
+         * J'ai rajoutï¿½ quelques truc qui pouvaient ï¿½tre cool, apres on est pas obliger de tout faire ï¿½videmment
+         * Juste la tu vois que c'est juste graphique, il y a aucun listener de creer, donc il faut en faire des spï¿½cifique pour chaque
          */
         JMenuBar menuBar = new JMenuBar();
         JMenu menu = new JMenu("Menu");
@@ -142,12 +138,12 @@ public class ViewWindow extends GameView {
         JMenu changeRule = new JMenu("Change the rule");
         menuBar.add(changeRule);
         
-        //Bon ici c'est un peu particulier, j'ai modifié quelques truc dans le GC, 
+        //Bon ici c'est un peu particulier, j'ai modifiï¿½ quelques truc dans le GC, 
         //Avant pour changer de regle, on passait par le playCard(), maintenant
-        //j'ai trouvé ça plus propre de le faire passer par une fonction spécifique
+        //j'ai trouvï¿½ ï¿½a plus propre de le faire passer par une fonction spï¿½cifique
         //qui s'appelle changeRule(int index) qui va changer la regle en fonction
-        //de l'index passé en paramètre. Il va donc falloir creer un controller qui 
-        //appelle cette méthode
+        //de l'index passï¿½ en paramï¿½tre. Il va donc falloir creer un controller qui 
+        //appelle cette mï¿½thode
         this.getGc().getListRules().forEach((r)->{
         	JMenuItem rule = new JMenuItem(r.toString());
         	//rule.addMouseListener({the specific controller});
@@ -191,5 +187,6 @@ public class ViewWindow extends GameView {
         }
 
     }
+
 
 }

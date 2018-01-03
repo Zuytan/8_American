@@ -3,24 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/joe/Documents/cours/UTT/ISI1_UTT/LO02/LO02_8American/8_American/8_American/src/Controller/Console/CardPlayerInputController.java</file>
-            <file>file:/C:/Users/joe/Documents/cours/UTT/ISI1_UTT/LO02/LO02_8American/8_American/8_American/src/Controller/Graphical/StockClickController.java</file>
-            <file>file:/C:/Users/joe/Documents/cours/UTT/ISI1_UTT/LO02/LO02_8American/8_American/8_American/src/Model/CardColor.java</file>
-            <file>file:/C:/Users/joe/Documents/cours/UTT/ISI1_UTT/LO02/LO02_8American/8_American/8_American/src/Exceptions/InvalidInputException.java</file>
-            <file>file:/C:/Users/joe/Documents/cours/UTT/ISI1_UTT/LO02/LO02_8American/8_American/8_American/src/Controller/Menu.java</file>
-            <file>file:/C:/Users/joe/Documents/cours/UTT/ISI1_UTT/LO02/LO02_8American/8_American/8_American/src/Model/StrategyRandom.java</file>
-            <file>file:/C:/Users/joe/Documents/cours/UTT/ISI1_UTT/LO02/LO02_8American/8_American/8_American/src/Controller/Graphical/ColorChoiceController.java</file>
-            <file>file:/C:/Users/joe/Documents/cours/UTT/ISI1_UTT/LO02/LO02_8American/8_American/8_American/src/View/Graphical/ViewDiscard.java</file>
+            <file>file:/C:/Users/joe/Documents/cours/UTT/ISI1_UTT/LO02/LO02_8American/8_American/8_American/src/View/Graphical/ViewColorLastCard.java</file>
+            <file>file:/C:/Users/joe/Documents/cours/UTT/ISI1_UTT/LO02/LO02_8American/8_American/8_American/src/View/Graphical/ViewAI.java</file>
+            <file>file:/C:/Users/joe/Documents/cours/UTT/ISI1_UTT/LO02/LO02_8American/8_American/8_American/src/View/Graphical/ViewMenu.java</file>
             <file>file:/C:/Users/joe/Documents/cours/UTT/ISI1_UTT/LO02/LO02_8American/8_American/8_American/src/Controller/GameController.java</file>
-            <file>file:/C:/Users/joe/Documents/cours/UTT/ISI1_UTT/LO02/LO02_8American/8_American/8_American/src/View/GameView.java</file>
-            <file>file:/C:/Users/joe/Documents/cours/UTT/ISI1_UTT/LO02/LO02_8American/8_American/8_American/src/View/Graphical/ViewWindow.java</file>
             <file>file:/C:/Users/joe/Documents/cours/UTT/ISI1_UTT/LO02/LO02_8American/8_American/8_American/src/Main/Main.java</file>
-            <file>file:/C:/Users/joe/Documents/cours/UTT/ISI1_UTT/LO02/LO02_8American/8_American/8_American/src/Model/StrategyStupid.java</file>
-            <file>file:/C:/Users/joe/Documents/cours/UTT/ISI1_UTT/LO02/LO02_8American/8_American/8_American/src/View/Console/ConsoleView.java</file>
-            <file>file:/C:/Users/joe/Documents/cours/UTT/ISI1_UTT/LO02/LO02_8American/8_American/8_American/src/View/Graphical/ViewStock.java</file>
-            <file>file:/C:/Users/joe/Documents/cours/UTT/ISI1_UTT/LO02/LO02_8American/8_American/8_American/src/View/Graphical/ViewHand.java</file>
-            <file>file:/C:/Users/joe/Documents/cours/UTT/ISI1_UTT/LO02/LO02_8American/8_American/8_American/src/View/Graphical/ViewCard.java</file>
-            <file>file:/C:/Users/joe/Documents/cours/UTT/ISI1_UTT/LO02/LO02_8American/8_American/8_American/src/View/Console/MenuView.java</file>
+            <file>file:/C:/Users/joe/Documents/cours/UTT/ISI1_UTT/LO02/LO02_8American/8_American/8_American/src/Controller/Menu.java</file>
+            <file>file:/C:/Users/joe/Documents/cours/UTT/ISI1_UTT/LO02/LO02_8American/8_American/8_American/src/Controller/Observable.java</file>
         </group>
     </open-files>
 </project-private>

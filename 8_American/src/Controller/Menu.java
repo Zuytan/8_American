@@ -26,8 +26,8 @@ public class Menu extends Observable {
     private final ArrayList<Rule> listRule;
     private int nbIA = 2;
     private String playerName = "toto"; 
-    private int levelOfAI = 0;
-    private int RuleToApply = 0;
+    private int levelOfAI = 1;
+    private int RuleToApply = 1;
 
     public int getLevelOfAI() {
         return levelOfAI;
@@ -78,7 +78,6 @@ public class Menu extends Observable {
         Stock s = new Stock();
         Discard d = new Discard();
         Player moi = new Player(this.playerName);
-        
         GameController gc = new GameController(moi, this.nbIA, s, d, this.listRule.get(this.RuleToApply), this.listRule);
         GameView v = new ViewWindow(gc, s, d, gc.getPlayers(), 0);
        //GameView v2 = new ConsoleView(gc, s, d, gc.getPlayers(), 0 );
@@ -87,6 +86,7 @@ public class Menu extends Observable {
         for (int i = 0; i < nbIA; i++) {
             gc.addObserver(new AI(gc, d, gc.getPlayers(), i + 1, this.listStrategy.get(this.levelOfAI)));
         }
+        System.out.println("5 "+Thread.currentThread().getName());
         gc.start();
     }
     

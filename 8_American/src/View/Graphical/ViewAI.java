@@ -17,6 +17,7 @@ import javax.swing.SwingConstants;
 import Controller.GameController;
 import Model.Player;
 import View.View;
+import javax.swing.BorderFactory;
 
 public class ViewAI extends JPanel implements View {
 	private GameController gc;
@@ -38,7 +39,8 @@ public class ViewAI extends JPanel implements View {
 		this.removeAll();
 		ArrayList<Player> myPlayer = gc.getPlayers();
 		Iterator<Player> itr = myPlayer.iterator();
-		itr.next();
+		itr.next(); // avoid real player ?
+                int i=1;
 		while(itr.hasNext()) {
 			Player p1 = itr.next();
 			ViewCard vc = new ViewCard();
@@ -48,8 +50,12 @@ public class ViewAI extends JPanel implements View {
 			nbCard.setFont(new Font("Arial", Font.CENTER_BASELINE, 20));
 			nbCard.setHorizontalAlignment(SwingConstants.CENTER);
 			nbCard.setForeground(Color.CYAN);
+                        if(this.gc.getCurrentPlayer()==i){
+                            nbCard.setBorder(BorderFactory.createLineBorder(Color.YELLOW,5));
+                        }
 			vc.add(nbCard);
 			this.add(vc);
+                        i++;
 		}
 		this.revalidate();
 		this.repaint();
