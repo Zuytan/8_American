@@ -31,7 +31,6 @@ public class Main {
         ViewMenu mv = new ViewMenu(m);
         m.addObserver(mv);
         m.start();
-                   
     }
 
 }

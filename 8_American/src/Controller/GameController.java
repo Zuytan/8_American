@@ -13,6 +13,8 @@ import Model.Player;
 import Model.Stock;
 import Model.EnumAction;
 import java.util.LinkedList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class GameController extends Observable {
 

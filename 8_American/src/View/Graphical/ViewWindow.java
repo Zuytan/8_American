@@ -33,7 +33,7 @@ import javax.swing.UIManager;
  *
  * @author joe
  */
-public class ViewWindow extends GameView{
+public class ViewWindow extends GameView {
 
     private JFrame win;
     private final int WIDTH = 1000;
@@ -65,6 +65,12 @@ public class ViewWindow extends GameView{
         this.win.setContentPane(background);
         this.win.setLayout(new BorderLayout());
 
+        // LAST CARD COLOR
+        ViewColorLastCard vclc = new ViewColorLastCard(gc);
+        vclc.setSize(110, this.win.HEIGHT);
+        vclc.setOpaque(false);
+        this.win.add(vclc, BorderLayout.EAST);
+        gc.addObserver(vclc);
         
         // AI
         ViewAI va = new ViewAI(gc);
@@ -86,8 +92,8 @@ public class ViewWindow extends GameView{
         vh.setOpaque(false);
         this.win.add(vh, BorderLayout.SOUTH);
         gc.addObserver(vh);
-        
-     // PANEL REGROUPING STOCK AND DISCARD
+
+        // PANEL REGROUPING STOCK AND DISCARD
         JPanel StockNDiscard = new JPanel();
         StockNDiscard.setOpaque(false);
         StockNDiscard.setLayout(new GridLayout(2, 1));
@@ -106,21 +112,8 @@ public class ViewWindow extends GameView{
         vd.setOpaque(false);
         StockNDiscard.add(vd);
         gc.addObserver(vd);
-        
-     
-        
-        // LAST CARD COLOR
-        ViewColorLastCard vclc = new ViewColorLastCard(gc);
-        vclc.setSize(110, this.win.HEIGHT);
-        vclc.setOpaque(false);
-        this.win.add(vclc, BorderLayout.EAST);
-        gc.addObserver(vclc);
 
-        
-        
-      
-        
-        
+       
 
 
         //MENU
@@ -131,42 +124,53 @@ public class ViewWindow extends GameView{
         JMenuBar menuBar = new JMenuBar();
         JMenu menu = new JMenu("Menu");
         menuBar.add(menu);
-        
+
         JMenuItem newGame = new JMenuItem("New Game...");
         //newGame.addMouseListener({The specific controller});
         menu.add(newGame);
-        
+
         JMenuItem loadGame = new JMenuItem("Load Game...");
         //loadGame.addMouseListener({The specific controller});
         menu.add(loadGame);
-        
+
         JMenuItem saveGame = new JMenuItem("Save the Game...");
         //saveGame.addMouseListener({The specific controller});
         menu.add(saveGame);
-        
+
         JMenu changeRule = new JMenu("Change the rule");
         menuBar.add(changeRule);
-        
+
         //Bon ici c'est un peu particulier, j'ai modifi� quelques truc dans le GC, 
         //Avant pour changer de regle, on passait par le playCard(), maintenant
         //j'ai trouv� �a plus propre de le faire passer par une fonction sp�cifique
         //qui s'appelle changeRule(int index) qui va changer la regle en fonction
         //de l'index pass� en param�tre. Il va donc falloir creer un controller qui 
         //appelle cette m�thode
-        this.getGc().getListRules().forEach((r)->{
-        	JMenuItem rule = new JMenuItem(r.toString());
-        	//rule.addMouseListener({the specific controller});
-        	changeRule.add(rule);
+        this.getGc().getListRules().forEach((r) -> {
+            JMenuItem rule = new JMenuItem(r.toString());
+            //rule.addMouseListener({the specific controller});
+            changeRule.add(rule);
         });
-        
+
         this.win.setJMenuBar(menuBar);
         this.win.setVisible(true);
     }
 
     @Override
     public void show() {
-        // TODO Auto-generated method stub
-
+        Object[] options = {"Quit"};
+        int n = JOptionPane.showOptionDialog(this.win,
+                this.getGc().getVictorious()+ " has won the game",
+                "End of Game",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE,
+                null, //do not use a custom Icon
+                options, //the titles of buttons
+                options[0]); //default button title
+        if (n == 0) {
+            System.exit(0);
+        }
+        System.exit(0);
     }
 
     @Override
@@ -195,6 +199,5 @@ public class ViewWindow extends GameView{
                 break;
         }
     }
-
 
 }
