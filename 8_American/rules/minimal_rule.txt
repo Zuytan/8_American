@@ -1,0 +1,8 @@
+- You can place a card if the value OR the color fits the last card. 
+- The Joker can be place on any other card.
+- Any other card can be placed on the Joker.
+- If you play a card you can't play, 2 cards will be drawn.
+- The 8 can be placed on any other card.
+- The 8 allows you to change the actual color.
+- The 10 allows you to play again.
+

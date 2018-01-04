@@ -1,0 +1,13 @@
+- You can place a card if the value OR the color fits the last card. 
+- The Joker can be place on any other card.
+- Any other card can be placed on the Joker.
+- If you play a card you can't play, 2 cards will be drawn.
+- The 8 can be placed on any other card.
+- The 8 allows you to change the actual color.
+- The 10 allows you to play again.
+- The Jack allows you to change the direction of the game.
+- The 7 allows you to pass the next player's turn.
+- The 9 allows you to pass the next player's turn and he must draw 1 card.
+- The Ace allows you to pass the next player's turn and he must draw 3 card.
+- You can report an Ace by placing an other Ace.
+- You can avoid the Ace and the 7 by playing a 8.

@@ -6,6 +6,7 @@
 package View.Graphical;
 
 import Controller.GameController;
+import Controller.Graphical.ChangeRuleController;
 import Controller.Graphical.ColorChoiceController;
 import Model.Discard;
 import Model.Player;
@@ -146,11 +147,11 @@ public class ViewWindow extends GameView {
         //qui s'appelle changeRule(int index) qui va changer la regle en fonction
         //de l'index pass� en param�tre. Il va donc falloir creer un controller qui 
         //appelle cette m�thode
-        this.getGc().getListRules().forEach((r) -> {
-            JMenuItem rule = new JMenuItem(r.toString());
-            //rule.addMouseListener({the specific controller});
+        for(int i =0;i<this.getGc().getListRules().size();i++){
+            JMenuItem rule = new JMenuItem(i+") "+this.getGc().getListRules().get(i).toString());
+            rule.addMouseListener(new ChangeRuleController(this.getGc(),rule,this.win));
             changeRule.add(rule);
-        });
+        }
 
         this.win.setJMenuBar(menuBar);
         this.win.setVisible(true);

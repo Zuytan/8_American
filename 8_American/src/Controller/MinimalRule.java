@@ -7,7 +7,6 @@ import Model.EnumAction;
 
 public class MinimalRule extends Rule {
 
-
     @Override
     public EnumAction apply(Card card) {
         EnumAction action = EnumAction.none;
@@ -18,13 +17,15 @@ public class MinimalRule extends Rule {
                 || gc.getDiscard().getLastCardColor() == CardColor.Joker) {
             switch (card.getValue()) {
                 case Ten:
+                    this.gc.setMessageAlert("The " + gc.getPlayers().get(gc.getCurrentPlayer()) + "'s turn is going to be replayed");
                     Action.changeDirection();
                     Action.changePlayer();
                     Action.changeDirection();
                     break;
                 case Eight:
                     action = EnumAction.changeColor;
-                    break;               
+                    this.gc.setMessageAlert("The main color is going to change");
+                    break;
             }
         } else {
             this.gc.getPlayers().get(this.gc.getCurrentPlayer()).addCards(Action.draw(2));
@@ -37,6 +38,5 @@ public class MinimalRule extends Rule {
     public String toString() {
         return "Minimal Rule";
     }
-    
-    
+
 }
