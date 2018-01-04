@@ -30,14 +30,18 @@ public class StockClickController implements MouseListener{
     public void mouseClicked(MouseEvent arg0) {
         // TODO Auto-generated method stub
         if (this.gc.getCurrentPlayer() == REAL_PLAYER_INDEX) {
-            try {
-                this.gc.drawCard();
-            } catch (InvalidActionException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
+        	Thread th = new Thread(new Runnable() {
+				@Override
+				public void run() {
+					 try {
+			                gc.drawCard();
+			            } catch (InvalidActionException e) {
+			                e.printStackTrace();
+			            }
+				}
+        	});
+        	th.start();
         }
-
     }
 
     @Override

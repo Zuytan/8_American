@@ -72,9 +72,8 @@ public class ViewMenu implements View{
 	}
 
 	@Override
-	public void update() {
+	public  void update() {
 		// TODO Auto-generated method stub
-		
 	}
 
 	@Override

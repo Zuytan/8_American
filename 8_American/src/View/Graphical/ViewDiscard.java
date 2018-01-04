@@ -11,7 +11,11 @@ import View.View;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JPanel;
+import javax.swing.Timer;
 
 import Controller.GameController;
 import java.util.logging.Level;
@@ -37,15 +41,22 @@ public class ViewDiscard extends JPanel implements View {
 
     @Override
     public void update() {
-
+    	
+    	ViewDiscard me = this;
         this.removeAll();
         Discard myDiscard = this.gc.getDiscard();
         ViewCard vc = new ViewCard(myDiscard.getListCards().getFirst());
         vc.setSize(100, 150);
-        this.add(vc);
-        this.revalidate();
-        this.repaint();
-
+        this.add(vc);    
+        me.revalidate();
+	     me.repaint();  
+	     try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+       
     }
 
 }

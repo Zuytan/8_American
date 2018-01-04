@@ -36,7 +36,7 @@ public class ViewStock extends JPanel implements View{
     }
 
 	@Override
-	public void update() {
+	public  void update() {
 		
 	}
 }

@@ -31,12 +31,17 @@ public class CardPlayerMouseController implements MouseListener {
         // TODO Auto-generated method stub
         if (this.gc.getCurrentPlayer() == REAL_PLAYER_INDEX) {
             int index = this.gc.getPlayers().get(this.gc.getCurrentPlayer()).getHand().getListCards().indexOf(this.p.getCard());
-            try {
-                this.gc.playCard(index);
-            } catch (InvalidInputException | InvalidActionException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
+            Thread th = new Thread(new Runnable() {
+            	public void run() {
+            		try {
+                        gc.playCard(index);
+                    } catch (InvalidInputException | InvalidActionException e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                    }
+            	}
+            });
+            th.start();
         }
 
     }

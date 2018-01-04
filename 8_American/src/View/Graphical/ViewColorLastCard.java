@@ -1,5 +1,6 @@
 package View.Graphical;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
 import javax.swing.JLabel;
@@ -19,9 +20,12 @@ public class ViewColorLastCard extends JPanel implements View {
         JLabel currentColor = new JLabel("The current color is :");
         currentColor.setForeground(Color.YELLOW);
         this.add(currentColor);
+        JPanel cardContainer = new JPanel(new BorderLayout());
         color = new ViewCard();
         color.setOpaque(false);
-        this.add(color);
+        cardContainer.setOpaque(false);        
+        cardContainer.add(color, BorderLayout.CENTER);
+        this.add(cardContainer);
     }
 
     @Override
@@ -30,8 +34,8 @@ public class ViewColorLastCard extends JPanel implements View {
 
         this.color.setImage(ViewColorLastCard.getPathOf(this.gc.getDiscard().getLastCardColor()));
         color.setSize(100, 150);
-        this.revalidate();
-        this.repaint();
+        this.color.revalidate();
+        this.color.repaint();
     }
 
     private static String getPathOf(CardColor c) {

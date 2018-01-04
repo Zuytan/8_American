@@ -16,10 +16,9 @@ public abstract class Observable {
 		this.listObservers.remove(obs);
 	}
 	
-	public void notifyAllObs() {
+	public synchronized void notifyAllObs() {
 		for(Observer obs : listObservers) {
-			obs.update();
+					obs.update();
 		}
-                System.out.println("rirififiloulou"+Thread.currentThread().getName());
 	}
 }

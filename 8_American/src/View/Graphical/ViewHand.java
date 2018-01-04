@@ -36,8 +36,7 @@ public class ViewHand extends JPanel implements View{
 			this.add(vc);
 		});
 		this.revalidate();
-		this.repaint();
-		
+		this.repaint();		
 	}
  
 }

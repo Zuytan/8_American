@@ -65,6 +65,7 @@ public class ViewWindow extends GameView{
         this.win.setContentPane(background);
         this.win.setLayout(new BorderLayout());
 
+        
         // AI
         ViewAI va = new ViewAI(gc);
         va.setSize(110, win.WIDTH);
@@ -72,46 +73,54 @@ public class ViewWindow extends GameView{
         this.win.add(va, BorderLayout.NORTH);
         gc.addObserver(va);
         
-        // PANEL REGROUPING STOCK AND DISCARD
-        JPanel StockNDiscard = new JPanel();
-        StockNDiscard.setOpaque(false);
-        StockNDiscard.setLayout(new GridLayout(2, 1));
-        this.win.add(StockNDiscard, BorderLayout.CENTER);
-
-        // STOCK
-        ViewStock vs = new ViewStock(gc);
-        vs.setSize(100, 150);
-        vs.setOpaque(false);
-        StockNDiscard.add(vs);
-        gc.addObserver(vs);
-
-        // DISCARD
-        ViewDiscard vd = new ViewDiscard(gc);
-        vd.setSize(100, 150);
-        vd.setOpaque(false);
-        StockNDiscard.add(vd);
-        gc.addObserver(vd);
-
-        // HAND OF PLAYER
+     // LAST MESSAGE INFO
+        ViewMessageInfo vmi = new ViewMessageInfo(gc);
+        vmi.setSize(110, this.win.HEIGHT);
+        vmi.setOpaque(false);
+        this.win.add(vmi, BorderLayout.WEST);
+        gc.addObserver(vmi);
+        
+     // HAND OF PLAYER
         ViewHand vh = new ViewHand(gc);
         vh.setSize(110, win.WIDTH);
         vh.setOpaque(false);
         this.win.add(vh, BorderLayout.SOUTH);
         gc.addObserver(vh);
         
+     // PANEL REGROUPING STOCK AND DISCARD
+        JPanel StockNDiscard = new JPanel();
+        StockNDiscard.setOpaque(false);
+        StockNDiscard.setLayout(new GridLayout(2, 1));
+        this.win.add(StockNDiscard, BorderLayout.CENTER);
+        
+     // STOCK
+        ViewStock vs = new ViewStock(gc);
+        vs.setSize(100, 150);
+        vs.setOpaque(false);
+        StockNDiscard.add(vs);
+        gc.addObserver(vs);
+        
+     // DISCARD
+        ViewDiscard vd = new ViewDiscard(gc);
+        vd.setSize(100, 150);
+        vd.setOpaque(false);
+        StockNDiscard.add(vd);
+        gc.addObserver(vd);
+        
+     
+        
         // LAST CARD COLOR
         ViewColorLastCard vclc = new ViewColorLastCard(gc);
         vclc.setSize(110, this.win.HEIGHT);
-        vclc.setOpaque(true);
+        vclc.setOpaque(false);
         this.win.add(vclc, BorderLayout.EAST);
         gc.addObserver(vclc);
+
         
-        // LAST MESSAGE INFO
-        ViewMessageInfo vmi = new ViewMessageInfo(gc);
-        vmi.setSize(110, this.win.HEIGHT);
-        vmi.setOpaque(true);
-        this.win.add(vmi, BorderLayout.WEST);
-        gc.addObserver(vmi);
+        
+      
+        
+        
 
 
         //MENU
@@ -161,7 +170,7 @@ public class ViewWindow extends GameView{
     }
 
     @Override
-    public void update() {
+    public  void update() {
         if (this.getGc().getVictorious() != null) {
             this.show();
         }
@@ -185,7 +194,6 @@ public class ViewWindow extends GameView{
             default:
                 break;
         }
-
     }
 
 

@@ -47,7 +47,6 @@ public class ViewCard extends JPanel implements View {
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		
 		g.drawImage(image, (int)(this.getWidth()/2-50), (int)(this.getHeight()/2-75), this);
 	}
 
@@ -57,7 +56,7 @@ public class ViewCard extends JPanel implements View {
 	}
 
 	@Override
-	public void update() {
+	public  void update() {
 	}
 
 	@Override

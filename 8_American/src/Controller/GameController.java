@@ -140,7 +140,7 @@ public class GameController extends Observable {
         this.discard = d;
         this.players.add(player);
         for (int i = 1; i <= nbAI; i++) {
-            this.players.add(new Player("AI " + i));
+            this.players.add(new Player("AI " + i,i));
         }
         Iterator<Player> itrPlayer = players.iterator();
         while (itrPlayer.hasNext()) {
@@ -243,14 +243,11 @@ public class GameController extends Observable {
     }
 
     public void start() {
-        System.out.println("toto"+Thread.currentThread().getName());
         this.notifyAllObs();
     }
 
     @Override
     public void notifyAllObs() {
-        System.out.println("on notifie tout les potos");
         super.notifyAllObs();
-        System.out.println("On a notifie les potos");
     }
 }

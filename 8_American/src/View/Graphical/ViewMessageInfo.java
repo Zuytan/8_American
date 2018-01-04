@@ -41,9 +41,15 @@ public class ViewMessageInfo extends JPanel implements View {
     }
 
     @Override
-    public void update() {
+    public  void update() {
         this.messageInfo.setText(this.gc.getMessageAlert());
         this.revalidate();
         this.repaint();
+        try {
+			Thread.sleep(200);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
 }

@@ -7,11 +7,13 @@ public class Player {
 
     private String name;
     private Hand hand;
+    private int position;
     
 
-    public Player(String name) {
+    public Player(String name, int position) {
         this.hand = new Hand();
         this.name = name;
+        this.position = position;
     }
 
     @Override
@@ -50,4 +52,9 @@ public class Player {
     public void setHand(Hand hand) {
         this.hand = hand;
     }
+
+	public int getPosition() {
+		return position;
+	}
+
 }
