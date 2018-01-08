@@ -9,8 +9,15 @@ import Model.Hand;
 
 public class Action {
 
+	/**
+	 *	The current Game Controller  of the game
+	 */
     private static GameController gc;
 
+    /**
+     * Method that set the new GameController of the game
+     * @param gc0 the new gameController
+     */
     public static void initGame(GameController gc0) {
         gc = gc0;
     }
@@ -28,7 +35,7 @@ public class Action {
      * @param direction Indicate the direction of the swap 1 or -1
      */
     public static void swapHands(int direction) {
-        ArrayList<Hand> listHand = new ArrayList();
+        ArrayList<Hand> listHand = new ArrayList<>();
         for (int i = 0; i < gc.getPlayers().size(); i++) {
             listHand.add(gc.getPlayers().get(i).getHand());
         }
@@ -99,8 +106,11 @@ public class Action {
         return victory;
     }
     
+    /**
+     * This method permit to reinitialize the game's stock
+     */
     private static void reinitStock() {
-        LinkedList<Card> deck = new LinkedList(gc.getDiscard().getListCards());
+        LinkedList<Card> deck = new LinkedList<>(gc.getDiscard().getListCards());
     	Card firstCard = deck.removeFirst();
     	gc.getDiscard().reinit();
     	gc.getDiscard().addCard(firstCard);

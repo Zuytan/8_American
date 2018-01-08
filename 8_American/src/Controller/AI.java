@@ -6,8 +6,6 @@ import Model.Card;
 import Model.Discard;
 import Model.IStrategy;
 import Model.Player;
-import Model.StrategyRandom;
-import Model.StrategyStupid;
 import View.Observer;
 
 public class AI implements Observer {
@@ -22,12 +20,29 @@ public class AI implements Observer {
      */
     private int myNumber;
 
+    /**
+     * The game controller of the current game
+     */
     private GameController gc;
 
+    /**
+     * The discard of the current game
+     */
     private Discard d;
 
+    /**
+     * The list of all players in the current game
+     */
     private ArrayList<Player> players;
 
+    /**
+     * Basic contructor of the AI
+     * @param gc The gameControllerof the game where the AI is playing
+     * @param d The discard of the game
+     * @param players The ArrayList of Player in the game
+     * @param idOfAI The id of the AI in the game
+     * @param strategy The Strategy she have to apply
+     */
     public AI(GameController gc, Discard d, ArrayList<Player> players, int idOfAI, IStrategy strategy) {
         this.gc = gc;
         this.d = d;

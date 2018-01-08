@@ -26,6 +26,8 @@ public class MinimalRule extends Rule {
                     action = EnumAction.changeColor;
                     this.gc.setMessageAlert("The main color is going to change");
                     break;
+                default:
+                	break;
             }
         } else {
             this.gc.getPlayers().get(this.gc.getCurrentPlayer()).addCards(Action.draw(2));

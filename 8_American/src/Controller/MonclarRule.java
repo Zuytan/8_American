@@ -9,7 +9,6 @@ import Model.Card;
 import Model.CardColor;
 import Model.CardValue;
 import Model.EnumAction;
-import java.util.LinkedList;
 
 /**
  *
@@ -28,6 +27,8 @@ public class MonclarRule extends Rule {
                         case drawCard:
                             this.gc.getPlayers().get(this.gc.getCurrentPlayer()).addCards(Action.draw(1));
                             break;
+                        default:
+                        	break;
                     }
                 }
                 this.gc.getPlayers().get(this.gc.getCurrentPlayer()).getHand().addCard(card);
@@ -84,6 +85,8 @@ public class MonclarRule extends Rule {
                     Action.changePlayer();
                     Action.changeDirection();
                     break;
+                   default:
+                	   break;
             }
         } else if (card != null) {
             this.gc.getPlayers().get(this.gc.getCurrentPlayer()).addCards(Action.draw(2));

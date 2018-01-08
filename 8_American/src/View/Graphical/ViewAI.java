@@ -62,7 +62,9 @@ public class ViewAI extends JPanel implements View {
 			nbCard.setHorizontalAlignment(SwingConstants.CENTER);
 			nbCard.setForeground(Color.CYAN);
 			if (this.gc.getCurrentPlayer() == currentAI.getPosition()) {
-				nbCard.setBorder(BorderFactory.createLineBorder(Color.YELLOW, 5));
+				currentAIView.setBorder(BorderFactory.createLineBorder(Color.YELLOW, 5));
+			}else {
+				currentAIView.setBorder(null);
 			}
 			currentAIView.add(nbCard);
 		}

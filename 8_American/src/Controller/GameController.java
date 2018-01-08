@@ -13,12 +13,15 @@ import Model.Player;
 import Model.Stock;
 import Model.EnumAction;
 import java.util.LinkedList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class GameController extends Observable {
 
+	/*****************Attribute****************/
+	/**
+	 * Method That indicates if anyone in the game is victorious
+	 */
     private String victorious = null;
+    
     /**
      * Attribute that indicates the direction of game. 1 = clockwise -1 =
      * anti-clockwise
@@ -44,16 +47,38 @@ public class GameController extends Observable {
      * Attribute that represent the discard of the game
      */
     private Discard discard;
-    private LinkedList<EnumAction> listActionToDo = new LinkedList();
+    
+    /**
+     * Attribute that represent the list of action to do in the next player turn
+     */
+    private LinkedList<EnumAction> listActionToDo = new LinkedList<>();
+    
+    /**
+     * String that represent a message to show in the differents views
+     */
     private String messageAlert = "";
 
+    /**
+     * Attribute that represents the list of rules in the current game
+     */
     private ArrayList<Rule> listRules;
 
+    /**
+     * EnumAction that represent a specific act to do for the next player (choose a color, play a card, etc)
+     */
+    private EnumAction actToDo;
+
+    /**
+     * Attribute that represent the current rule of the game
+     */
+    private Rule currentRule;
+
+    /******************Getter & Setter *******************/
     public LinkedList<EnumAction> getListActionToDo() {
         return listActionToDo;
     }
 
-    public void setListActionToDo(LinkedList listActionToDo) {
+    public void setListActionToDo(LinkedList<EnumAction> listActionToDo) {
         this.listActionToDo = listActionToDo;
     }
 
@@ -104,9 +129,6 @@ public class GameController extends Observable {
     public int getCurrentPlayer() {
         return this.currentPlayer;
     }
-
-    private EnumAction actToDo;
-
     public EnumAction getActToDo() {
         return actToDo;
     }
@@ -114,9 +136,7 @@ public class GameController extends Observable {
     public String getVictorious() {
         return victorious;
     }
-
-    private Rule currentRule;
-
+    
     /**
      * Basic constructor of the class
      *
@@ -134,7 +154,6 @@ public class GameController extends Observable {
         this.currentRule = rule;
         this.currentRule.setGc(this);
         actToDo = EnumAction.none;
-        // TODO Auto-generated method stub
         this.direction = 1;
         this.currentPlayer = 0;
         this.stock = s;
@@ -219,19 +238,6 @@ public class GameController extends Observable {
         } else {
             Action.changePlayer();
         }
-    }
-
-    /**
-     * Method called at the beginning of the turn, apply the penalties
-     */
-    private void turnBeginning() {
-    }
-
-    /**
-     * Method called at the end of the turn, catch the penalties of the game
-     */
-    private void turnEnding() {
-
     }
 
     public void changeColor(int choice) throws InvalidInputException {
