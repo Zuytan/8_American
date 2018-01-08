@@ -77,7 +77,7 @@ public class Menu extends Observable {
         Player moi = new Player(this.playerName,0);
         GameController gc = new GameController(moi, this.nbIA, s, d, this.listRule.get(this.RuleToApply), this.listRule);
         GameView v = new ViewWindow(gc, s, d, gc.getPlayers(), 0);
-       //GameView v2 = new ConsoleView(gc, s, d, gc.getPlayers(), 0 );
+        //GameView v2 = new ConsoleView(gc, s, d, gc.getPlayers(), 0 );
         gc.addObserver(v);
         //gc.addObserver(v2);
         for (int i = 0; i < nbIA; i++) {

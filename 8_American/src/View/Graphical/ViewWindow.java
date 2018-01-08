@@ -72,22 +72,22 @@ public class ViewWindow extends GameView {
         vclc.setOpaque(false);
         this.win.add(vclc, BorderLayout.EAST);
         gc.addObserver(vclc);
-        
+
         // AI
         ViewAI va = new ViewAI(gc);
         va.setSize(110, win.WIDTH);
         va.setOpaque(false);
         this.win.add(va, BorderLayout.NORTH);
         gc.addObserver(va);
-        
-     // LAST MESSAGE INFO
+
+        // LAST MESSAGE INFO
         ViewMessageInfo vmi = new ViewMessageInfo(gc);
         vmi.setSize(110, this.win.HEIGHT);
         vmi.setOpaque(false);
         this.win.add(vmi, BorderLayout.WEST);
         gc.addObserver(vmi);
-        
-     // HAND OF PLAYER
+
+        // HAND OF PLAYER
         ViewHand vh = new ViewHand(gc);
         vh.setSize(110, win.WIDTH);
         vh.setOpaque(false);
@@ -99,23 +99,20 @@ public class ViewWindow extends GameView {
         StockNDiscard.setOpaque(false);
         StockNDiscard.setLayout(new GridLayout(2, 1));
         this.win.add(StockNDiscard, BorderLayout.CENTER);
-        
-     // STOCK
+
+        // STOCK
         ViewStock vs = new ViewStock(gc);
         vs.setSize(100, 150);
         vs.setOpaque(false);
         StockNDiscard.add(vs);
         gc.addObserver(vs);
-        
-     // DISCARD
+
+        // DISCARD
         ViewDiscard vd = new ViewDiscard(gc);
         vd.setSize(100, 150);
         vd.setOpaque(false);
         StockNDiscard.add(vd);
         gc.addObserver(vd);
-
-       
-
 
         //MENU
         /*
@@ -147,9 +144,9 @@ public class ViewWindow extends GameView {
         //qui s'appelle changeRule(int index) qui va changer la regle en fonction
         //de l'index pass� en param�tre. Il va donc falloir creer un controller qui 
         //appelle cette m�thode
-        for(int i =0;i<this.getGc().getListRules().size();i++){
-            JMenuItem rule = new JMenuItem(i+") "+this.getGc().getListRules().get(i).toString());
-            rule.addMouseListener(new ChangeRuleController(this.getGc(),rule,this.win));
+        for (int i = 0; i < this.getGc().getListRules().size(); i++) {
+            JMenuItem rule = new JMenuItem(i + ") " + this.getGc().getListRules().get(i).toString());
+            rule.addMouseListener(new ChangeRuleController(this.getGc(), rule, this.win));
             changeRule.add(rule);
         }
 
@@ -161,7 +158,7 @@ public class ViewWindow extends GameView {
     public void show() {
         Object[] options = {"Quit"};
         int n = JOptionPane.showOptionDialog(this.win,
-                this.getGc().getVictorious()+ " has won the game",
+                this.getGc().getVictorious() + " has won the game",
                 "End of Game",
                 JOptionPane.YES_NO_OPTION,
                 JOptionPane.QUESTION_MESSAGE,
@@ -175,7 +172,7 @@ public class ViewWindow extends GameView {
     }
 
     @Override
-    public  void update() {
+    public void update() {
         if (this.getGc().getVictorious() != null) {
             this.show();
         }
@@ -185,14 +182,17 @@ public class ViewWindow extends GameView {
             case changeColor:
                 if (this.getGc().getCurrentPlayer() == this.getRealIndexPlayer()) {
                     Object[] possibilities = {"spades", "hearts", "diamonds", "clubs"};
-                    String s = (String) JOptionPane.showInputDialog(
-                            this.win,
-                            "Choose the new color:\n",
-                            "Customized Dialog",
-                            JOptionPane.PLAIN_MESSAGE,
-                            UIManager.getIcon("FileView.fileIcon"),
-                            possibilities,
-                            "spades");
+                    String s = null;
+                    while (s == null) {
+                        s = (String) JOptionPane.showInputDialog(
+                                this.win,
+                                "Choose the new color:\n",
+                                "Customized Dialog",
+                                JOptionPane.PLAIN_MESSAGE,
+                                UIManager.getIcon("FileView.fileIcon"),
+                                possibilities,
+                                "spades");
+                    }
                     ColorChoiceController.convertChoiceToInt(s, this.getGc());
                 }
                 break;

@@ -1,7 +1,9 @@
 package Controller;
 
 import Model.Card;
+import Model.CardValue;
 import Model.EnumAction;
+import java.util.ArrayList;
 
 public abstract class Rule {
 
@@ -15,5 +17,6 @@ public abstract class Rule {
         public void setGc(GameController gc){
             this.gc = gc;
         }
+        public  abstract  ArrayList<CardValue> getListCardEffect();
         
 }

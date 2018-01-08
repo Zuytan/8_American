@@ -8,6 +8,7 @@ import Model.Card;
 import Model.CardColor;
 import Model.CardValue;
 import Model.IStrategy;
+import Model.StrategyEffectCard;
 import Model.StrategyRandom;
 import Model.StrategyStupid;
 import View.Console.MenuView;
@@ -23,6 +24,7 @@ public class Main {
         
         listStrategy.add(new StrategyRandom());
         listStrategy.add(new StrategyStupid());
+        listStrategy.add(new StrategyEffectCard());
 
         listRule.add(new MinimalRule());
         listRule.add(new MonclarRule());

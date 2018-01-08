@@ -4,6 +4,7 @@ import Model.Card;
 import Model.CardColor;
 import Model.CardValue;
 import Model.EnumAction;
+import java.util.ArrayList;
 
 public class MinimalRule extends Rule {
 
@@ -39,6 +40,14 @@ public class MinimalRule extends Rule {
     @Override
     public String toString() {
         return "Minimal Rule";
+    }
+
+    public ArrayList<CardValue> getListCardEffect() {
+        ArrayList<CardValue> list = new ArrayList();
+        list.add(CardValue.Ten);
+        list.add(CardValue.Eight);
+        list.add(CardValue.Joker);
+        return(list);
     }
 
 }

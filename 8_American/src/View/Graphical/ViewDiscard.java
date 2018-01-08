@@ -6,20 +6,13 @@
 package View.Graphical;
 
 import Model.Discard;
-import Model.Stock;
 import View.View;
 
-import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.JPanel;
-import javax.swing.Timer;
 
 import Controller.GameController;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *

@@ -9,6 +9,7 @@ import Model.Card;
 import Model.CardColor;
 import Model.CardValue;
 import Model.EnumAction;
+import java.util.ArrayList;
 
 /**
  *
@@ -99,6 +100,18 @@ public class MonclarRule extends Rule {
     @Override
     public String toString() {
         return "Monclar Rule";
+    }
+    
+    public ArrayList<CardValue> getListCardEffect() {
+        ArrayList<CardValue> list = new ArrayList();
+        list.add(CardValue.Ten);
+        list.add(CardValue.Eight);
+        list.add(CardValue.Jack);
+        list.add(CardValue.Seven);
+        list.add(CardValue.Nine);
+        list.add(CardValue.Ace);
+        list.add(CardValue.Joker);
+        return(list);
     }
 
 }
