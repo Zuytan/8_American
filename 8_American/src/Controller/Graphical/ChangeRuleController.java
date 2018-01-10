@@ -7,7 +7,6 @@ package Controller.Graphical;
 
 import Controller.GameController;
 import Exceptions.InvalidActionException;
-import Exceptions.InvalidInputException;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.BufferedReader;
@@ -17,7 +16,6 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
-import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 

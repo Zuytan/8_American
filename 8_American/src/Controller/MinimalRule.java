@@ -43,11 +43,11 @@ public class MinimalRule extends Rule {
     }
 
     public ArrayList<CardValue> getListCardEffect() {
-        ArrayList<CardValue> list = new ArrayList();
+        ArrayList<CardValue> list = new ArrayList<>();
         list.add(CardValue.Ten);
         list.add(CardValue.Eight);
         list.add(CardValue.Joker);
-        return(list);
+        return list;
     }
 
 }

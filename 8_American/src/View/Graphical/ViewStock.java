@@ -5,7 +5,6 @@
  */
 package View.Graphical;
 
-import Model.Stock;
 import View.View;
 
 import java.awt.Dimension;
@@ -18,6 +17,7 @@ import Controller.Graphical.StockClickController;
  *
  * @author joe
  */
+@SuppressWarnings("serial")
 public class ViewStock extends JPanel implements View{
 
     private GameController gc;

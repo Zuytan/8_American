@@ -1,16 +1,12 @@
 package View.Graphical;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.GridLayout;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 import javax.swing.JLabel;
-import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
@@ -19,6 +15,7 @@ import Model.Player;
 import View.View;
 import javax.swing.BorderFactory;
 
+@SuppressWarnings("serial")
 public class ViewAI extends JPanel implements View {
 	private GameController gc;
 	private ArrayList<ViewCard> myAI = new ArrayList<>();
@@ -30,7 +27,7 @@ public class ViewAI extends JPanel implements View {
 		Iterator<Player> itr = myPlayer.iterator();
 		itr.next(); // avoid real player 
 		while (itr.hasNext()) {
-			Player p1 = itr.next();
+			itr.next();
 			ViewCard vc = new ViewCard();
 			vc.setSize(100, 150);
 			this.add(vc);

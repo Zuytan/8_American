@@ -9,6 +9,7 @@ import Controller.GameController;
 import Model.CardColor;
 import View.View;
 
+@SuppressWarnings("serial")
 public class ViewColorLastCard extends JPanel implements View {
 
     private ViewCard color;

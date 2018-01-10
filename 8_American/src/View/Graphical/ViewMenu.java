@@ -13,14 +13,13 @@ import javax.swing.JTextField;
 
 import Controller.Menu;
 import Controller.Graphical.MenuController;
-import View.View;
 
-public class ViewMenu implements View{
+public class ViewMenu{
 	private JFrame win;
 	private Menu m;
-	private JComboBox nbAI;
-	private JComboBox strategy;
-	private JComboBox rule;
+	private JComboBox<Integer> nbAI;
+	private JComboBox<Object> strategy;
+	private JComboBox<Object> rule;
 	private JTextField name;
 	
 	public ViewMenu(Menu m) {
@@ -42,19 +41,19 @@ public class ViewMenu implements View{
 		JLabel nbAILabel = new JLabel("Number of AI :");
 		optionPane.add(nbAILabel);
 		Integer[] numberAI = {2,3,4};
-		this.nbAI = new JComboBox(numberAI);
+		this.nbAI = new JComboBox<>(numberAI);
 		this.nbAI.setSelectedItem(this.m.getNbIA());
 		optionPane.add(this.nbAI);
 		
 		JLabel strategyLabel = new JLabel("Select Strategy :");
 		optionPane.add(strategyLabel);
-		this.strategy = new JComboBox(this.m.getListStrategy().toArray());
+		this.strategy = new JComboBox<>(this.m.getListStrategy().toArray());
 		this.strategy.setSelectedIndex(this.m.getLevelOfAI());
 		optionPane.add(this.strategy);
 		
 		JLabel ruleLabel = new JLabel("Select Rule :");
 		optionPane.add(ruleLabel);
-		this.rule = new JComboBox(this.m.getListRule().toArray());
+		this.rule = new JComboBox<>(this.m.getListRule().toArray());
 		this.rule.setSelectedIndex(this.m.getRuleToApply());
 		optionPane.add(this.rule);
 		
@@ -71,26 +70,15 @@ public class ViewMenu implements View{
 		this.win.setVisible(true);
 	}
 
-	@Override
-	public  void update() {
-		// TODO Auto-generated method stub
-	}
-
-	@Override
-	public void show() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public JComboBox getNbAI() {
+	public JComboBox<Integer> getNbAI() {
 		return nbAI;
 	}
 
-	public JComboBox getStrategy() {
+	public JComboBox<Object> getStrategy() {
 		return strategy;
 	}
 
-	public JComboBox getRule() {
+	public JComboBox<Object> getRule() {
 		return rule;
 	}
 

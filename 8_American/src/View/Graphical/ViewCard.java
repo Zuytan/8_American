@@ -22,6 +22,7 @@ import javax.swing.JPanel;
  *
  * @author joe
  */
+@SuppressWarnings("serial")
 public class ViewCard extends JPanel implements View {
 
 	private Card card;

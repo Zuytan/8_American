@@ -7,7 +7,6 @@ package View.Console;
 
 import Controller.Menu;
 import View.View;
-import java.util.Iterator;
 import java.util.Scanner;
 
 /**
@@ -45,8 +44,9 @@ public class MenuView implements View {
                 }
             } catch (Exception e) {
                 System.err.println("Invalid choice !");
+            }finally {
+            	sc.close();
             }
-
         }
         switch (choice) {
             case 1:
@@ -85,6 +85,7 @@ public class MenuView implements View {
         System.out.println("Please insert your name : ");
         Scanner sc = new Scanner(System.in);
         name = sc.nextLine();
+        sc.close();
         this.menu.setPlayerName(name);
 
     }
@@ -108,6 +109,8 @@ public class MenuView implements View {
                 }
             } catch (Exception e) {
                 System.err.println("Invalid choice !");
+            }finally {
+            	sc.close();
             }
         }
         this.menu.setRuleToApply(choice - 1);
@@ -131,6 +134,8 @@ public class MenuView implements View {
                 }
             } catch (Exception e) {
                 System.err.println("Invalid choice !");
+            }finally {
+            	sc.close();
             }
         }
         this.menu.setLevelOfAI(choice - 1);
@@ -151,6 +156,8 @@ public class MenuView implements View {
                 }
             } catch (Exception e) {
                 System.err.println("Invalid choice !");
+            }finally {
+            	sc.close();
             }
         }
         this.menu.setNbIA(choice);

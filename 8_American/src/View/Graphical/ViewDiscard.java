@@ -18,6 +18,7 @@ import Controller.GameController;
  *
  * @author joe
  */
+@SuppressWarnings("serial")
 public class ViewDiscard extends JPanel implements View {
 
     private GameController gc;

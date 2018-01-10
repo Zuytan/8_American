@@ -17,6 +17,7 @@ import java.awt.BorderLayout;
 import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.image.BufferedImage;
+import java.awt.image.ImageObserver;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -48,6 +49,7 @@ public class ViewWindow extends GameView {
         this.win.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.win.setResizable(false);
         // BACKGROUND
+        @SuppressWarnings("serial")
         JPanel background = new JPanel() {
             @Override
             protected void paintComponent(Graphics g) {
@@ -68,28 +70,28 @@ public class ViewWindow extends GameView {
 
         // LAST CARD COLOR
         ViewColorLastCard vclc = new ViewColorLastCard(gc);
-        vclc.setSize(110, this.win.HEIGHT);
+        vclc.setSize(110, ImageObserver.HEIGHT);
         vclc.setOpaque(false);
         this.win.add(vclc, BorderLayout.EAST);
         gc.addObserver(vclc);
 
         // AI
         ViewAI va = new ViewAI(gc);
-        va.setSize(110, win.WIDTH);
+        va.setSize(110, ImageObserver.WIDTH);
         va.setOpaque(false);
         this.win.add(va, BorderLayout.NORTH);
         gc.addObserver(va);
 
         // LAST MESSAGE INFO
         ViewMessageInfo vmi = new ViewMessageInfo(gc);
-        vmi.setSize(110, this.win.HEIGHT);
+        vmi.setSize(110, ImageObserver.HEIGHT);
         vmi.setOpaque(false);
         this.win.add(vmi, BorderLayout.WEST);
         gc.addObserver(vmi);
 
         // HAND OF PLAYER
         ViewHand vh = new ViewHand(gc);
-        vh.setSize(110, win.WIDTH);
+        vh.setSize(110, ImageObserver.WIDTH);
         vh.setOpaque(false);
         this.win.add(vh, BorderLayout.SOUTH);
         gc.addObserver(vh);

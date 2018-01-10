@@ -155,6 +155,7 @@ public class ConsoleView extends GameView {
     	}
     	Scanner sc = new Scanner(System.in);
     	out = sc.nextInt()-1;
+    	sc.close();
     	return out;
     }
 }

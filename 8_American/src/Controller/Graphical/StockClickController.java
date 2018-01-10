@@ -7,7 +7,6 @@ package Controller.Graphical;
 
 import Controller.GameController;
 import Exceptions.InvalidActionException;
-import Exceptions.InvalidInputException;
 import View.Graphical.ViewCard;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;

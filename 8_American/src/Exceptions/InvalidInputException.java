@@ -9,8 +9,10 @@ package Exceptions;
  *
  * @author joe
  */
+@SuppressWarnings("serial")
 public class InvalidInputException extends Exception{
-        public InvalidInputException(){
+
+		public InvalidInputException(){
             super("Error : this input is not recognized ! try again");
     }
 }

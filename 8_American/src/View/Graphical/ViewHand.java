@@ -1,7 +1,5 @@
 package View.Graphical;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Dimension;
 
 import javax.swing.JPanel;
@@ -11,6 +9,7 @@ import Controller.Graphical.CardPlayerMouseController;
 import Model.Hand;
 import View.View;
 
+@SuppressWarnings("serial")
 public class ViewHand extends JPanel implements View{
 	
 	private GameController gc;

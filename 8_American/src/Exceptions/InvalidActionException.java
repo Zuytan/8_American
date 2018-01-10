@@ -9,8 +9,10 @@ package Exceptions;
  *
  * @author joe
  */
-public class InvalidActionException extends Exception{
-    public InvalidActionException(){
+@SuppressWarnings("serial")
+public final class InvalidActionException extends Exception{
+
+	public InvalidActionException(){
         super("Error : you can't realize this action now ! try again");
     }
 }

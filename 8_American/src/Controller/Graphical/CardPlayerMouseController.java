@@ -1,12 +1,7 @@
 package Controller.Graphical;
 
-import java.awt.AWTException;
-import java.awt.Robot;
-import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-
-import javax.swing.JPanel;
 
 import Controller.GameController;
 import Exceptions.InvalidActionException;
@@ -61,15 +56,9 @@ public class CardPlayerMouseController implements MouseListener {
     }
 
     @Override
-    public void mousePressed(MouseEvent arg0) {
-        // TODO Auto-generated method stub
-
-    }
+    public void mousePressed(MouseEvent arg0) {}
 
     @Override
-    public void mouseReleased(MouseEvent arg0) {
-        // TODO Auto-generated method stub
-
-    }
+    public void mouseReleased(MouseEvent arg0) {}
 
 }

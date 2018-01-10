@@ -102,8 +102,9 @@ public class MonclarRule extends Rule {
         return "Monclar Rule";
     }
     
+    @Override
     public ArrayList<CardValue> getListCardEffect() {
-        ArrayList<CardValue> list = new ArrayList();
+        ArrayList<CardValue> list = new ArrayList<>();
         list.add(CardValue.Ten);
         list.add(CardValue.Eight);
         list.add(CardValue.Jack);
@@ -111,7 +112,7 @@ public class MonclarRule extends Rule {
         list.add(CardValue.Nine);
         list.add(CardValue.Ace);
         list.add(CardValue.Joker);
-        return(list);
+        return list;
     }
 
 }

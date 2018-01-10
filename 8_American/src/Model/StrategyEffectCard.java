@@ -6,7 +6,6 @@
 package Model;
 
 import Controller.GameController;
-import Controller.Rule;
 import Exceptions.InvalidActionException;
 import Exceptions.InvalidInputException;
 import java.util.ArrayList;

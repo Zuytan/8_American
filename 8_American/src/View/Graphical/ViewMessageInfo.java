@@ -10,17 +10,14 @@ import View.View;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.GridLayout;
 import javax.swing.BorderFactory;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
-import javax.swing.border.LineBorder;
-
 /**
  *
  * @author joe
  */
+@SuppressWarnings("serial")
 public class ViewMessageInfo extends JPanel implements View {
 
     private GameController gc;
