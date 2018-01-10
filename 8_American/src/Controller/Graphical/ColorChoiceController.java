@@ -15,8 +15,14 @@ import java.util.logging.Logger;
  * @author joe
  */
 public class ColorChoiceController {
+	
+	private GameController gc;
 
-	public static void convertChoiceToInt(String choice, GameController gc) {
+	public ColorChoiceController(GameController gc) {
+		this.gc = gc;
+	}
+	
+	public void convertChoiceToInt(String choice) {
 		try {
 			switch (choice) {
 			case "clubs":

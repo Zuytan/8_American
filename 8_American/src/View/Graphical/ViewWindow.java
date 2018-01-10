@@ -195,7 +195,8 @@ public class ViewWindow extends GameView {
                                 possibilities,
                                 "spades");
                     }
-                    ColorChoiceController.convertChoiceToInt(s, this.getGc());
+                    ColorChoiceController ccc = new ColorChoiceController(this.getGc());
+                    ccc.convertChoiceToInt(s);
                 }
                 break;
             default:
