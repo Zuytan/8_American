@@ -7,7 +7,14 @@ import Model.Discard;
 import Model.IStrategy;
 import Model.Player;
 import View.Observer;
-
+/**
+ * A class representing an AI player.
+ * It use the pattern Strategy to choose the strategy to use.
+ * This class is an observer, it is notified at each turn.
+ * @author Raphaël
+ * @see Model.IStrategy
+ * @see View.Observer
+ */
 public class AI implements Observer {
 
     /**
@@ -37,7 +44,7 @@ public class AI implements Observer {
 
     /**
      * Basic contructor of the AI
-     * @param gc The gameControllerof the game where the AI is playing
+     * @param gc The gameController of the game where the AI is playing
      * @param d The discard of the game
      * @param players The ArrayList of Player in the game
      * @param idOfAI The id of the AI in the game
@@ -67,6 +74,9 @@ public class AI implements Observer {
         }
     }
 
+    /**
+     * Each time the update function is called, the AI test if it must plays now.
+     */
     @Override
     public void update() {
         if (this.gc.getCurrentPlayer() == this.myNumber && this.gc.getVictorious() == null) {

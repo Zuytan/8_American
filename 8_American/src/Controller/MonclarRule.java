@@ -12,8 +12,10 @@ import Model.EnumAction;
 import java.util.ArrayList;
 
 /**
+ * A class representing the Minimal rule of the game (from Wikipedia).
  *
- * @author joe
+ * @author Raphaël
+ * @see Controller.Rule
  */
 public class MonclarRule extends Rule {
 
@@ -29,7 +31,7 @@ public class MonclarRule extends Rule {
                             this.gc.getPlayers().get(this.gc.getCurrentPlayer()).addCards(Action.draw(1));
                             break;
                         default:
-                        	break;
+                            break;
                     }
                 }
                 this.gc.getPlayers().get(this.gc.getCurrentPlayer()).getHand().addCard(card);
@@ -86,8 +88,8 @@ public class MonclarRule extends Rule {
                     Action.changePlayer();
                     Action.changeDirection();
                     break;
-                   default:
-                	   break;
+                default:
+                    break;
             }
         } else if (card != null) {
             this.gc.getPlayers().get(this.gc.getCurrentPlayer()).addCards(Action.draw(2));
@@ -101,7 +103,7 @@ public class MonclarRule extends Rule {
     public String toString() {
         return "Monclar Rule";
     }
-    
+
     @Override
     public ArrayList<CardValue> getListCardEffect() {
         ArrayList<CardValue> list = new ArrayList<>();

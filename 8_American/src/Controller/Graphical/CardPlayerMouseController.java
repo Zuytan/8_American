@@ -8,11 +8,16 @@ import Exceptions.InvalidActionException;
 import Exceptions.InvalidInputException;
 import View.Graphical.ViewCard;
 
-
-
+/**
+ * A class which catch the mouse click on the card of the player
+ *
+ * @author Alexandre
+ * @see java.awt.event.MouseListener
+ * @see Controller.GameController
+ */
 public class CardPlayerMouseController implements MouseListener {
 
-    private  final int REAL_PLAYER_INDEX = 0;
+    private final int REAL_PLAYER_INDEX = 0;
     private GameController gc;
     private ViewCard p;
 
@@ -27,14 +32,14 @@ public class CardPlayerMouseController implements MouseListener {
         if (this.gc.getCurrentPlayer() == REAL_PLAYER_INDEX) {
             int index = this.gc.getPlayers().get(this.gc.getCurrentPlayer()).getHand().getListCards().indexOf(this.p.getCard());
             Thread th = new Thread(new Runnable() {
-            	public void run() {
-            		try {
+                public void run() {
+                    try {
                         gc.playCard(index);
                     } catch (InvalidInputException | InvalidActionException e) {
                         // TODO Auto-generated catch block
                         e.printStackTrace();
                     }
-            	}
+                }
             });
             th.start();
         }
@@ -56,9 +61,11 @@ public class CardPlayerMouseController implements MouseListener {
     }
 
     @Override
-    public void mousePressed(MouseEvent arg0) {}
+    public void mousePressed(MouseEvent arg0) {
+    }
 
     @Override
-    public void mouseReleased(MouseEvent arg0) {}
+    public void mouseReleased(MouseEvent arg0) {
+    }
 
 }

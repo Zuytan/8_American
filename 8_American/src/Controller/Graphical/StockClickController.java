@@ -12,11 +12,20 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 /**
+ * A class which catch the mouse click on the stock and allows to draw a card
  *
- * @author joe
+ * @author Raphaël
+ * @see java.awt.event.MouseListener
+ * @see Controller.GameController
  */
 public class StockClickController implements MouseListener{
+    /**
+     * The real player is always on the first position in the list of players
+     */
     private  final int REAL_PLAYER_INDEX = 0;
+    /**
+     * The game controller of the game
+     */
     private GameController gc;
     private ViewCard p;
 
@@ -24,10 +33,13 @@ public class StockClickController implements MouseListener{
         this.gc = gc;
         this.p = p;
     }
-
+    /**
+     * Verify if it's your turn before draw the card
+     * @param arg0 
+     * @see Thread
+     */
     @Override
     public void mouseClicked(MouseEvent arg0) {
-        // TODO Auto-generated method stub
         if (this.gc.getCurrentPlayer() == REAL_PLAYER_INDEX) {
         	Thread th = new Thread(new Runnable() {
 				@Override

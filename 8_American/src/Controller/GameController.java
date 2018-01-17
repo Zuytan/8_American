@@ -14,14 +14,23 @@ import Model.Stock;
 import Model.EnumAction;
 import java.util.LinkedList;
 
+/**
+ * A class representing a game controller, it contains the logic of the
+ * application.
+ *
+ * @author Raphaël
+ * @see Controller.Observable
+ */
 public class GameController extends Observable {
 
-	/*****************Attribute****************/
-	/**
-	 * Method That indicates if anyone in the game is victorious
-	 */
+    /**
+     * ***************Attribute***************
+     */
+    /**
+     * Method That indicates if anyone in the game is victorious
+     */
     private String victorious = null;
-    
+
     /**
      * Attribute that indicates the direction of game. 1 = clockwise -1 =
      * anti-clockwise
@@ -47,12 +56,12 @@ public class GameController extends Observable {
      * Attribute that represent the discard of the game
      */
     private Discard discard;
-    
+
     /**
      * Attribute that represent the list of action to do in the next player turn
      */
     private LinkedList<EnumAction> listActionToDo = new LinkedList<>();
-    
+
     /**
      * String that represent a message to show in the differents views
      */
@@ -64,7 +73,8 @@ public class GameController extends Observable {
     private ArrayList<Rule> listRules;
 
     /**
-     * EnumAction that represent a specific act to do for the next player (choose a color, play a card, etc)
+     * EnumAction that represent a specific act to do for the next player
+     * (choose a color, play a card, etc)
      */
     private EnumAction actToDo;
 
@@ -73,7 +83,9 @@ public class GameController extends Observable {
      */
     private Rule currentRule;
 
-    /******************Getter & Setter *******************/
+    /**
+     * ****************Getter & Setter ******************
+     */
     public LinkedList<EnumAction> getListActionToDo() {
         return listActionToDo;
     }
@@ -82,6 +94,12 @@ public class GameController extends Observable {
         this.listActionToDo = listActionToDo;
     }
 
+    /**
+     * The messageAlert is set to null in order to avoid showing useless
+     * message.
+     *
+     * @return
+     */
     public String getMessageAlert() {
         String tmp = this.messageAlert;
         this.messageAlert = null;
@@ -116,6 +134,13 @@ public class GameController extends Observable {
         return currentRule;
     }
 
+    /**
+     * The listActionToDO is cleared here because the possible actions are
+     * different in each type of rule.
+     *
+     * @param currentRule
+     * @see Controller.Rule
+     */
     public void setCurrentRule(Rule currentRule) {
         this.currentRule = currentRule;
         this.currentRule.setGc(this);
@@ -129,6 +154,7 @@ public class GameController extends Observable {
     public int getCurrentPlayer() {
         return this.currentPlayer;
     }
+
     public EnumAction getActToDo() {
         return actToDo;
     }
@@ -136,7 +162,7 @@ public class GameController extends Observable {
     public String getVictorious() {
         return victorious;
     }
-    
+
     /**
      * Basic constructor of the class
      *
@@ -161,7 +187,7 @@ public class GameController extends Observable {
         this.discard = d;
         this.players.add(player);
         for (int i = 1; i <= nbAI; i++) {
-            this.players.add(new Player("AI " + i,i));
+            this.players.add(new Player("AI " + i, i));
         }
         Iterator<Player> itrPlayer = players.iterator();
         while (itrPlayer.hasNext()) {
@@ -239,7 +265,11 @@ public class GameController extends Observable {
             Action.changePlayer();
         }
     }
-
+/**
+ * Method called by the View OR by an AI to change the current color.
+ * @param choice
+ * @throws InvalidInputException 
+ */
     public void changeColor(int choice) throws InvalidInputException {
         if (choice < 1 || choice >= 5) { // avoid nonsense choice
             throw new InvalidInputException();

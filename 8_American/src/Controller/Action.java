@@ -6,16 +6,20 @@ import java.util.LinkedList;
 
 import Model.Card;
 import Model.Hand;
-
+/**
+ * A class representing the different actions useful for the game.
+ * @author Raphaël
+ */
 public class Action {
 
-	/**
-	 *	The current Game Controller  of the game
-	 */
+    /**
+     * The current Game Controller of the game
+     */
     private static GameController gc;
 
     /**
      * Method that set the new GameController of the game
+     *
      * @param gc0 the new gameController
      */
     public static void initGame(GameController gc0) {
@@ -62,7 +66,7 @@ public class Action {
     }
 
     public static void putOnDiscard(Card c) {
-        if(c != null){
+        if (c != null) {
             gc.getDiscard().addCard(c);
         }
     }
@@ -73,15 +77,15 @@ public class Action {
      * @param nbCard the number of card which is needed
      */
     public static ArrayList<Card> draw(int nbCard) {
-    	ArrayList<Card> cardPicked = new ArrayList<>();
-    	for (int i = 0; i < nbCard; i++) {
-    		if(gc.getStock().getNbCard() == 0) {
-        		reinitStock();
-        	}
-    		cardPicked.add(gc.getStock().pick());
-		}
+        ArrayList<Card> cardPicked = new ArrayList<>();
+        for (int i = 0; i < nbCard; i++) {
+            if (gc.getStock().getNbCard() == 0) {
+                reinitStock();
+            }
+            cardPicked.add(gc.getStock().pick());
+        }
         return cardPicked;
-        
+
     }
 
     /**
@@ -90,7 +94,7 @@ public class Action {
     public static void changePlayer() {
         int maxValue = gc.getPlayers().size();
         int baseValue = (gc.getCurrentPlayer() + gc.getDirection()) % maxValue; // suppression des cas avec Modulo négatif
-        gc.setCurrentPlayer((baseValue+maxValue)%maxValue);
+        gc.setCurrentPlayer((baseValue + maxValue) % maxValue);
     }
 
     /**
@@ -105,16 +109,16 @@ public class Action {
         }
         return victory;
     }
-    
+
     /**
      * This method permit to reinitialize the game's stock
      */
     private static void reinitStock() {
         LinkedList<Card> deck = new LinkedList<>(gc.getDiscard().getListCards());
-    	Card firstCard = deck.removeFirst();
-    	gc.getDiscard().reinit();
-    	gc.getDiscard().addCard(firstCard);
-    	Collections.shuffle(deck);
-    	gc.getStock().fillStock(deck);
+        Card firstCard = deck.removeFirst();
+        gc.getDiscard().reinit();
+        gc.getDiscard().addCard(firstCard);
+        Collections.shuffle(deck);
+        gc.getStock().fillStock(deck);
     }
 }

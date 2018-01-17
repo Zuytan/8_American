@@ -10,8 +10,9 @@ import View.View;
 import java.util.Scanner;
 
 /**
+ * A class which represent the menu of the game in the console.
  *
- * @author joe
+ * @author Raphaël
  */
 public class MenuView implements View {
 
@@ -22,6 +23,12 @@ public class MenuView implements View {
         this.menu = m;
     }
 
+    /**
+     * This method show the actual setting of the game and ask the player to
+     * change these settings or the run the game. If the informations entered
+     * are not valid the menu will continues to ask the player to change the
+     * settings
+     */
     @Override
     public void show() {
         boolean goodChoice = false;
@@ -29,10 +36,10 @@ public class MenuView implements View {
         while (!goodChoice) {
             System.out.println("What do you want to do ?");
             System.out.println("1. Play the game");
-            System.out.println("2. Set your name (currently : "+this.menu.getPlayerName()+")");
-            System.out.println("3. Set the rule (currently : "+this.menu.getListRule().get(this.menu.getRuleToApply())+")");
-            System.out.println("4. Set the level of the AI (currently : level "+this.menu.getLevelOfAI()+")");
-            System.out.println("5. Set the number of AI (currently : "+this.menu.getNbIA()+")");
+            System.out.println("2. Set your name (currently : " + this.menu.getPlayerName() + ")");
+            System.out.println("3. Set the rule (currently : " + this.menu.getListRule().get(this.menu.getRuleToApply()) + ")");
+            System.out.println("4. Set the level of the AI (currently : level " + this.menu.getLevelOfAI() + ")");
+            System.out.println("5. Set the number of AI (currently : " + this.menu.getNbIA() + ")");
             System.out.println("6. Leave the game");
             Scanner sc = new Scanner(System.in);
             try {
@@ -44,8 +51,8 @@ public class MenuView implements View {
                 }
             } catch (Exception e) {
                 System.err.println("Invalid choice !");
-            }finally {
-            	sc.close();
+            } finally {
+                sc.close();
             }
         }
         switch (choice) {
@@ -109,8 +116,8 @@ public class MenuView implements View {
                 }
             } catch (Exception e) {
                 System.err.println("Invalid choice !");
-            }finally {
-            	sc.close();
+            } finally {
+                sc.close();
             }
         }
         this.menu.setRuleToApply(choice - 1);
@@ -134,8 +141,8 @@ public class MenuView implements View {
                 }
             } catch (Exception e) {
                 System.err.println("Invalid choice !");
-            }finally {
-            	sc.close();
+            } finally {
+                sc.close();
             }
         }
         this.menu.setLevelOfAI(choice - 1);
@@ -156,8 +163,8 @@ public class MenuView implements View {
                 }
             } catch (Exception e) {
                 System.err.println("Invalid choice !");
-            }finally {
-            	sc.close();
+            } finally {
+                sc.close();
             }
         }
         this.menu.setNbIA(choice);

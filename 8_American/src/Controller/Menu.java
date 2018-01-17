@@ -14,36 +14,37 @@ import View.Graphical.ViewWindow;
 import java.util.ArrayList;
 
 /**
+ * A class representing a Menu for the game.
  *
- * @author joe
+ * @author Raphaël
  */
 public class Menu extends Observable {
 
-	/**
-	 * List of strategies that can be played
-	 */
+    /**
+     * List of strategies that can be played
+     */
     private final ArrayList<IStrategy> listStrategy;
-    
+
     /**
      * List of rules that can be played with
      */
     private final ArrayList<Rule> listRule;
-    
+
     /**
      * The current number of AI
      */
     private int nbIA = 2;
-    
+
     /**
      * The current Player name
      */
-    private String playerName = "toto"; 
-    
+    private String playerName = "toto";
+
     /**
      * The current level of AI
      */
     private int levelOfAI = 1;
-    
+
     /**
      * The current rule to Apply
      */
@@ -93,14 +94,17 @@ public class Menu extends Observable {
         this.listStrategy = listStrategy;
         this.listRule = listRule;
     }
-
+    
+    /**
+     * Method where the game is initialialised.
+     */
     public void play() {
         Stock s = new Stock();
         Discard d = new Discard();
-        Player moi = new Player(this.playerName,0);
+        Player moi = new Player(this.playerName, 0);
         GameController gc = new GameController(moi, this.nbIA, s, d, this.listRule.get(this.RuleToApply), this.listRule);
         GameView v = new ViewWindow(gc, s, d, gc.getPlayers(), 0);
-       //GameView v2 = new ConsoleView(gc, s, d, gc.getPlayers(), 0 );
+        //GameView v2 = new ConsoleView(gc, s, d, gc.getPlayers(), 0 );
         gc.addObserver(v);
         //gc.addObserver(v2);
         for (int i = 0; i < nbIA; i++) {
@@ -108,8 +112,8 @@ public class Menu extends Observable {
         }
         gc.start();
     }
-    
-    public void start(){
+
+    public void start() {
         this.notifyAllObs();
     }
 

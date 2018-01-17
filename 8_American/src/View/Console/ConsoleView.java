@@ -13,9 +13,21 @@ import Model.Discard;
 import Model.Player;
 import Model.Stock;
 
+/**
+ * A class representing the view of the game in the console.
+ *
+ * @author Raphael
+ * @see GameView
+ */
 public class ConsoleView extends GameView {
 
-	private Scanner sc = null;
+    /**
+     * A Scanner for reading the user input.
+     */
+    private Scanner sc = null;
+    /**
+     * A color, useful for a lisible interface
+     */
     public static final String ANSI_RESET = "\u001B[0m";
     public static final String ANSI_BLACK = "\u001B[30m";
     public static final String ANSI_RED = "\u001B[31m";
@@ -30,10 +42,17 @@ public class ConsoleView extends GameView {
         super(gc, s, d, players, realIndexPlayer);
     }
 
+    /**
+     * A method which call the needed function depending on the state of the
+     * game.
+     *
+     * @see show()
+     * @see askCardToPlay()
+     * @see askColorChange()
+     */
     @Override
     public void update() {
-    	System.out.println("update fait");
-    	this.sc = null;
+        this.sc = null;
         if (this.getGc().getVictorious() != null) {
             System.out.println(ANSI_GREEN + "The winner is : " + this.getGc().getVictorious() + ANSI_RESET);
         } else {
@@ -56,6 +75,9 @@ public class ConsoleView extends GameView {
         }
     }
 
+    /**
+     * Ask to the player the new color for the game.
+     */
     private void askColorChange() {
         // TODO Auto-generated method stub
         System.out.println("Which Color do you want ?");
@@ -80,6 +102,10 @@ public class ConsoleView extends GameView {
 
     }
 
+    /**
+     * Ask the player which card he wants to play. The choice is represented by
+     * a number from 0 to the number of card of the player.
+     */
     public void askCardToPlay() {
         // TODO Auto-generated method stub
         this.sc = new Scanner(System.in);
@@ -93,7 +119,7 @@ public class ConsoleView extends GameView {
             System.out.println(i + ") " + this.getPlayers().get(currentPlayer).getHand().getListCards().get(i - 1));
         }
         System.out.println("-----------------");
-        System.out.println(ANSI_PURPLE+(nbCardCurrentPlayer+1)+") Change the current rule"+ANSI_RESET);
+        System.out.println(ANSI_PURPLE + (nbCardCurrentPlayer + 1) + ") Change the current rule" + ANSI_RESET);
         System.out.println("What do you want to play, " + this.getGc().getPlayers().get(this.getGc().getCurrentPlayer()) + "?");
         try {
             choice = sc.nextInt();
@@ -109,13 +135,13 @@ public class ConsoleView extends GameView {
                 this.askCardToPlay();
             }
 
-        }else if(choice == nbCardCurrentPlayer+1) {
-        	try {
-				this.getGc().changeRule(this.changeRule());
-			} catch (InvalidActionException e) {
-				System.out.println(ANSI_RED + e.getMessage() + ANSI_RESET);
+        } else if (choice == nbCardCurrentPlayer + 1) {
+            try {
+                this.getGc().changeRule(this.changeRule());
+            } catch (InvalidActionException e) {
+                System.out.println(ANSI_RED + e.getMessage() + ANSI_RESET);
                 this.askCardToPlay();
-			}
+            }
         } else {
             try {
                 super.getGc().playCard(choice - 1);
@@ -126,6 +152,11 @@ public class ConsoleView extends GameView {
         }
     }
 
+    /**
+     * This method show the actual state of the gam : the number of card in the
+     * stock the number of card in the discard the hand of the player the first
+     * card on the discard the actual color the message if there is one
+     */
     @Override
     public void show() {
         // TODO Auto-generated method stub
@@ -144,18 +175,24 @@ public class ConsoleView extends GameView {
 
     }
 
+    /**
+     * A method which show to the player the different rules available and ask
+     * him to make a choice.
+     *
+     * @return
+     */
     private int changeRule() {
-    	int out, i=1;
-    	System.out.println("The current rule is "+this.getGc().getCurrentRule());
-    	System.out.println("What rule do you want ?");
-    	Iterator<Rule> itr = this.getGc().getListRules().iterator();
-    	while(itr.hasNext()) {
-    		System.out.println(i+". "+itr.next());
-    		i++;
-    	}
-    	Scanner sc = new Scanner(System.in);
-    	out = sc.nextInt()-1;
-    	sc.close();
-    	return out;
+        int out, i = 1;
+        System.out.println("The current rule is " + this.getGc().getCurrentRule());
+        System.out.println("What rule do you want ?");
+        Iterator<Rule> itr = this.getGc().getListRules().iterator();
+        while (itr.hasNext()) {
+            System.out.println(i + ". " + itr.next());
+            i++;
+        }
+        Scanner sc = new Scanner(System.in);
+        out = sc.nextInt() - 1;
+        sc.close();
+        return out;
     }
 }

@@ -6,6 +6,12 @@ import Model.CardValue;
 import Model.EnumAction;
 import java.util.ArrayList;
 
+/**
+ * A class representing the Minimal rule of the game (from Wikipedia).
+ *
+ * @author Raphaël
+ * @see Controller.Rule
+ */
 public class MinimalRule extends Rule {
 
     @Override
@@ -28,7 +34,7 @@ public class MinimalRule extends Rule {
                     this.gc.setMessageAlert("The main color is going to change");
                     break;
                 default:
-                	break;
+                    break;
             }
         } else {
             this.gc.getPlayers().get(this.gc.getCurrentPlayer()).addCards(Action.draw(2));

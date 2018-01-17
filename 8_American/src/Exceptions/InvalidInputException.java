@@ -6,8 +6,9 @@
 package Exceptions;
 
 /**
+ * A class which describe the message to show when the exception occured
  *
- * @author joe
+ * @author Raphaël
  */
 @SuppressWarnings("serial")
 public class InvalidInputException extends Exception{

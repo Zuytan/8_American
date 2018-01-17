@@ -4,6 +4,11 @@ import java.util.ArrayList;
 
 import View.Observer;
 
+/**
+ * A class useful to implement the design-pattern Observable/Observer
+ *
+ * @author Raphaël
+ */
 public abstract class Observable {
 
     private ArrayList<Observer> listObservers = new ArrayList<>();

@@ -6,8 +6,9 @@
 package Exceptions;
 
 /**
+ * A class which describe the message to show when the exception is catched
  *
- * @author joe
+ * @author Raphaël
  */
 @SuppressWarnings("serial")
 public final class InvalidActionException extends Exception{

@@ -20,8 +20,11 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 
 /**
+ * A class which catch the mouse click on the menu "changeRule"
  *
- * @author joe
+ * @author Raphaël
+ * @see java.awt.event.MouseListener
+ * @see Controller.GameController
  */
 public class ChangeRuleController implements MouseListener {
 
@@ -40,10 +43,6 @@ public class ChangeRuleController implements MouseListener {
     public void mouseClicked(MouseEvent me) {
     }
 
-    /*
-    Pour une raison encore obscure un MenuItem ne reçoit pas les mouseClicked
-    Mais uniquement les mousePressed o_O
-     */
     @Override
     public void mousePressed(MouseEvent me) {
         if (this.gc.getCurrentPlayer() == REAL_PLAYER_INDEX) {
