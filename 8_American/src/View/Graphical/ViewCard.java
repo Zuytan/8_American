@@ -91,7 +91,7 @@ public class ViewCard extends JPanel implements View {
 
 	/**
 	 * Setter of the image
-	 * @param name
+	 * @param name the image name
 	 */
 	public void setImage(String name) {
 		// TODO Auto-generated method stub

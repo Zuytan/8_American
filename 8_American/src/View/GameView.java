@@ -28,9 +28,6 @@ public abstract class GameView implements View{
 	/**
 	 * Basic construct of the basic view
 	 * @param gc GameController of the game 
-	 * @param s Stock of the game 
-	 * @param d Discard of the game 
-	 * @param players players of the game 
 	 * @param realIndexPlayer Index of the real player in the game 
 	 */
 	public GameView(GameController gc,  int realIndexPlayer) {

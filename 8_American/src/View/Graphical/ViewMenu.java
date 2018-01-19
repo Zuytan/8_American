@@ -20,7 +20,7 @@ import Controller.Graphical.MenuController;
 /**
  * The class that represent the view of the menu
  * @author Alexandre
- * @see Model.Menu
+ * @see Controller.Menu
  * @see JFrame
  *
  */

@@ -57,14 +57,18 @@ public class Action {
     /**
      * The controller is asking the model for the card indicate in parameter and
      * play it on the game
-     *
      * @param indexCard The index of the card the player want to play
+     * @return the card to play
      */
     public static Card playCard(int indexCard) {
         Card playedCard = gc.getPlayers().get(gc.getCurrentPlayer()).playCard(indexCard);
         return playedCard;
     }
 
+    /**
+     * Method that put a card on the the discard
+     * @param c Card to put on the discard
+     */
     public static void putOnDiscard(Card c) {
         if (c != null) {
             gc.getDiscard().addCard(c);
@@ -75,6 +79,7 @@ public class Action {
      * Put a number of card in the current player
      *
      * @param nbCard the number of card which is needed
+     * @return The list of card which were be drawn
      */
     public static ArrayList<Card> draw(int nbCard) {
         ArrayList<Card> cardPicked = new ArrayList<>();

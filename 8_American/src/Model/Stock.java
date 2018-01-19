@@ -39,7 +39,6 @@ public class Stock extends Deck {
     /**
      * Method that return the nbCard Cards at the top of the deck
      *
-     * @param nbCard The number of card to pick
      * @return the nbCard Cards at the top of the deck
      */
     public Card pick() {

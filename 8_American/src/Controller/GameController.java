@@ -24,9 +24,6 @@ import java.util.LinkedList;
 public class GameController extends Observable {
 
     /**
-     * ***************Attribute***************
-     */
-    /**
      * Method That indicates if anyone in the game is victorious
      */
     private String victorious = null;
@@ -83,9 +80,7 @@ public class GameController extends Observable {
      */
     private Rule currentRule;
 
-    /**
-     * ****************Getter & Setter ******************
-     */
+
     public LinkedList<EnumAction> getListActionToDo() {
         return listActionToDo;
     }
@@ -95,10 +90,10 @@ public class GameController extends Observable {
     }
 
     /**
+     * Getter of the message
      * The messageAlert is set to null in order to avoid showing useless
      * message.
-     *
-     * @return
+     * @return The current message 
      */
     public String getMessageAlert() {
         String tmp = this.messageAlert;
@@ -135,10 +130,11 @@ public class GameController extends Observable {
     }
 
     /**
+     * The setter of the current rule in the game
      * The listActionToDO is cleared here because the possible actions are
      * different in each type of rule.
      *
-     * @param currentRule
+     * @param currentRule The new rule to apply
      * @see Controller.Rule
      */
     public void setCurrentRule(Rule currentRule) {
@@ -165,14 +161,12 @@ public class GameController extends Observable {
 
     /**
      * Basic constructor of the class
-     *
-     * @param direction Indicate the direction of the game <br>
-     * 1 = clockwise <br>
-     * -1 = anti-clockwise
-     * @param nbPlayer Indicate the number of player in the game
-     * @param realPlayerIndex Indicate the real player index
-     * @param d
-     * @param s
+     * @param player The real player of the game
+     * @param nbAI The number of AI in the game
+     * @param s The Stock of the game
+     * @param d The discard of the game
+     * @param rule The rule of the game
+     * @param rules The differents rules of the game
      */
     public GameController(Player player, int nbAI, Stock s, Discard d, Rule rule, ArrayList<Rule> rules) {
         this.listRules = rules;
@@ -199,11 +193,12 @@ public class GameController extends Observable {
 
     }
 
-    /**
-     * Method called by the view to indicate the card the player want to play
-     *
-     * @param index index of the card
-     */
+   /**
+    * Method called by the view to indicate the card the player want to play
+    * @param index Index that indicate the card to play
+    * @throws InvalidInputException If the given input isn't valid
+    * @throws InvalidActionException If the action isn't valid currently
+    */
     public void playCard(int index) throws InvalidInputException, InvalidActionException {
 
         if (index >= this.players.get(this.currentPlayer).getHand().getNbCard() || index < 0) {
@@ -244,6 +239,7 @@ public class GameController extends Observable {
 
     /**
      * Method called by the view to indicate that the player want to draw a card
+     * @throws InvalidActionException If the action isn't valid currently
      */
     public void drawCard() throws InvalidActionException {
         if (!this.listActionToDo.isEmpty()) {
@@ -267,8 +263,8 @@ public class GameController extends Observable {
     }
 /**
  * Method called by the View OR by an AI to change the current color.
- * @param choice
- * @throws InvalidInputException 
+ * @param choice The choice of the color
+ * @throws InvalidInputException if the index is invalid
  */
     public void changeColor(int choice) throws InvalidInputException {
         if (choice < 1 || choice >= 5) { // avoid nonsense choice

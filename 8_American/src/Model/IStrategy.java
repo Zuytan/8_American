@@ -11,9 +11,12 @@ import Controller.GameController;
  */
 public interface IStrategy {
 	
-	/**
-	 * Method that execute a strategy 
-	 */
+/**
+ * Method that execute a strategy 
+ * @param d The discard of the game
+ * @param HandOfAI The hand of the current AI
+ * @param gc the game controller
+ */
 	public void execute(Discard d, ArrayList<Card> HandOfAI, GameController gc);
 	
 	/**

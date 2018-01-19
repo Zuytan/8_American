@@ -35,7 +35,7 @@ public class StockClickController implements MouseListener{
     }
     /**
      * Verify if it's your turn before draw the card
-     * @param arg0 
+     * @param arg0 The evenent occured in the window
      * @see Thread
      */
     @Override

@@ -24,9 +24,9 @@ public class MenuController implements MouseListener {
     }
 
     /**
-     * set all the important parameter of the game and then run the game
+     * Set all the important parameter of the game and then run the game
      *
-     * @param arg0
+     * @param arg0 The event occured in the window
      */
     @Override
     public void mouseClicked(MouseEvent arg0) {
