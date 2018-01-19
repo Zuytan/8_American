@@ -14,18 +14,35 @@ import Controller.GameController;
 import Model.Player;
 import View.View;
 import javax.swing.BorderFactory;
-
+/**
+ * Class That represents the panel of the AI
+ * @author Alexandre
+ * @see JPanel
+ * @see View.View
+ * @see View.Graphical.ViewCard
+ */
 @SuppressWarnings("serial")
 public class ViewAI extends JPanel implements View {
+	/**
+	 * The game controller of the game that represents this panel
+	 */
 	private GameController gc;
+	
+	/**
+	 * The graphical view of the ViewCard
+	 */
 	private ArrayList<ViewCard> myAI = new ArrayList<>();
 
+	/**
+	 * Method that create the view of the AIs
+	 * @param gc The gamecontroller of the game
+	 */
 	public ViewAI(GameController gc) {
 		this.gc = gc;
 		this.update();
 		ArrayList<Player> myPlayer = gc.getPlayers();
 		Iterator<Player> itr = myPlayer.iterator();
-		itr.next(); // avoid real player 
+		itr.next(); // avoid real player
 		while (itr.hasNext()) {
 			itr.next();
 			ViewCard vc = new ViewCard();
@@ -37,38 +54,35 @@ public class ViewAI extends JPanel implements View {
 
 	@Override
 	public Dimension getMinimumSize() {
-		// TODO Auto-generated method stub
 		return super.getSize();
 	}
 
 	@Override
 	public void update() {
-		// TODO Auto-generated method stub
 		ArrayList<Player> p = this.gc.getPlayers();
-		
 		Iterator<Player> itrP = p.iterator();
 		itrP.next();
-		Iterator<ViewCard> itrVC = this.myAI.iterator(); 
-		while(itrP.hasNext() && itrVC.hasNext()){
+		Iterator<ViewCard> itrVC = this.myAI.iterator();
+		while (itrP.hasNext() && itrVC.hasNext()) {
 			ViewCard currentAIView = itrVC.next();
 			currentAIView.removeAll();
 			Player currentAI = itrP.next();
-			JLabel nbCard = new JLabel( currentAI + " : " + currentAI.getHand().getNbCard());
+			JLabel nbCard = new JLabel(currentAI + " : " + currentAI.getHand().getNbCard());
 			nbCard.setPreferredSize(new Dimension(100, 150));
 			nbCard.setFont(new Font("Arial", Font.CENTER_BASELINE, 20));
 			nbCard.setHorizontalAlignment(SwingConstants.CENTER);
 			nbCard.setForeground(Color.CYAN);
 			if (this.gc.getCurrentPlayer() == currentAI.getPosition()) {
 				currentAIView.setBorder(BorderFactory.createLineBorder(Color.YELLOW, 5));
-			}else {
+			} else {
 				currentAIView.setBorder(null);
 			}
 			currentAIView.add(nbCard);
 		}
-		
+
 		this.revalidate();
 		this.repaint();
-		
+
 	}
 
 }

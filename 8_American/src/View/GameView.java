@@ -8,56 +8,69 @@ import Model.Player;
 import Model.Stock;
 import View.View;
 
+/**
+ * Abstract class for the views of the game in general
+ * @author Alexandre
+ * @see View.View
+ */
 public abstract class GameView implements View{
 	
 	/**
 	 * Attribute that represents the human position in the game
 	 */
 	private int myNumber;
-	/**
-	 * Attribute that represents the list of player of the game 
-	 */
-	private ArrayList<Player> players;
-	
-	/**
-	 * Attribute that represents the discard of the game
-	 */
-	private Discard discard;
-	
-	/**
-	 * Attribute that represents the stock of the game
-	 */
-	private Stock stock;
-	
+
 	/**
 	 * Attribute that allows the view to inform the controller of any action
 	 */
 	private GameController gc;
 	
-	public GameView(GameController gc, Stock s, Discard d, ArrayList<Player> players, int realIndexPlayer) {
-		this.discard = d;
-		this.stock = s;
-		this.players = players;
+	/**
+	 * Basic construct of the basic view
+	 * @param gc GameController of the game 
+	 * @param s Stock of the game 
+	 * @param d Discard of the game 
+	 * @param players players of the game 
+	 * @param realIndexPlayer Index of the real player in the game 
+	 */
+	public GameView(GameController gc,  int realIndexPlayer) {
 		this.gc = gc;
 		this.myNumber = realIndexPlayer;
 	}
 	
+	/**
+	 * Getter of the players
+	 * @return the players of the game 
+	 */
 	protected ArrayList<Player> getPlayers() {
-		return players;
+		return this.gc.getPlayers();
 	}
 
+	/**
+	 * Getter of the discard 
+	 * @return the discard of the game
+	 */
 	protected Discard getDiscard() {
-		return discard;
+		return this.gc.getDiscard();
 	}
 
+	/**
+	 * Getter of the stock
+	 * @return the discard of the stock
+	 */
 	protected Stock getStock() {
-		return stock;
+		return this.gc.getStock();
 	}
 
+	/**
+	 * Getter of the gamecontroller
+	 * @return the gamecontroller of the game 
+	 */
 	protected GameController getGc() {
 		return gc;
 	}
 	
+
 	protected int getRealIndexPlayer() {
 		return this.myNumber;
 	}

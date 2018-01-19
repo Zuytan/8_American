@@ -33,7 +33,6 @@ public class Main {
 
         Menu m = new Menu(listStrategy, listRule);
         new ViewMenu(m);
-        //m.addObserver(mv);
         m.start();
     }
 

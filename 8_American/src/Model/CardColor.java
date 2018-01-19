@@ -2,7 +2,7 @@ package Model;
 
 /**
  * This Enum represents the color that any card can pick
- * @author zakray
+ * @author Alexandre
  *
  */
 public enum CardColor {

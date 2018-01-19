@@ -19,20 +19,37 @@ import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 /**
- *
- * @author joe
+ * Class that represents a graphical view of the Card
+ * @author Raphael
+ * @see JPanel
+ * @see View.View
+ * @see Model.Card
  */
 @SuppressWarnings("serial")
 public class ViewCard extends JPanel implements View {
 
+	/**
+	 * The card 
+	 */
 	private Card card;
+	
+	/**
+	 * The image of the card
+	 */
 	private Image image;
 
+	/**
+	 * Constructor that create a specific image with a card in parameter
+	 * @param c the card to represents
+	 */
 	public ViewCard(Card c) {
 		this.card = c;
 		this.setImage(this.card.toString().replace(" ", "_"));
 	}
 
+	/**
+	 * Basic constructor of the card's view, the image of the card is the back 
+	 */
 	public ViewCard() {
 		this.card = null;
 		this.setImage("backcard");
@@ -72,6 +89,10 @@ public class ViewCard extends JPanel implements View {
 		return super.getSize();
 	}
 
+	/**
+	 * Setter of the image
+	 * @param name
+	 */
 	public void setImage(String name) {
 		// TODO Auto-generated method stub
 		try {
@@ -82,6 +103,10 @@ public class ViewCard extends JPanel implements View {
 		}
 	}
 
+	/**
+	 * Getter of the card
+	 * @return the card of view
+	 */
 	public Card getCard() {
 		return this.card;
 	}

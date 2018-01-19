@@ -14,14 +14,23 @@ import Controller.GameController;
 import Controller.Graphical.StockClickController;
 
 /**
- *
- * @author joe
+ *	Class that represents the graphical view of the stock
+ * @author Raphael
+ * @see JPanel
+ * @see View.View
  */
 @SuppressWarnings("serial")
 public class ViewStock extends JPanel implements View{
 
+	/**
+	 * The gameController of the game 
+	 */
     private GameController gc;
 
+    /**
+     * The basic constructor of the view
+     * @param gc the game controller
+     */
     public ViewStock(GameController gc) {
         this.gc = gc;
         ViewCard vc = new ViewCard();

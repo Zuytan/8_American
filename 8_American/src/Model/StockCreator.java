@@ -2,6 +2,11 @@ package Model;
 
 import java.util.LinkedList;
 
+/**
+ * Class static that is used to create deck of cards 
+ * @author Alexandre
+ *
+ */
 public class StockCreator {
 
 	/**

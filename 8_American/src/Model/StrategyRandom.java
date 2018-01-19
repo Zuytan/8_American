@@ -7,7 +7,11 @@ import Exceptions.InvalidActionException;
 import Exceptions.InvalidInputException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
+/**
+ * Class that represents a strategy that play random cards 
+ * @author Alexandre
+ * @see Model.IStrategy
+ */
 public class StrategyRandom implements IStrategy {
 
     @Override

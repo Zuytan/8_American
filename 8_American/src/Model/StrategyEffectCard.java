@@ -14,8 +14,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
- * @author joe
+ * Class that represents a strategy that favored the effect cards  
+ * @author Raphael
+ * @see Model.IStrategy
  */
 public class StrategyEffectCard implements IStrategy {
 

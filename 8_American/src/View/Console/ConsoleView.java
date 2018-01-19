@@ -38,8 +38,8 @@ public class ConsoleView extends GameView {
     public static final String ANSI_CYAN = "\u001B[36m";
     public static final String ANSI_WHITE = "\u001B[37m";
 
-    public ConsoleView(GameController gc, Stock s, Discard d, ArrayList<Player> players, int realIndexPlayer) {
-        super(gc, s, d, players, realIndexPlayer);
+    public ConsoleView(GameController gc, int realIndexPlayer) {
+        super(gc, realIndexPlayer);
     }
 
     /**
@@ -179,7 +179,7 @@ public class ConsoleView extends GameView {
      * A method which show to the player the different rules available and ask
      * him to make a choice.
      *
-     * @return
+     * @return the choice of the player 
      */
     private int changeRule() {
         int out, i = 1;

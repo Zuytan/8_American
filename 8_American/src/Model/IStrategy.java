@@ -4,6 +4,11 @@ import java.util.ArrayList;
 
 import Controller.GameController;
 
+/**
+ * Interface IStrategy that represent an AI strategy
+ * @author Alexandre
+ *
+ */
 public interface IStrategy {
 	
 	/**

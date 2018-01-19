@@ -32,17 +32,34 @@ import javax.swing.JPanel;
 import javax.swing.UIManager;
 
 /**
- *
- * @author joe
+ *	Class that represent the window of the game
+ * @author Raphael
+ * @see View.GameView
  */
 public class ViewWindow extends GameView {
 
+	/**
+	 * The window of the game
+	 */
     private JFrame win;
+    
+    /**
+     * The width of the window
+     */
     private final int WIDTH = 1000;
+    
+    /**
+     * The height of the window
+     */
     private final int HEIGHT = 690;
 
-    public ViewWindow(GameController gc, Stock s, Discard d, ArrayList<Player> players, int realIndexPlayer) {
-        super(gc, s, d, players, realIndexPlayer);
+    /**
+     * The basic constructor of the main view
+     * @param gc the game controller
+     * @param realIndexPlayer The index of the real player
+     */
+    public ViewWindow(GameController gc, int realIndexPlayer) {
+        super(gc, realIndexPlayer);
         this.win = new JFrame();
         this.win.setTitle("8 American");
         this.win.setSize(this.WIDTH, this.HEIGHT);
@@ -117,35 +134,11 @@ public class ViewWindow extends GameView {
         gc.addObserver(vd);
 
         //MENU
-        /*
-         * J'ai rajout� quelques truc qui pouvaient �tre cool, apres on est pas obliger de tout faire �videmment
-         * Juste la tu vois que c'est juste graphique, il y a aucun listener de creer, donc il faut en faire des sp�cifique pour chaque
-         */
         JMenuBar menuBar = new JMenuBar();
-        JMenu menu = new JMenu("Menu");
-        menuBar.add(menu);
-
-        JMenuItem newGame = new JMenuItem("New Game...");
-        //newGame.addMouseListener({The specific controller});
-        menu.add(newGame);
-
-        JMenuItem loadGame = new JMenuItem("Load Game...");
-        //loadGame.addMouseListener({The specific controller});
-        menu.add(loadGame);
-
-        JMenuItem saveGame = new JMenuItem("Save the Game...");
-        //saveGame.addMouseListener({The specific controller});
-        menu.add(saveGame);
 
         JMenu changeRule = new JMenu("Change the rule");
         menuBar.add(changeRule);
 
-        //Bon ici c'est un peu particulier, j'ai modifi� quelques truc dans le GC, 
-        //Avant pour changer de regle, on passait par le playCard(), maintenant
-        //j'ai trouv� �a plus propre de le faire passer par une fonction sp�cifique
-        //qui s'appelle changeRule(int index) qui va changer la regle en fonction
-        //de l'index pass� en param�tre. Il va donc falloir creer un controller qui 
-        //appelle cette m�thode
         for (int i = 0; i < this.getGc().getListRules().size(); i++) {
             JMenuItem rule = new JMenuItem(i + ") " + this.getGc().getListRules().get(i).toString());
             rule.addMouseListener(new ChangeRuleController(this.getGc(), rule, this.win));

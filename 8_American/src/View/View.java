@@ -6,8 +6,9 @@
 package View;
 
 /**
- *
+ *	Interface for a view in general
  * @author joe
+ * @see View.Observer
  */
 public interface View extends Observer {
     

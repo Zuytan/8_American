@@ -9,6 +9,11 @@ import Exceptions.InvalidInputException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * Class that represents a strategy that play the first valid card 
+ * @author Alexandre
+ * @see Model.IStrategy
+ */
 public class StrategyStupid implements IStrategy {
 
     @Override

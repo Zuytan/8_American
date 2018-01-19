@@ -15,14 +15,23 @@ import javax.swing.JPanel;
 import Controller.GameController;
 
 /**
- *
- * @author joe
+ *Class that represents the view of the card
+ * @author Raphael
+ * @see JPanel
+ * @see View.View
  */
 @SuppressWarnings("serial")
 public class ViewDiscard extends JPanel implements View {
 
+	/**
+	 * The game controller
+	 */
     private GameController gc;
 
+    /**
+     * Basic constructor of the ViewDiscard
+     * @param gc the game controller
+     */
     public ViewDiscard(GameController gc) {
         this.gc = gc;
         this.update();
@@ -30,12 +39,11 @@ public class ViewDiscard extends JPanel implements View {
 
     @Override
     public Dimension getMinimumSize() {
-        return super.getSize(); //To change body of generated methods, choose Tools | Templates.
+        return super.getSize(); 
     }
 
     @Override
     public void update() {
-    	
     	ViewDiscard me = this;
         this.removeAll();
         Discard myDiscard = this.gc.getDiscard();
@@ -47,7 +55,6 @@ public class ViewDiscard extends JPanel implements View {
 	     try {
 			Thread.sleep(2000);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
        

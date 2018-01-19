@@ -1,8 +1,22 @@
 package Model;
 
+/**
+ * Class that represents a card in the game
+ * 
+ * @author Alexandre
+ * @see Model.CardColor
+ * @see Model CardValue 
+ */
 public class Card {
 
+	/**
+	 * Attribute that represents the color of the card
+	 */
     private CardColor color;
+    
+    /**
+     * Attribute that represents the value of the card
+     */
     private CardValue value;
 
     /**

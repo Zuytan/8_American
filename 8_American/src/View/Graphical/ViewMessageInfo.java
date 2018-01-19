@@ -14,14 +14,28 @@ import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 /**
- *
- * @author joe
+ *	Class that show the differents messages that can be throw during the game
+ * @author Raphael
+ * @see JPanel
+ * @see View.View
  */
 @SuppressWarnings("serial")
 public class ViewMessageInfo extends JPanel implements View {
 
+	/**
+	 * The game controller
+	 */
     private GameController gc;
+    
+    /**
+     * The message to show 
+     */
     private JTextArea messageInfo;
+    
+    /**
+     * The basic constructor of the View
+     * @param gc the game controller
+     */
     public ViewMessageInfo(GameController gc) {
         this.gc = gc;
         this.messageInfo = new JTextArea(this.gc.getMessageAlert());

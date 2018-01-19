@@ -2,7 +2,7 @@ package Model;
 
 /**
  * This Enum represents the differents values that any Card can picks
- * @author zakray
+ * @author Alexandre
  *
  */
 public enum CardValue {
